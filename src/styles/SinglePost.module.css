@@ -1,0 +1,82 @@
+.post {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.postMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.post > img {
+  width: 50%;
+}
+
+.postImage > img {
+  width: 100%;
+  width: -moz-available;
+  /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available;
+  /* Mozilla-based browsers will ignore this. */
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.content {
+  color: rgba(44, 44, 44, 0.918);
+  word-spacing: 3px;
+}
+
+.content > *::first-letter {
+  font-size: 180%;
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: Gold;
+}
+
+.postHeader {
+  padding: 1rem;
+  padding-bottom: 0;
+  text-transform: capitalize;
+  min-height: 30vh;
+  color: #000000e8;
+  padding-top: 3rem;
+}
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1rem;
+  padding: 12px;
+}
+/*# sourceMappingURL=SinglePost.module.css.map */
+@media screen and (max-width: 900px) {
+  .postHeader > h3 {
+    font-size: 1.54rem;
+    width: 100%;
+    text-align: center;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+  .social {
+    order: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-left: 2rem;
+  }
+  .postImage > img {
+    margin-bottom: 0;
+  }
+}

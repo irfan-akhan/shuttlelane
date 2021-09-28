@@ -1,0 +1,36 @@
+.container {
+	min-height: 60vw;
+	margin: 6rem auto;
+}
+.container p {
+	font-size: 1.05rem;
+	color: #6f737b;
+}
+.container .content {
+	margin-left: 1.5rem;
+}
+
+.container li {
+	font-size: 1rem;
+	font-weight: 400;
+	color: #000000bf;
+	margin-bottom: 1rem;
+}
+.content {
+	margin-left: 2rem;
+}
+
+@media screen and (max-width: 480px) {
+	.container {
+		width: 100vw;
+		margin-bottom: 0rem;
+		margin: 4.5rem auto;
+		min-height: fit-content;
+	}
+	.container .content {
+		margin-left: 0;
+	}
+	.right {
+		margin-left: 0;
+	}
+}

@@ -1,0 +1,27 @@
+.main {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+	padding: 1.5rem;
+	letter-spacing: 1px;
+}
+
+.header {
+	background: #36d45e6c;
+	width: 100%;
+	color: rgb(35, 85, 39);
+	text-align: center;
+	font-weight: bolder;
+}
+.headerError {
+	background: #f10424a9;
+	width: 100%;
+	color: rgb(232, 241, 233);
+	text-align: center;
+	font-weight: bolder;
+}
+
+.message {
+	font-size: 0.9rem;
+}

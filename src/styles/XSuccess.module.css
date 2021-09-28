@@ -1,0 +1,136 @@
+.main {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 1.5rem;
+  letter-spacing: 1px;
+  position: relative;
+  /* z-index: -1; */
+}
+.modal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 60vh;
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  margin-top: 10rem;
+  z-index: 2;
+  border: 20px solid #aaedbb;
+}
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  /* padding: 2rem; */
+}
+.modal input {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 1rem;
+}
+.modal select {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 0.3rem;
+}
+.modal label {
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-bottom: 0.4rem;
+}
+.detailContainer {
+  display: flex;
+  padding: 1rem;
+  width: 100%;
+}
+.detailContainer > .itemDetails {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.detail :first-child {
+  color: #0393be;
+}
+.detail {
+  margin-left: 1rem;
+}
+.header {
+  background: #36d45e6c;
+  width: 100%;
+  color: rgb(35, 85, 39);
+  text-align: center;
+  font-weight: bolder;
+}
+.para {
+  font-size: 0.8rem;
+}
+.message {
+  font-size: 0.9rem;
+}
+
+.editBtn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #0393be;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 0.4rem;
+  font-size: 0.7rem;
+  transition: all 0.3s linear;
+}
+.editBtn:hover {
+  background: #aaedbb;
+  color: #000;
+  outline: none;
+  transform: scale(1.01);
+}
+
+.fields {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.fields #address {
+  width: 70% !important;
+}
+@media screen and (max-width: 900px) {
+  .modal {
+    width: 55%;
+  }
+
+  .modal input {
+    width: 90% !important;
+    height: 40px;
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .detailContainer {
+    flex-direction: column;
+  }
+  .modal {
+    width: 85%;
+  }
+
+  .modal input {
+    width: 90% !important;
+    height: 40px;
+    margin-bottom: 1rem;
+  }
+  .dateTime {
+    flex-direction: column;
+  }
+}

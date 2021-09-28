@@ -1,0 +1,525 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+html,
+body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	overflow-x: hidden;
+	position: relative;
+}
+.MuiPaper-root .MuiStepper-root .MuiStepper-horizontal .MuiPaper-elevation0 {
+	display: flex;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+* {
+	box-sizing: border-box;
+}
+.MuiBox-root,
+.MuiBox-root-15 {
+	padding: 0;
+}
+
+.btnGrad {
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		from(#f09819),
+		color-stop(51%, #edde5d),
+		to(#f09819)
+	);
+	background-image: linear-gradient(
+		to right,
+		#f09819 0%,
+		#edde5d 51%,
+		#f09819 100%
+	);
+}
+.hotelForm {
+	width: 60%;
+	margin: 8rem auto 0 auto;
+}
+.topMargin {
+	margin-top: 6rem;
+}
+
+.btnGrad {
+	margin: 10px;
+	text-align: center;
+	text-transform: uppercase;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	border-radius: 10px;
+	border-top-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	display: block;
+	outline: none;
+	border: none;
+	margin: auto;
+	padding: 0.5rem;
+	width: 33%;
+	height: 2.2rem;
+	color: #212121;
+	cursor: pointer;
+	text-transform: capitalize;
+	margin-top: 3rem;
+	font-size: 600;
+}
+
+.btnGrad:hover {
+	background-position: right center;
+	/* change the direction of the change here */
+	color: #000080;
+	text-decoration: none;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+/* input control styles */
+
+.checkoutForm .inputControl {
+	border: 1px solid rgba(204, 204, 204, 0.726);
+	border-radius: 5px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -moz-box;
+	display: flex;
+	width: 300px;
+	height: 30px;
+	margin: 1rem;
+}
+.checkoutForm {
+	padding: 1.4rem 0.5rem;
+	margin-bottom: 5rem;
+}
+.checkoutForm .inputControl input[type='date'],
+.checkoutForm .inputControl input[type='time'] {
+	font-size: 16.3px !important;
+	width: 100em !important;
+	/* color: red !important; */
+	/* height: 95% !important; */
+}
+.checkoutForm input[type='file'] {
+	display: none;
+}
+.checkoutForm #files {
+	width: 70%;
+}
+
+.inputControl > label {
+	border: 1px solid rgb(8, 6, 6);
+	display: inline-block;
+	padding: 6px 12px;
+	cursor: pointer;
+	background-color: rgba(245, 238, 238, 0.705);
+	border-radius: 0 10% 10% 0;
+	font-size: 0.7rem;
+}
+.checkoutForm .inputControl select,
+.checkoutForm .inputControl input {
+	width: 100%;
+}
+.checkoutForm .formGroup {
+	display: flex;
+	justify-content: center;
+}
+.checkoutForm .inputControl span {
+	width: 40px;
+	height: 100%;
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	border: 1px solid rgba(204, 204, 204, 0.726);
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	background-color: #e9ecef;
+}
+
+.checkoutForm .inputControl > * {
+	border: none;
+	outline: none;
+}
+/* animation*/
+
+.whatsapp {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	position: fixed;
+	bottom: 7%;
+	right: 3%;
+	cursor: pointer;
+}
+.whatsapp > a > img {
+	width: 40px;
+	height: 40px;
+	object-fit: contain;
+}
+
+.fleetGrid {
+	display: grid;
+	/* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 1rem;
+	margin: 1rem 0 2rem 0;
+}
+.fleetGrid img {
+	margin: auto;
+	width: 70px;
+}
+.fleetGrid div {
+	padding: 1rem;
+	border: 1px solid #212121;
+}
+.fleetGrid p {
+	font-size: 0.8rem;
+}
+.btnSelected {
+	outline: none;
+	background-color: #e3b645;
+	color: #212121;
+	padding: 0.5rem 1rem;
+	border-radius: 7px;
+	border: none;
+	cursor: pointer;
+}
+.btnNotSelected {
+	border: 2px solid #e3b645;
+	color: #212121;
+	background: #fff;
+	padding: 0.5rem 1rem;
+	border-radius: 7px;
+	cursor: pointer;
+	margin-left: 10px;
+	width: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.map {
+	width: 100%;
+	height: 250px;
+	border: none;
+	margin-bottom: 2rem;
+}
+/* Slider */
+/* Slider */
+/* Slider */
+/* Slider */
+/* Slider */
+
+.direct > img {
+	width: 55%;
+}
+
+.direct p {
+	color: #3b3b3b;
+	max-width: 550px;
+	text-align: center;
+	font-size: 1rem;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.direct p:first-of-type {
+	font-size: 1rem;
+	color: #ecab06;
+	margin-bottom: 0.5rem;
+}
+
+.direct h4 {
+	margin: 0;
+	/* margin-top: 4rem; */
+	padding: 0;
+	color: #000080;
+}
+.swiper-container {
+	width: 100%;
+	height: 100%;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+/* slider end */
+/* slider end */
+/* slider end */
+/* slider end */
+/* slider end */
+.number {
+	display: flex;
+}
+.number > select {
+	width: 15%;
+	height: inherit;
+	height: 5vh;
+}
+.number > input {
+	border: 1px solid rgba(204, 204, 204, 0.76);
+	height: 5vh;
+	border-radius: 5%;
+}
+.MuiStepper-horizontal {
+	align-items: center;
+	flex-direction: row;
+}
+.flutter {
+	width: 300px;
+	margin: 20px 30px;
+}
+.Paypal {
+	width: 200px;
+	margin: 20px 30px;
+}
+.Stripe {
+	width: 150px;
+	margin: 20px 30px;
+}
+
+.summary {
+	margin-top: 5rem;
+}
+.drive {
+	width: 100%;
+	padding: 0 1rem;
+	text-align: center;
+	margin: auto;
+}
+.search {
+	border: none;
+	border-bottom: 1px solid #e2b545;
+	padding: 0.3rem;
+	height: 26px;
+	width: 100px;
+	background: initial;
+}
+.searchBtn {
+	background: #e2b545;
+	height: 32px;
+	width: 32px;
+	cursor: pointer;
+	border-radius: 50%;
+	outline: none;
+	border: none;
+}
+.searchBtn a {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+.hideSummary {
+	display: none;
+}
+.mobileNav {
+	margin-top: 0;
+	margin-bottom: 2px;
+	font-size: 12px;
+	font-weight: 500;
+	width: 100%;
+	margin-left: 10px;
+	display: none;
+	width: 90vw;
+	background-color: #000080;
+	color: #fff;
+	width: 100vw;
+	left: -20px;
+	position: relative;
+	top: -2px;
+}
+/* .showSummaryPhone {
+	display: none;
+} */
+.userPermissions {
+	margin: 10px;
+}
+.userPermissions button {
+	background-color: transparent;
+	background-color: #c9c9c9;
+	cursor: pointer;
+	margin: 4px;
+	display: inline-block;
+	padding: 5px 10px;
+	border: none;
+}
+@media screen and (max-width: 900px) {
+	.showSummaryDesktop {
+		display: none;
+	}
+	/* .showSummaryPhone {
+		display: block;
+	} */
+	.showSummaryPhone > div {
+		margin-top: 20px !important;
+	}
+	.mobileNav {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.drive {
+		width: 40%;
+	}
+	.fleetGrid {
+		grid-template-columns: 1fr 1fr;
+	}
+	input[type='text'],
+	input[type='number'],
+	input[type='checkbox'],
+	input[type='date'],
+	input[type='time'],
+	input[type='number'],
+	input[type='tel'],
+	input[type='email'],
+	select,
+	input[type='radio'] {
+		font-size: 16.2px !important;
+		/* color: red !important; */
+	}
+	select,
+	input[type='time'],
+	input[type='date'] {
+		font-size: 16.2px !important;
+		width: 99% !important;
+		min-height: 95% !important;
+	}
+	.typeCenter {
+		text-align: center;
+	}
+	.topMargin {
+		margin-top: 5rem;
+	}
+	.btnGrad {
+		min-width: 100px;
+		height: fit-content;
+		margin-top: 2rem;
+	}
+	.checkoutForm > div {
+		display: flex;
+		flex-direction: column;
+	}
+	.direct > img {
+		width: 100%;
+	}
+
+	.checkoutForm {
+		padding: 0rem;
+		display: -moz-box;
+		display: flex;
+		-moz-box-orient: vertical;
+		-moz-box-direction: normal;
+		flex-direction: column;
+		-moz-box-pack: center;
+		justify-content: center;
+		-moz-box-align: center;
+		align-items: center;
+	}
+	.marginAbove {
+		margin-top: 6rem;
+		margin-bottom: 1rem;
+	}
+	.number > select {
+		width: 40%;
+		height: inherit;
+		height: 5vh;
+	}
+	.number > input {
+		border: 1px solid rgba(204, 204, 204, 0.76);
+		height: 5vh;
+		border-radius: 5%;
+	}
+	.swiper-button-prev,
+	.swiper-button-next,
+	.swiper-container-rtl .swiper-button-next {
+		display: none !important;
+	}
+	.hotelForm {
+		width: 100%;
+		margin-top: 4.5rem;
+	}
+	.MuiStepper-horizontal {
+		align-items: start;
+		flex-direction: column;
+	}
+	.checkoutForm .inputControl {
+		width: 250px;
+		margin: 10px;
+	}
+
+	.checkoutForm #files {
+		width: 250px;
+	}
+	.checkoutForm .formGroup {
+		flex-direction: column;
+		justify-content: space-around;
+		margin-top: 0;
+	}
+
+	.hide {
+		background: #f1f1f1;
+		width: 100vw;
+		display: none !important;
+		z-index: -100;
+	}
+	.rolex > div a {
+		padding: 10px;
+		width: 100%;
+	}
+
+	.rolex div {
+		width: 100vw;
+		display: block;
+	}
+	.flutter {
+		width: 200px;
+	}
+	.Paypal {
+		width: 150px;
+	}
+	.Stripe {
+		width: 100px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.drive {
+		width: 100%;
+	}
+	.fleetGrid {
+		grid-template-columns: 1fr;
+	}
+	.search {
+		width: 200px;
+	}
+	.hideSummary {
+		display: block;
+	}
+}

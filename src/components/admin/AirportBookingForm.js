@@ -295,18 +295,18 @@ const AirportBookingForm = ({ closeForm }) => {
 								<option value='' selected>
 									Select Car Type
 								</option>
-								{/* <option value='Economy'>Economy</option>
+								<option value='Economy'>Economy</option>
 								<option value='Business'>Business</option>
 								<option value='Executive'>Executive</option>
 								<option value='Luxury'>Luxury</option>
-								<option value='Shuttle'>Shuttle</option> */}
-								{vehicles &&
+								<option value='Shuttle'>Shuttle</option>
+								{/* {vehicles &&
 									vehicels.length > 0 &&
 									vehicels.map((item, idx) => (
 										<option key={idx} value={item.name}>
 											item.name
 										</option>
-									))}
+									))} */}
 							</select>
 						</div>
 						<div className={styles.inputGroup}>

@@ -83,7 +83,7 @@ const partner = () => {
 											color: '#000080',
 										}}
 									>
-										Drive for Shutterlane
+										Drive for Shuttlelane
 									</h5>
 									<button
 										className='btnGrad'

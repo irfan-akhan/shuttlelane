@@ -385,38 +385,7 @@ const CreateUser = () => {
 					>
 						Vehicles
 					</button>
-					<button
-						style={{
-							backgroundColor: userPermissions.includes('Rates')
-								? 'green'
-								: null,
-							color: userPermissions.includes('Rates')
-								? '#fff'
-								: null,
-						}}
-						id='Rates'
-						onClick={(e) => {
-							toggleUserPerm(e);
-						}}
-					>
-						Rates
-					</button>
-					<button
-						style={{
-							backgroundColor: userPermissions.includes('Cabin')
-								? 'green'
-								: null,
-							color: userPermissions.includes('Cabin')
-								? '#fff'
-								: null,
-						}}
-						id='Cabin'
-						onClick={(e) => {
-							toggleUserPerm(e);
-						}}
-					>
-						Cabin
-					</button>
+
 					<button
 						style={{
 							backgroundColor: userPermissions.includes('Hire')

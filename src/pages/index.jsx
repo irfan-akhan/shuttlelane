@@ -27,7 +27,9 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>Shuttlelane | Car rental service </title>
+				<title>
+					Shuttlelane | Airport Transfer | Car Hire | Priority Pass
+				</title>
 				<link rel='icon' href='./assets/images/favicon.ico' />
 			</Head>
 			<Grid

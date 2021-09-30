@@ -39,7 +39,6 @@ const ExchangeRates = () => {
 		fetch('https://shuttlelane.herokuapp.com/api/rates')
 			.then((res) => res.json())
 			.then((data) => {
-				console.log('rates', data.data[0]);
 				setRates({
 					pound: data.data[0].pound,
 					euro: data.data[0].euro,

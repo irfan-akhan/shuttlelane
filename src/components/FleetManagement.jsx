@@ -39,8 +39,6 @@ const FleetManagement = () => {
 		operatingCities: '',
 	});
 	const vehicleChange = (e) => {
-		console.log(e.target);
-		console.log(e.target.innerText);
 		let vehicles = inputValues.vehicleType;
 		vehicles.includes(e.target.value)
 			? (vehicles = vehicles.filter((item) => item != e.target.value))
@@ -69,7 +67,6 @@ const FleetManagement = () => {
 			})
 				.then((res) => res.json())
 				.then((res) => {
-					console.log(res);
 					if (res.data) {
 						toast.success('Booking Confirmed', {
 							position: 'top-center',
@@ -86,7 +83,6 @@ const FleetManagement = () => {
 					}
 				});
 		} catch (err) {
-			console.log(err);
 			toast.error(err, {
 				position: 'top-center',
 				autoClose: 3000,

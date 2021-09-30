@@ -14,7 +14,6 @@ let date = new Date().toISOString().substr(0, 10);
 // Component
 const AirportNext = ({ data, setData, carCapacity }) => {
 	const onChangeHandler = (e) => {
-		console.log('Nameeeee', e.target.name, e.target.value);
 		setData({ ...data, [e.target.name]: e.target.value });
 	};
 	return (

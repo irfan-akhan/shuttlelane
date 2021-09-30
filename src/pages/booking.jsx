@@ -64,11 +64,11 @@ const Booking = () => {
 		fetch('https://shuttlelane.herokuapp.com/api/priority')
 			.then((res) => res.json())
 			.then((response) => {
-				console.log('CABIN CLASS FROM', response);
+				// console.log('CABIN CLASS FROM', response);
 				setCabinClasses(response.data);
 			})
 			.catch((err) => {
-				console.log('Request failed', err);
+				// console.log('Request failed', err);
 			});
 		fetch('https://shuttlelane.herokuapp.com/api/vehicles', {
 			method: 'GET',
@@ -79,11 +79,11 @@ const Booking = () => {
 		})
 			.then((res) => res.json())
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 				setCarRates(response.data);
 			})
 			.catch((err) => {
-				console.log('Request failed', err);
+				// console.log('vehicles request failed inner catch', err);
 			});
 		fetch('https://shuttlelane.herokuapp.com/api/rates', {
 			method: 'GET',
@@ -94,11 +94,11 @@ const Booking = () => {
 		})
 			.then((res) => res.json())
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 				setExchangeRates(response.data[0]);
 			})
 			.catch((err) => {
-				console.log('Request failed', err);
+				// console.log('rates Request failed inner catch', err);
 			});
 	}, []);
 	useEffect(() => {
@@ -111,37 +111,37 @@ const Booking = () => {
 			})
 				.then((res) => res.json())
 				.then((response) => {
-					console.log('geo respoinse ', response);
+					// console.log('geo respoinse ', response);
 					// setcountry(response.country);
 					if (response.country_name) {
-						console.log(
-							'after check if country from fetch, ',
-							response.country_name
-						);
+						// console.log(
+						// 	'after check if country from fetch, ',
+						// 	response.country_name
+						// );
 						const country = response.country_name;
 
 						if (euro.includes(country)) {
-							console.log('country found for euro');
+							// console.log('country found for euro');
 							setSelectedCurrency({
 								name: 'euro',
 							});
 							return;
 						}
 						if (niera.includes(country)) {
-							console.log('country found for niera');
+							// console.log('country found for niera');
 							setSelectedCurrency({
 								name: 'niera',
 							});
 							return;
 						}
 						if (pound.includes(country)) {
-							console.log('country found for pound');
+							// console.log('country found for pound');
 							setSelectedCurrency({
 								name: 'pound',
 							});
 							return;
 						} else {
-							console.log('country Not found');
+							// console.log('country Not found');
 							setSelectedCurrency({
 								name: 'dollar',
 							});
@@ -149,13 +149,13 @@ const Booking = () => {
 					}
 				})
 				.catch((err) => {
-					console.log('Request failed', err);
+					// console.log('geolocation Request failed', err);
 					setSelectedCurrency({
 						name: 'dollar',
 					});
 				});
 		} catch (err) {
-			console.log('trycatch', err);
+			// console.log('outter geolocation trycatch', err);
 			setSelectedCurrency({
 				name: 'dollar',
 			});
@@ -170,13 +170,13 @@ const Booking = () => {
 				let entry = item.split('=');
 				fields[entry[0]] = entry[1].split('+').join(' ');
 			});
-		console.log('fields', fields);
+		// console.log('fields', fields);
 		if (fields.formType == 'Airport-Pickup') {
-			console.log('ADD FLIGHTNUBER FIELD');
+			// console.log('ADD FLIGHTNUBER FIELD');
 			fields['flightNumber'] = '';
 		}
 	} catch (error) {
-		console.log('split err', error);
+		// console.log('booking router split err', error);
 	}
 	const [data, setData] = useState(fields);
 	const [selectedCar, setSelectedCar] = useState(fields.selectedCar || '');
@@ -194,7 +194,7 @@ const Booking = () => {
 		});
 	};
 	const exchangeRate = exchangeRates[selectedCurrency.name] || 1;
-	console.log('RATEEEEEEEEEEEEEEEEEEEEEEEEEEE', exchangeRate);
+	// console.log('RATEEEEEEEEEEEEEEEEEEEEEEEEEEE', exchangeRate);
 	const airportAmount = isNaN(
 		parseFloat(carRates.filter((car) => car.name == selectedCar)[0]?.rate) /
 			parseFloat(exchangeRate)
@@ -240,9 +240,9 @@ const Booking = () => {
 	};
 	isPriorityPass && (bookingObj.cabinClass = selectedCabinClass);
 
-	console.log(bookingObj);
-	console.log('passengerDetails', passengerDetails);
-	console.log('Airport Details', data);
+	// console.log(bookingObj);
+	// console.log('passengerDetails', passengerDetails);
+	// console.log('Airport Details', data);
 	const currencySymbol = currencySymbols[selectedCurrency.name];
 	return (
 		<section style={{ width: '80vw', margin: 'auto' }}>
@@ -297,6 +297,7 @@ const Booking = () => {
 							isPriorityPass={isPriorityPass}
 							setIsPriorityPass={() => {
 								setIsPriorityPass((prev) => !prev);
+								setSelectedCabinClass('');
 							}}
 							setSelectedCabinClass={(value) => {
 								setSelectedCabinClass(value);
@@ -335,6 +336,7 @@ const Booking = () => {
 							isPriorityPass={isPriorityPass}
 							setIsPriorityPass={() => {
 								setIsPriorityPass((prev) => !prev);
+								setSelectedCabinClass('');
 							}}
 							// setSelectedCabinClass={setSelectedCabinClass}
 							setSelectedCabinClass={(value) => {

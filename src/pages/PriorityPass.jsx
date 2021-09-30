@@ -65,11 +65,11 @@ const PriorityPass = () => {
 			fetch('https://shuttlelane.herokuapp.com/api/priority')
 				.then((res) => res.json())
 				.then((response) => {
-					console.log('CANIB CLASS FROM', response);
+					// console.log('CANIB CLASS FROM', response);
 					setClasses(response.data);
 				})
 				.catch((err) => {
-					console.log('Request failed', err);
+					// console.log('Request failed', err);
 				});
 			fetch('https://shuttlelane.herokuapp.com/api/rates', {
 				method: 'GET',
@@ -80,11 +80,11 @@ const PriorityPass = () => {
 			})
 				.then((res) => res.json())
 				.then((response) => {
-					console.log(response);
+					// console.log(response);
 					setExchangeRates(response.data[0]);
 				})
 				.catch((err) => {
-					console.log('Request failed', err);
+					// console.log('Request failed', err);
 				});
 		} catch (error) {
 			console.log(error);
@@ -101,37 +101,37 @@ const PriorityPass = () => {
 			})
 				.then((res) => res.json())
 				.then((response) => {
-					console.log('geo respoinse ', response);
+					// console.log('geo respoinse ', response);
 					// setcountry(response.country);
 					if (response.country_name) {
-						console.log(
-							'after check if country from fetch, ',
-							response.country_name
-						);
+						// console.log(
+						// 	'after check if country from fetch, ',
+						// 	response.country_name
+						// );
 						const country = response.country_name;
 
 						if (euro.includes(country)) {
-							console.log('country found for euro');
+							// console.log('country found for euro');
 							setSelectedCurrency({
 								name: 'euro',
 							});
 							return;
 						}
 						if (niera.includes(country)) {
-							console.log('country found for niera');
+							// console.log('country found for niera');
 							setSelectedCurrency({
 								name: 'niera',
 							});
 							return;
 						}
 						if (pound.includes(country)) {
-							console.log('country found for pound');
+							// console.log('country found for pound');
 							setSelectedCurrency({
 								name: 'pound',
 							});
 							return;
 						} else {
-							console.log('country Not found');
+							// console.log('country Not found');
 							setSelectedCurrency({
 								name: 'dollar',
 							});
@@ -139,13 +139,13 @@ const PriorityPass = () => {
 					}
 				})
 				.catch((err) => {
-					console.log('Request failed', err);
+					// console.log('Request failed', err);
 					setSelectedCurrency({
 						name: 'dollar',
 					});
 				});
 		} catch (err) {
-			console.log('trycatch', err);
+			// console.log('trycatch', err);
 			setSelectedCurrency({
 				name: 'dollar',
 			});
@@ -160,9 +160,9 @@ const PriorityPass = () => {
 				let entry = item.split('=');
 				fields[entry[0]] = entry[1].split('+').join(' ');
 			});
-		console.log('fields', fields);
+		// console.log('fields', fields);
 	} catch (error) {
-		console.log('split err', error);
+		// console.log('split err', error);
 	}
 	const [data, setData] = useState(fields);
 
@@ -175,7 +175,7 @@ const PriorityPass = () => {
 		});
 	};
 	const exchangeRate = exchangeRates[selectedCurrency.name] || 1;
-	console.log('RATEEEEEEEEEEEEEEEEEEEEEEEEEEE', exchangeRate);
+	// console.log('RATEEEEEEEEEEEEEEEEEEEEEEEEEEE', exchangeRate);
 	bookingObj = {
 		...data,
 		...passengerDetails,
@@ -187,9 +187,9 @@ const PriorityPass = () => {
 				parseFloat(exchangeRate)
 			).toFixed(2) || 0.0,
 	};
-	console.log('CABIN', bookingObj.cabinClass);
-	console.log('passengerDetails', passengerDetails);
-	console.log('Airport Details', data);
+	// console.log('CABIN', bookingObj.cabinClass);
+	// console.log('passengerDetails', passengerDetails);
+	// console.log('Airport Details', data);
 
 	const currencySymbol = currencySymbols[selectedCurrency.name];
 	return (

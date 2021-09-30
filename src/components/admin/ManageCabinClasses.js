@@ -14,12 +14,9 @@ const ManageCabinClasses = () => {
 				.then((res) => res.json())
 				.then((result) => {
 					setClasses(result.data);
-					console.log(result);
 				})
 				.catch((error) => console.log('error in fetch', error));
-		} catch (error) {
-			console.log(error);
-		}
+		} catch (error) {}
 	}, []);
 	function updateHandler(e, id) {
 		if (!rate) {
@@ -48,7 +45,7 @@ const ManageCabinClasses = () => {
 				.then((res) => res.json())
 				.then((result) => {
 					setClasses(result.data);
-					console.log(result);
+
 					setRate(null);
 					toast.success('Updated', {
 						position: 'top-center',
@@ -61,10 +58,8 @@ const ManageCabinClasses = () => {
 					});
 					e.target.value = 0;
 				})
-				.catch((error) => console.log('error in fetch', error));
-		} catch (error) {
-			console.log(error);
-		}
+				.catch((error) => {});
+		} catch (error) {}
 	}
 	return (
 		<>

@@ -10,14 +10,12 @@ import {
 let date = new Date().toISOString().substr(0, 10);
 export default class PriorityPassNext extends Component {
 	onChangeHandler = (e) => {
-		console.log('Nameeeee', e.target.name, e.target.value);
 		this.props.setData({
 			...this.props.data,
 			[e.target.name]: e.target.value,
 		});
 	};
 	render() {
-		console.log('PPPPPPPPPPPPPP', this.props);
 		return (
 			<div style={{ marginTop: '6rem' }}>
 				<h4

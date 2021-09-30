@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 let date = new Date().toISOString().substr(0, 10);
 // HELPER FUNCTIONS
 function createBooking(data, closeForm) {
-	console.log('SUBMOISSSSSSs', data);
+	// console.log('SUBMOISSSSSSs', data);
 	toast.info('Please wait', {
 		position: 'top-center',
 		autoClose: 3000,
@@ -30,7 +30,7 @@ function createBooking(data, closeForm) {
 	})
 		.then((res) => res.json())
 		.then((data) => {
-			console.log('result fro server', data);
+			// console.log('result fro server', data);
 			toast.success(data.message, {
 				position: 'top-center',
 				autoClose: 3000,
@@ -44,7 +44,7 @@ function createBooking(data, closeForm) {
 			return data;
 		})
 		.catch((err) => {
-			console.log('err in catch', err);
+			// console.log('err in catch', err);
 			toast.error('Please try again later', {
 				position: 'top-center',
 				autoClose: 3000,
@@ -58,7 +58,7 @@ function createBooking(data, closeForm) {
 	return 'created';
 }
 function validataDate(data) {
-	console.log('validate data', data);
+	// console.log('validate data', data);
 	return (
 		Object.values(data).includes('') || Object.values(data).includes(' ')
 	);
@@ -88,25 +88,23 @@ const AirportBookingForm = ({ closeForm }) => {
 		})
 			.then((res) => res.json())
 			.then((res) => setVehicels(res.data))
-			.catch((err) => console.log('vehicle get error', err));
+			.catch((err) => {});
 	}, []);
 	// const [transferTypeValue, setTransferTypeValue] =  useState(' ');
 	// const [CarTypeValue, setCarTypeValue] =  useState(' ');
 	// const [titleValue, setTitleValue] =  useState(' ');
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		console.log('values are: ', inputValues);
+		// console.log('values are: ', inputValues);
 		const verified = validataDate(inputValues);
 		if (!verified) {
 			const response = createBooking(inputValues, closeForm);
-			console.log('VACK', response);
+			// console.log('VACK', response);
 		} else {
-			console.log('validation Error');
+			// console.log('validation Error');
 		}
 	};
 	const onChangeHandler = (e) => {
-		console.log(e.target);
-		console.log(e.target.value);
 		setInputValues({ ...inputValues, [e.target.name]: e.target.value });
 	};
 	// transferType: transferTypeValue, carType: CarTypeValue, title: titleValue,

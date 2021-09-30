@@ -23,12 +23,9 @@ const ManageCars = () => {
 				.then((res) => res.json())
 				.then((result) => {
 					setVehicles(result.data);
-					console.log(result);
 				})
-				.catch((error) => console.log('error in fetch', error));
-		} catch (error) {
-			console.log(error);
-		}
+				.catch((error) => {});
+		} catch (error) {}
 	}, [reload]);
 	function updateHandler(e, id) {
 		if (!rate) {
@@ -57,7 +54,6 @@ const ManageCars = () => {
 				.then((res) => res.json())
 				.then((result) => {
 					setVehicles(result.data);
-					console.log(result);
 					setRate(null);
 					toast.success('Updated', {
 						position: 'top-center',
@@ -70,10 +66,8 @@ const ManageCars = () => {
 					});
 					e.target.value = 0;
 				})
-				.catch((error) => console.log('error in fetch', error));
-		} catch (error) {
-			console.log(error);
-		}
+				.catch((error) => {});
+		} catch (error) {}
 	}
 	function deleteHandler(e, id) {
 		try {
@@ -86,7 +80,6 @@ const ManageCars = () => {
 			})
 				.then((res) => res.json())
 				.then((result) => {
-					console.log(result);
 					if (result.message) {
 						toast.success(result.message, {
 							position: 'top-center',
@@ -110,10 +103,8 @@ const ManageCars = () => {
 						progress: 0,
 					});
 				})
-				.catch((error) => console.log('error in fetch', error));
-		} catch (error) {
-			console.log(error);
-		}
+				.catch((error) => {});
+		} catch (error) {}
 	}
 	return (
 		<>

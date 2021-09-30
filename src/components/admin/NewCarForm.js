@@ -6,7 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // HELPER FUNCTIONS
 function createBooking(data, setEditMode) {
-	console.log('SUBMOISSSSSSs', data);
 	toast.info('Please wait', {
 		position: 'top-center',
 		autoClose: 3000,
@@ -28,7 +27,6 @@ function createBooking(data, setEditMode) {
 	})
 		.then((res) => res.json())
 		.then((result) => {
-			console.log('result fro server', result);
 			toast.success(result.message, {
 				position: 'top-center',
 				autoClose: 3000,
@@ -42,7 +40,6 @@ function createBooking(data, setEditMode) {
 			return result.data;
 		})
 		.catch((err) => {
-			console.log('err in catch', err);
 			toast.error('Please try again later', {
 				position: 'top-center',
 				autoClose: 3000,
@@ -56,7 +53,6 @@ function createBooking(data, setEditMode) {
 	return 'created';
 }
 function validataDate(data) {
-	console.log('validate data', data);
 	return (
 		Object.values(data).includes('') || Object.values(data).includes(' ')
 	);
@@ -68,13 +64,10 @@ const NewCarForm = ({ setEditMode }) => {
 	const [inputValues, setInputValues] = useState({ rate: '', name: '' });
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		console.log('values are: ', inputValues);
 		const verified = validataDate(inputValues);
 		if (!verified) {
 			const response = createBooking(inputValues, setEditMode);
-			console.log('VACK', response);
 		} else {
-			console.log('validation Error');
 			toast.error('Check all input fields', {
 				position: 'top-center',
 				autoClose: 3000,
@@ -87,8 +80,6 @@ const NewCarForm = ({ setEditMode }) => {
 		}
 	};
 	const onChangeHandler = (e) => {
-		console.log(e.target);
-		console.log(e.target.value);
 		setInputValues({ ...inputValues, [e.target.name]: e.target.value });
 	};
 	return (

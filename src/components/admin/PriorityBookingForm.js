@@ -28,7 +28,6 @@ function createBooking(data, closeForm) {
 	})
 		.then((res) => res.json())
 		.then((data) => {
-			console.log('result from server', data);
 			toast.success(data.message, {
 				position: 'top-center',
 				autoClose: 3000,
@@ -42,7 +41,6 @@ function createBooking(data, closeForm) {
 			return data;
 		})
 		.catch((err) => {
-			console.log('err in catch', err);
 			toast.error('Please try again later', {
 				position: 'top-center',
 				autoClose: 3000,
@@ -56,7 +54,6 @@ function createBooking(data, closeForm) {
 	return 'created';
 }
 function validataDate(data) {
-	console.log('validate data', data);
 	return (
 		Object.values(data).includes('') || Object.values(data).includes(' ')
 	);
@@ -81,25 +78,19 @@ const PriorityBookingForm = ({ closeForm }) => {
 		})
 			.then((res) => res.json())
 			.then((result) => {
-				console.log(result);
 				setClasses(result.data);
 			})
 			.catch(() => {});
 	}, []);
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		console.log('values are: ', inputValues);
 		const verified = validataDate(inputValues);
 		if (!verified) {
 			const response = createBooking(inputValues, closeForm);
-			console.log('VACK', response);
 		} else {
-			console.log('validation Error');
 		}
 	};
 	const onChangeHandler = (e, calcAmount) => {
-		console.log(e.target.name);
-		console.log(e.target.value);
 		if (calcAmount) {
 			setInputValues({
 				...inputValues,
@@ -171,7 +162,6 @@ const PriorityBookingForm = ({ closeForm }) => {
 							<label htmlFor='cabinClass'>Cabin Class</label>
 							<select
 								onChange={(e) => {
-									console.log(e.target.value);
 									const amount =
 										classes?.filter(
 											(item) =>
@@ -220,7 +210,6 @@ const PriorityBookingForm = ({ closeForm }) => {
 								id='passengers'
 								required
 								onChange={(e) => {
-									console.log(e.target.value);
 									const amount =
 										classes?.filter(
 											(item) =>

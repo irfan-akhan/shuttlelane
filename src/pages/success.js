@@ -4,8 +4,6 @@ import Confirmation from '../components/Confirmation';
 const success = () => {
 	const router = useRouter();
 	const [booking, setBooking] = useState({});
-	console.log('1111111', router.asPath?.split('?')[1]);
-	console.log('2222222', router.asPath?.split('?')[1]?.split('='));
 	const params = router.asPath?.split('?')[1]?.split('=');
 	useEffect(() => {
 		fetch(

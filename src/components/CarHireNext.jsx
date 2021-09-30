@@ -13,9 +13,9 @@ import {
 import next from '../styles/Next.module.css';
 let date = new Date().toISOString().substr(0, 10);
 const CarHireNext = ({ data, setData }) => {
-	console.log('DROPOFFFFFFFFFFFF..', data);
+	// console.log('DROPOFFFFFFFFFFFF..', data);
 	const onChangeHandler = (e) => {
-		console.log('Nameeeee', e.target.name, e.target.value);
+		// console.log('Nameeeee', e.target.name, e.target.value);
 		setData({ ...data, [e.target.name]: e.target.value });
 	};
 
@@ -24,11 +24,11 @@ const CarHireNext = ({ data, setData }) => {
 		fetch('https://shuttlelane.herokuapp.com/api/cars')
 			.then((res) => res.json())
 			.then((response) => {
-				console.log('Cars', response);
+				// console.log('Cars', response);
 				setCars(response.data);
 			})
 			.catch((err) => {
-				console.log('Request failed', err);
+				// console.log('Request failed', err);
 			});
 	}, []);
 

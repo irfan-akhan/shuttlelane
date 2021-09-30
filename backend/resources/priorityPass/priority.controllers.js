@@ -14,7 +14,7 @@ const getAll = async (req, res) => {
 		console.log('created document');
 		return res
 			.status(201)
-			.json({ data: doc, message: 'All Priotiyu Bookings' });
+			.json({ data: doc, message: 'All Priority Bookings' });
 	} catch (error) {
 		return res.status(500).json({ error });
 	}
@@ -76,7 +76,7 @@ Need assistance? You can reach us on +2349030009452, +2349030009486 or +23490300
 		};
 		sendSMS(`${data.countryCode}${data.mobile}`, sms);
 		sendMAIL(msg);
-		sendBookingEmail(null, 'New booking recieved');
+		sendBookingEmail('New Airport Priority Pass service booking recieved.');
 		return res.status(201).json({
 			data: doc,
 			message: 'Booking confirmed, Thank you for choosing shuttlelane.!',

@@ -26,12 +26,9 @@ export default function App() {
 				.then((res) => res.json())
 				.then((result) => {
 					setVehicles(result.data);
-					console.log('fetch', vehicles);
 				})
-				.catch((error) => console.log('error in fetch', error));
-		} catch (error) {
-			console.log(error);
-		}
+				.catch((error) => {});
+		} catch (error) {}
 	}, []);
 	return (
 		<>

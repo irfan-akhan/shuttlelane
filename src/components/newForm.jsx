@@ -51,7 +51,7 @@ const newForm = () => {
 	const router = useRouter();
 
 	const onChangeHandler = (e) => {
-		console.log(e.target.name, e.target.value);
+		// console.log(e.target.name, e.target.value);
 		setDriverInput({ ...driverInput, [e.target.name]: e.target.value });
 	};
 
@@ -67,7 +67,7 @@ const newForm = () => {
 			progress: 0,
 		});
 
-		console.log(driverInput);
+		// console.log(driverInput);
 		try {
 			fetch('https://shuttlelane.herokuapp.com/api/driver', {
 				method: 'POST',
@@ -88,14 +88,14 @@ const newForm = () => {
 						draggable: true,
 						progress: 0,
 					});
-					console.log(result);
+					// console.log(result);
 					if (result.data) {
 						router.push('/partnership/drive-confirmation');
 					}
 				})
-				.catch((err) => console.log('err catch', err));
+				.catch((err) => {});
 		} catch (err) {
-			console.log('Something wen wrong, Check you internet');
+			// console.log('api/driver outter err catch', err);
 		}
 	};
 	return (

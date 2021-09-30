@@ -19,14 +19,14 @@ export async function getServerSideProps() {
 			'https://shuttlelane.herokuapp.com/api/posts'
 		);
 		const { data } = await response.json();
-		console.log('from server ', data);
+		// console.log('from server ', data);
 		return {
 			props: {
 				data,
 			},
 		};
 	} catch (error) {
-		console.log('in catch of posts');
+		// console.log('in catch of posts');
 		return {
 			props: {
 				err: 'error in fetch',

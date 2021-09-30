@@ -3,7 +3,6 @@ import { PersonSharp } from '@material-ui/icons';
 import blog from '../styles/Blog.module.css';
 
 export default function MediaCard({ post }) {
-	console.log('post is', post);
 	return (
 		<div className={blog.Card}>
 			<img src={`/assets/images/car.jpg`} alt='' />

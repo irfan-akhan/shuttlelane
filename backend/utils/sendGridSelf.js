@@ -1,8 +1,8 @@
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-async function sendBookingMAIL(emailId, body) {
-	console.log(emailId, body);
+async function sendBookingMAIL(body) {
+	console.log(body);
 
 	//   const data = {
 	//     content: [{ type: "text/plain", value: "" }],

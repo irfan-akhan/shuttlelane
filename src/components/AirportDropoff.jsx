@@ -12,9 +12,7 @@ import {
 import next from '../styles/Next.module.css';
 let date = new Date().toISOString().substr(0, 10);
 const AirportDropoff = ({ data, setData, carCapacity }) => {
-	console.log('DROPOFFFFFFFFFFFF..', data);
 	const onChangeHandler = (e) => {
-		console.log('Nameeeee', e.target.name, e.target.value);
 		setData({ ...data, [e.target.name]: e.target.value });
 	};
 	return (

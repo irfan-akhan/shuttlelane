@@ -10,7 +10,6 @@ const UpdateCarFleetForm = ({ vehicle, closeForm }) => {
 		vehicle || { rate: '', cars: [], name: '' }
 	);
 	const updateVehicle = (e) => {
-		console.log(inputValues);
 		const id = vehicle._id;
 		toast.info(`Please Wait, update in progress`, {
 			position: 'top-center',
@@ -47,14 +46,9 @@ const UpdateCarFleetForm = ({ vehicle, closeForm }) => {
 						});
 						closeForm();
 					}
-					console.log('response', result);
 				})
-				.catch((err) => {
-					console.log(err);
-				});
-		} catch (err) {
-			console.log(err);
-		}
+				.catch((err) => {});
+		} catch (err) {}
 	};
 	const addNewCarHandler = (e) => {
 		if (!newCar) {

@@ -33,13 +33,10 @@ const BlogForm = ({ post, action, reload }) => {
 			[e.target.name]: e.target.value,
 		});
 	};
-	console.log('IMPUT VALUES', inputValues || 'nooo');
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
 		let response;
-		console.log('inputFields', inputValues);
 		let fd = new FormData();
-		console.log('Form Data 1', fd);
 
 		fd.append('image', setSelectedImage);
 		fd.append('heading', inputValues.heading);
@@ -49,9 +46,7 @@ const BlogForm = ({ post, action, reload }) => {
 			inputValues.para2,
 			inputValues.para3,
 		]);
-		for (let item of fd) {
-			console.log(item);
-		}
+
 		const url =
 			action == 'update'
 				? `https://shuttlelane.herokuapp.com/api/posts/${post._id}`

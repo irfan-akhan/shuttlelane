@@ -20,7 +20,7 @@ let intialDropoffValues = {
 };
 
 const AirportForm = () => {
-	console.log(date);
+	// console.log(date);
 	const router = useRouter();
 	let [formType, setFormType] = useState('Airport-Pickup');
 	let [airportPickupValues, setAirportPickupValues] =
@@ -45,10 +45,10 @@ const AirportForm = () => {
 	}
 	function onDropoffSubmitHandler(e) {
 		e.preventDefault();
-		console.log('airportDropoffValues:', airportDropoffValues);
+		// console.log('airportDropoffValues:', airportDropoffValues);
 		let data = { ...airportDropoffValues, formType: formType };
 
-		console.log('data in Dropoff', data);
+		// console.log('data in Dropoff', data);
 		router.push({
 			pathname: '/booking',
 			query: data,
@@ -56,7 +56,7 @@ const AirportForm = () => {
 	}
 	function onPickupSubmitHandler(e) {
 		e.preventDefault();
-		console.log('airportPickupValues:', airportPickupValues);
+		// console.log('airportPickupValues:', airportPickupValues);
 		let data = { ...airportPickupValues, formType: formType };
 		router.push({
 			pathname: '/booking',
@@ -79,7 +79,7 @@ const AirportForm = () => {
 				</label>
 				<input
 					onClick={(e) => {
-						console.log('Pickup');
+						// console.log('Pickup');
 						setFormType('Airport-Pickup');
 
 						setAirportDropoffValues({ ...intialDropoffValues });
@@ -103,7 +103,7 @@ const AirportForm = () => {
 				</label>
 				<input
 					onClick={(e) => {
-						console.log('Dropoff');
+						// console.log('Dropoff');
 						setFormType('Airport-Dropoff');
 						setAirportDropoffValues({ ...intialDropoffValues });
 						setAirportPickupValues({ ...intialPickupValues });

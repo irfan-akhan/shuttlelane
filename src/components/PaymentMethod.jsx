@@ -20,17 +20,17 @@ function createBooking(
 	paymentReceiptLink,
 	paymentTxnNumber
 ) {
-	console.log('SUBMOISSSSSSs', paymentMethod);
-	console.log(
-		'new Fileds',
-		paymentStatus,
-		paymentReceiptLink,
-		paymentTxnNumber
-	);
-	console.log('data', data);
+	// console.log('SUBMOISSSSSSs', paymentMethod);
+	// console.log(
+	// 	'new Fileds',
+	// 	paymentStatus,
+	// 	paymentReceiptLink,
+	// 	paymentTxnNumber
+	// );
+	// console.log('data', data);
 
 	if (data.formType == 'Priority-Pass') {
-		console.log('IN PRIO');
+		// console.log('IN PRIO');
 		fetch('https://shuttlelane.herokuapp.com/api/booking/priority', {
 			method: 'POST',
 			headers: {
@@ -47,7 +47,7 @@ function createBooking(
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log('result fro server', data);
+				// console.log('result fro server', data);
 				toast.success(data.message, {
 					position: 'top-center',
 					autoClose: 3000,
@@ -64,7 +64,7 @@ function createBooking(
 				});
 			})
 			.catch((err) => {
-				console.log('err in catch', err);
+				// console.log('err in catch', err);
 				toast.error(err, {
 					position: 'top-center',
 					autoClose: 3000,
@@ -89,7 +89,7 @@ function createBooking(
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log('result fro server', data);
+				// console.log('result fro server', data);
 				toast.success(data.message, {
 					position: 'top-center',
 					autoClose: 3000,
@@ -106,7 +106,7 @@ function createBooking(
 				});
 			})
 			.catch((err) => {
-				console.log('err in catch', err);
+				// console.log(' airport err in catch', err);
 				toast.error(err, {
 					position: 'top-center',
 					autoClose: 3000,
@@ -121,7 +121,7 @@ function createBooking(
 }
 
 function validataDate(data) {
-	console.log('validate data', data);
+	// console.log('validate data', data);
 
 	return (
 		Object.values(data).includes('') ||
@@ -130,14 +130,14 @@ function validataDate(data) {
 	);
 }
 const onClosed = (res) => {
-	console.log('CLOSE PANED');
-	console.log(res);
+	// console.log('CLOSE PANED');
+	// console.log(res);
 };
 
 // COMPONENT
 
 const PaymentMethod = ({ bookingData, cabinClasses }) => {
-	console.log('IN PAYMENT METHOD', bookingData);
+	// console.log('IN PAYMENT METHOD', bookingData);
 	const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 	const router = useRouter();
 	let [selectedPayment, setSelectedPayment] = useState('');
@@ -199,7 +199,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 			fetch('https://shuttlelane.herokuapp.com/api/payment/paypal')
 				.then((res) => res.json())
 				.then((res) => {
-					console.log('JSON', res);
+					// console.log('JSON', res);
 					paypalDispatch({
 						type: 'resetOptions',
 						value: {
@@ -220,7 +220,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 					});
 				})
 				.catch((err) => {
-					console.log('in fetch err', err);
+					// console.log('fetch err payment/paypal', err);
 				});
 		};
 		paypalLoadScript();
@@ -253,9 +253,9 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 				paymentReceiptLink,
 				paymentId
 			);
-			console.log('VACK', response);
+			// console.log('VACK', response);
 		} else {
-			console.log('validation Error');
+			// console.log('validation Error');
 			toast.error('Please provide valid inputs', {
 				position: 'top-center',
 				autoClose: 3000,
@@ -283,9 +283,9 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				console.log('stripe payment res', res);
+				// console.log('stripe payment res', res);
 				if (res.data.status === 'succeeded') {
-					console.log('stripe payment succeded', res);
+					// console.log('stripe payment succeded', res);
 
 					onSubmitHandler(
 						res.data.id,
@@ -293,7 +293,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 						'Successful'
 					);
 				} else {
-					console.log('stripe payment error', res);
+					// console.log('stripe payment error', res);
 					toast.error('Payment Failed, Please try again', {
 						position: 'top-center',
 						autoClose: 3000,
@@ -306,7 +306,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 				}
 			})
 			.catch((err) => {
-				console.log('payment catch err', err);
+				// console.log('payment catch err', err);
 				toast.error('Payment Failed, Please try again later', {
 					position: 'top-center',
 					autoClose: 3000,
@@ -319,8 +319,8 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 			});
 	}
 	function paymentOptionHandler(e) {
-		console.log(e.target.id);
-		console.log('IN PAYMENT METHOD data', bookingData);
+		// console.log(e.target.id);
+		// console.log('IN PAYMENT METHOD data', bookingData);
 
 		if (validataDate(bookingData)) {
 			toast.error('Please Fill all fields to make payment', {
@@ -353,7 +353,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 	}
 	// Paypal handler create
 	function createOrder(data, actions) {
-		console.log('creatinOrder', data, actions.order);
+		// console.log('creatinOrder', data, actions.order);
 		return actions.order
 			.create({
 				payer: {
@@ -381,14 +381,14 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 
 	// Paypal handler approve
 	function onApprove(data, actions) {
-		console.log('Approve Order', data, actions);
+		// console.log('Approve Order', data, actions);
 
 		return actions.order.capture().then(async (details) => {
 			try {
-				console.log('Paypal capture details', details);
+				// console.log('Paypal capture details', details);
 				onSubmitHandler(res.id, '', 'Successful');
 			} catch (error) {
-				console.log('capture err', error);
+				// console.log('capture err', error);
 				toast.error('Payment Failed, Please try again', {
 					position: 'top-center',
 					autoClose: 3000,
@@ -528,7 +528,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 					onClick={() => {
 						handleFlutterPayment({
 							callback: (response) => {
-								console.log('flutterwave response', response);
+								// console.log('flutterwave response', response);
 								if (
 									response &&
 									response.flw_refstatus == 'successfull'

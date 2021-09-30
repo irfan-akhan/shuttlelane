@@ -36,7 +36,7 @@ const HotelForm = () => {
 			})
 				.then((res) => res.json())
 				.then((res) => {
-					console.log(res);
+					// console.log(res);
 					if (res.data) {
 						toast.success('Registered successfully', {
 							position: 'top-center',
@@ -49,7 +49,7 @@ const HotelForm = () => {
 						});
 						router.push('/partnership/hotel-confirmation');
 					} else {
-						console.log('err', res.message);
+						// console.log('ooking/hotel err', res.message);
 						toast.success(res.message, {
 							position: 'top-center',
 							autoClose: 3000,
@@ -62,7 +62,7 @@ const HotelForm = () => {
 					}
 				});
 		} catch (err) {
-			console.log(err);
+			// console.log('booking/hotel catch err', err);
 		}
 	};
 

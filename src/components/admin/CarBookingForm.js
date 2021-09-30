@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 let date = new Date().toISOString().substr(0, 10);
 // HELPER FUNCTIONS
 function createBooking(data, closeForm) {
-	console.log('SUBMOISSSSSSs', data);
 	toast.info('Please wait', {
 		position: 'top-center',
 		autoClose: 3000,
@@ -29,7 +28,6 @@ function createBooking(data, closeForm) {
 	})
 		.then((res) => res.json())
 		.then((result) => {
-			console.log('result fro server', result);
 			toast.success(result.message, {
 				position: 'top-center',
 				autoClose: 3000,
@@ -43,7 +41,6 @@ function createBooking(data, closeForm) {
 			return result.data;
 		})
 		.catch((err) => {
-			console.log('err in catch', err);
 			toast.error('Please try again later', {
 				position: 'top-center',
 				autoClose: 3000,
@@ -57,7 +54,6 @@ function createBooking(data, closeForm) {
 	return 'created';
 }
 function validataDate(data) {
-	console.log('validate data', data);
 	return (
 		Object.values(data).includes('') || Object.values(data).includes(' ')
 	);
@@ -86,13 +82,10 @@ const CarBookingForm = ({ closeForm }) => {
 	// const [titleValue, setTitleValue] =  useState(' ');
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		console.log('values are: ', inputValues);
 		const verified = validataDate(inputValues);
 		if (!verified) {
 			const response = createBooking(inputValues, closeForm);
-			console.log('VACK', response);
 		} else {
-			console.log('validation Error');
 			toast.error('Check all input fields', {
 				position: 'top-center',
 				autoClose: 3000,
@@ -105,8 +98,6 @@ const CarBookingForm = ({ closeForm }) => {
 		}
 	};
 	const onChangeHandler = (e) => {
-		console.log(e.target);
-		console.log(e.target.value);
 		setInputValues({ ...inputValues, [e.target.name]: e.target.value });
 	};
 	return (

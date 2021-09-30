@@ -40,7 +40,7 @@ const AirportTransferBooking = () => {
 			.then((data) => {
 				setBookings(data.data);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {});
 	}, [reload]);
 	const updateModalToggler = (e) => {
 		setUpdateFields({
@@ -57,14 +57,12 @@ const AirportTransferBooking = () => {
 		}
 	};
 	const onChangeHandler = (e) => {
-		console.log(' update value', e.target.name, ':', e.target.value);
 		setUpdateFields({ ...updateFields, [e.target.name]: e.target.value });
 	};
 	const onClickHandler = () => {
 		setEditMode(true);
 	};
 	const updateBooking = (e) => {
-		console.log('updateFields', updateFields);
 		toast.info(`Please wait, Update in progress`, {
 			position: 'top-center',
 			autoClose: 2000,
@@ -92,9 +90,7 @@ const AirportTransferBooking = () => {
 			],
 		};
 		let id = selectedItem._id;
-		console.log(selectedItem.bookingReference);
-		console.log(id);
-		console.log(data);
+
 		fetch(`https://shuttlelane.herokuapp.com/api/booking/airport/${id}`, {
 			method: 'PUT',
 			headers: {
@@ -121,7 +117,6 @@ const AirportTransferBooking = () => {
 				setReload(!reload);
 			})
 			.catch((err) => {
-				console.log('update Catch', err);
 				toast.error(err, {
 					position: 'top-center',
 					autoClose: 2000,
@@ -134,7 +129,6 @@ const AirportTransferBooking = () => {
 			});
 	};
 	const updateStatus = (e) => {
-		console.log(e.target.innerText);
 		toast.info(`Please Wait, update in progress`, {
 			position: 'top-center',
 			autoClose: 2000,
@@ -145,8 +139,6 @@ const AirportTransferBooking = () => {
 			progress: undefined,
 		});
 		let status = e.target.innerText.trim();
-		let id = selectedItem._id;
-		console.log(selectedItem.bookingReference);
 		const data = { serviceStatus: status };
 		fetch(`https://shuttlelane.herokuapp.com/api/booking/airport/${id}`, {
 			method: 'PUT',
@@ -174,7 +166,6 @@ const AirportTransferBooking = () => {
 				setReload(!reload);
 			})
 			.catch((err) => {
-				console.log('update Catch', err);
 				toast.error('err', {
 					position: 'top-center',
 					autoClose: 2000,

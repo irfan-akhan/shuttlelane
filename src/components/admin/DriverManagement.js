@@ -10,7 +10,6 @@ const DriverManagement = () => {
 		fetch('https://shuttlelane.herokuapp.com/api/driver')
 			.then((response) => response.json())
 			.then((result) => {
-				console.log(result);
 				setDrivers(result.data);
 			})
 			.catch((err) => console.log(err));

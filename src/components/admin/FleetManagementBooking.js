@@ -12,7 +12,6 @@ const FleetManagementBooking = () => {
 		fetch('https://shuttlelane.herokuapp.com/api/booking/fleet')
 			.then((response) => response.json())
 			.then((result) => {
-				console.log(result);
 				setFleets(result.data);
 			})
 			.catch((err) => console.log(err));

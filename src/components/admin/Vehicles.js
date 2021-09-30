@@ -16,12 +16,9 @@ const Vehicles = () => {
 				.then((res) => res.json())
 				.then((result) => {
 					setVehicles(result.data);
-					console.log(result);
 				})
-				.catch((error) => console.log('error in fetch', error));
-		} catch (error) {
-			console.log(error);
-		}
+				.catch((error) => {});
+		} catch (error) {}
 	}, []);
 	return (
 		<>

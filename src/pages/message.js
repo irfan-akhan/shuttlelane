@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 const Message = () => {
-	console.log(process.env.TWILIO_PHONE_NUMBER);
 	return (
 		<Grid
 			container

@@ -36,9 +36,8 @@ const CarBooking = () => {
 			.then((res) => res.json())
 			.then((data) => {
 				setBookings(data.data);
-				console.log(data.data);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {});
 	}, [reload]);
 	const [editMode, setEditMode] = useState(false);
 	// modal togller
@@ -46,7 +45,6 @@ const CarBooking = () => {
 		setEditMode(true);
 	};
 	const onChangeHandler = (e) => {
-		console.log(' update value', e.target.name, ':', e.target.value);
 		setUpdateFields({ ...updateFields, [e.target.name]: e.target.value });
 	};
 	const updateModalToggler = (e) => {
@@ -64,7 +62,6 @@ const CarBooking = () => {
 		}
 	};
 	const updateBooking = (e) => {
-		console.log('updateFields', updateFields);
 		toast.info(`Please wait, Update in progress`, {
 			position: 'top-center',
 			autoClose: 2000,
@@ -92,9 +89,7 @@ const CarBooking = () => {
 			],
 		};
 		let id = selectedItem._id;
-		console.log(selectedItem.bookingReference);
-		console.log(id);
-		console.log(data);
+
 		fetch(`https://shuttlelane.herokuapp.com/api/booking/car/${id}`, {
 			method: 'PUT',
 			headers: {
@@ -121,7 +116,6 @@ const CarBooking = () => {
 				setReload(!reload);
 			})
 			.catch((err) => {
-				console.log('update Catch', err);
 				toast.error(err, {
 					position: 'top-center',
 					autoClose: 2000,

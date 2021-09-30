@@ -29,6 +29,7 @@ const createOne = async (req, res) => {
 		const data = doc.toJSON();
 		console.log('JSON DATA', data);
 		let date;
+		let selfmail = '';
 		let msg = {};
 		if (data.pickupDate) {
 			console.log('pickyp');
@@ -56,7 +57,8 @@ Thank you for using ShuttleLane.`;
 					contact: `${data.email} ${data.mobile}.`,
 				},
 			};
-
+			selfmail =
+				'you have received a new Airport Transfer Dropoff service booking';
 			// 			mail = `Hello ${data.title} ${data.firstName},
 			// Thanks for booking your ${data.formType} service with ShuttleLane.
 			// Your booking reference is: ${data.bookingReference}.
@@ -77,6 +79,8 @@ Thank you for using ShuttleLane.`;
 Your Airport Transfer Pickup service has been booked for ${date}, ${data.time}.
 Your booking reference: ${data.bookingReference}.
 Thank you for using ShuttleLane.`;
+			selfmail =
+				'you have received a new Airport Transfer Pickup service booking.';
 			//       mailTemplate = `<!doctype html>
 			// 			<html>
 			// 				<body>
@@ -122,6 +126,7 @@ Thank you for using ShuttleLane.`;
 		sendSMS(`${data.countryCode}${data.mobile}`, sms);
 
 		sendMAIL(msg);
+		sendBookingEmail(selfmail);
 		res.status(201).json({
 			data: doc,
 			message: 'Booking confirmed, Thank you for choosing shuttlelane.!',

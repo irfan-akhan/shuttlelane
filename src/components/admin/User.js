@@ -47,7 +47,6 @@ const CreateUser = () => {
 			return;
 		}
 		const user = jwt.decode(token);
-		console.log('USER', user);
 
 		if (!user) {
 			localStorage.removeItem('token');
@@ -59,12 +58,11 @@ const CreateUser = () => {
 			.then((result) => {
 				setUsers(result.data);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {});
 	}, [action]);
 
 	const deleteUserHandler = (id) => {
 		try {
-			console.log('in delete USerData');
 			fetch(`https://shuttlelane.herokuapp.com/api/users/${id}`, {
 				method: 'DELETE',
 				headers: {
@@ -173,7 +171,6 @@ const CreateUser = () => {
 				}
 			})
 			.catch((error) => {
-				console.log('error', error);
 				toast.error(
 					'👌 Something went wrong check internet connection or contact Admin',
 					{

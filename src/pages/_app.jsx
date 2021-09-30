@@ -70,7 +70,7 @@ function MyApp({ Component, pageProps }) {
 		toggleRef.current.classList.toggle('hide');
 	};
 	const onClickHandler = (e) => {
-		console.log(e.target.parentNode.lastChild);
+		// console.log(e.target.parentNode.lastChild);
 		if (e.target.parentNode.lastChild.style.display == 'flex') {
 			e.target.parentNode.lastChild.style.display = 'none';
 			return;
@@ -117,7 +117,7 @@ function MyApp({ Component, pageProps }) {
 
 		navToggleHandler();
 
-		console.log(booking);
+		// console.log(booking);
 	};
 	const handleChange = (event) => {
 		const name = event.target.name;

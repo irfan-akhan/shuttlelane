@@ -18,10 +18,10 @@ const prefix = process.env.NEXT_PUBLIC_BASE_PATH || '';
 export default function Home() {
 	let [baseForm, setBaseForm] = useState('Airport Transfer');
 	function onClickHandler(e) {
-		console.log('clicked');
+		// console.log('clicked');
 		let targetValue = e.target.innerText.trim();
 		setBaseForm(targetValue);
-		console.log(e.target.innerText.trim());
+		// console.log(e.target.innerText.trim());
 	}
 
 	return (

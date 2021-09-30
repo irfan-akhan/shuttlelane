@@ -11,7 +11,6 @@ const HotelBooking = () => {
 			.then((res) => res.json())
 			.then((data) => {
 				setBookings(data.data);
-				console.log('dat HOtel', data.data);
 			})
 			.catch((err) => console.log(err));
 	}, []);

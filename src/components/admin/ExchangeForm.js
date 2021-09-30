@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // HELPER FUNCTIONS
 function updateRates(data, closeForm) {
-	console.log('SUBMOISSSSSSs', data);
 	toast.info('Please wait', {
 		position: 'top-center',
 		autoClose: 3000,
@@ -31,7 +30,6 @@ function updateRates(data, closeForm) {
 	})
 		.then((res) => res.json())
 		.then((data) => {
-			console.log('result from server', data);
 			toast.success('updated Successfully', {
 				position: 'top-center',
 				autoClose: 3000,
@@ -44,13 +42,10 @@ function updateRates(data, closeForm) {
 			closeForm();
 			return data;
 		})
-		.catch((err) => {
-			console.log('error in catch', err);
-		});
+		.catch((err) => {});
 	return 'created';
 }
 function validateData(data) {
-	console.log('validate data', data);
 	return (
 		Object.values(data).includes('') || Object.values(data).includes(' ')
 	);
@@ -63,7 +58,6 @@ const ExchangeForm = ({ closeForm }) => {
 		fetch('https://shuttlelane.herokuapp.com/api/rates')
 			.then((res) => res.json())
 			.then((data) => {
-				console.log('rates', data.data[0]);
 				setRates({
 					pound: data.data[0].pound,
 					euro: data.data[0].euro,
@@ -76,13 +70,10 @@ const ExchangeForm = ({ closeForm }) => {
 
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		console.log('rates are: ', rates);
 		const verified = validateData(rates);
 		if (!verified) {
 			const response = updateRates(rates, closeForm);
-			console.log('VACK', response);
 		} else {
-			console.log('validation Error');
 		}
 	};
 	const onChangeHandler = (e) => {

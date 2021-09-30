@@ -68,12 +68,13 @@ Thank you for using ShuttleLane.`;
 				pickup: data.pickupAddress,
 				destination: data.destination,
 				people: `${data.passengers} passengers in total`,
+				total: `${data.amount} ${data.currency}`,
 				contact: `${data.email} ${data.countryCode} ${data.mobile}.`,
 			},
 		};
 
 		sendSMS(`${data.countryCode}${data.mobile}`, sms);
-		sendBookingEmail(null, 'You have recieved a new booking');
+		sendBookingEmail('You have recieved a new Car Hire service booking. ');
 		sendMAIL(msg);
 		console.log('sms in CONTROLLER', data.arrivalDate);
 	} catch (error) {

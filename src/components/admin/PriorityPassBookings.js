@@ -34,7 +34,6 @@ const PriorityPassBookings = () => {
 			})
 			.catch((err) => console.log(err));
 	}, [reload]);
-	console.log(bookings);
 	const [editMode, setEditMode] = useState(false);
 	const onClickHandler = () => {
 		setEditMode(true);
@@ -63,9 +62,7 @@ const PriorityPassBookings = () => {
 			serviceStatus: status,
 		};
 		let id = selectedItem._id;
-		console.log(selectedItem.bookingReference);
-		console.log(id);
-		console.log(data);
+
 		fetch(`https://shuttlelane.herokuapp.com/api/booking/priority/${id}`, {
 			method: 'PUT',
 			headers: {
@@ -92,7 +89,6 @@ const PriorityPassBookings = () => {
 				setReload(!reload);
 			})
 			.catch((err) => {
-				console.log('update Catch', err);
 				toast.error(err, {
 					position: 'top-center',
 					autoClose: 2000,

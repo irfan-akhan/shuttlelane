@@ -19,7 +19,7 @@ const Summary = ({
 	priorityPassAmount,
 	airportAmount,
 }) => {
-	console.log(priorityPassAmount, '+', airportAmount, '=', amount);
+	// console.log(priorityPassAmount, '+', airportAmount, '=', amount);
 	const onChangeHandler = (e) => {
 		changeCurrency({
 			name: e.target.value,

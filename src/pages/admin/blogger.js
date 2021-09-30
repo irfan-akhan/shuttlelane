@@ -38,7 +38,6 @@ const Blogger = ({ error }) => {
 				return;
 			}
 			const user = jwt.decode(token);
-			console.log('USER', user);
 			if (!user) {
 				toast.info(
 					'Looks like your session has expired, Please login again',
@@ -69,19 +68,14 @@ const Blogger = ({ error }) => {
 			fetch('https://shuttlelane.herokuapp.com/api/posts')
 				.then((response) => response.json())
 				.then((res) => {
-					console.log(res);
 					if (res.data) {
 						setPosts(res.data);
 					} else {
-						console.log('empty data');
 						return;
 					}
 				})
-				.then((err) => console.log('err', err));
-		} catch (error) {
-			console.log('in catch', error);
-		}
-		console.log('token', localStorage.getItem('token'));
+				.then((err) => {});
+		} catch (error) {}
 	}, [reload]);
 	function logoutHandler() {
 		localStorage.removeItem('token');
@@ -98,7 +92,6 @@ const Blogger = ({ error }) => {
 			})
 				.then((res) => res.json())
 				.then((result) => {
-					console.log('post delete', result);
 					if (result.error) {
 						toast.error(result.error, {
 							position: 'top-center',
@@ -123,9 +116,8 @@ const Blogger = ({ error }) => {
 						progress: 0,
 					});
 				})
-				.catch((err) => console.log('in catch', err));
+				.catch((err) => {});
 		} catch (err) {
-			console.log('post delete catcj', err);
 			toast.error(
 				'Something went wrong check your internet and try again',
 				{

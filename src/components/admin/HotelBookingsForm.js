@@ -48,9 +48,7 @@ const HotelBookingsForm = ({ closeForm }) => {
 		const verified = validataDate(inputValues);
 		if (!verified) {
 			const response = createBooking(inputValues, closeForm);
-			console.log('VACK', response);
 		} else {
-			console.log('validation Error');
 		}
 	};
 	const onChangeHandler = (e) => {

@@ -5,8 +5,6 @@ import pick from '../styles/Pick.module.css';
 const prefix = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 const PickCar = ({ car, handler, selectedCurrency, currencySymbol }) => {
-	console.log('selectedCurrency in pickcar:- ', selectedCurrency);
-
 	const [vehicles, setVehicles] = useState([]);
 	useEffect(() => {
 		fetch('https://shuttlelane.herokuapp.com/api/vehicles', {
@@ -17,12 +15,9 @@ const PickCar = ({ car, handler, selectedCurrency, currencySymbol }) => {
 		})
 			.then((res) => res.json())
 			.then((result) => {
-				console.log('response from server', result);
 				setVehicles(result.data);
 			})
-			.catch((err) => {
-				console.log(err);
-			});
+			.catch((err) => {});
 	}, []);
 	return (
 		<div style={{ margin: '1rem 0' }} className={pick.component}>

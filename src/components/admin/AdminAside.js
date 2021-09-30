@@ -31,7 +31,6 @@ const AdminAside = ({ onStateChange, user }) => {
 			return;
 		}
 		const user = jwt.decode(token);
-		console.log('USER in ASIDE', user);
 		if (!user) {
 			localStorage.removeItem('token');
 			router.push('/admin');

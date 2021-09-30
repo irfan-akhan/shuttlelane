@@ -33,7 +33,6 @@ const BlogList = ({ posts }) => {
 					{posts?.map((post) => {
 						return (
 							<Grid key={post._id} item xs={12} sm={5}>
-								{console.log(post)}
 								<BlogCard post={post} />
 							</Grid>
 						);
@@ -51,7 +50,6 @@ export async function getServerSideProps(context) {
 	const posts = await fetch(`https://shuttlelane.herokuapp.com/api/posts/`)
 		.then((res) => res.json())
 		.catch((err) => {
-			console.log(err);
 			return {
 				props: {
 					posts: [],

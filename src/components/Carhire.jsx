@@ -17,26 +17,23 @@ const Carhire = () => {
 	// handler
 	function onSubmitHandler(e) {
 		e.preventDefault();
-		console.log('CA HAYA Values:', state);
 		let data = { ...state, formType: 'Car-Hire' };
 
-		console.log('CA HAYA Data', data);
 		router.push({
 			pathname: '/checkoutCar',
 			query: data,
 		});
 	}
-	console.log('CA HAYA STATE', state);
 	const [cars, setCars] = useState([]);
 	useEffect(() => {
 		fetch('https://shuttlelane.herokuapp.com/api/cars')
 			.then((res) => res.json())
 			.then((response) => {
-				console.log('Cars', response);
+				// console.log('Cars', response);
 				setCars(response.data);
 			})
 			.catch((err) => {
-				console.log('Request failed', err);
+				// console.log('Request failed', err);
 			});
 	}, []);
 

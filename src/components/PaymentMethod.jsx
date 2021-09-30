@@ -167,7 +167,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 			logo: 'https://shuttlelane.herokuapp.com/assets/paymentlogo.png',
 		},
 	};
-	const handleFlutterPayment = useFlutterwave(config);
+	// const handleFlutterPayment = useFlutterwave(config);
 	useEffect(() => {
 		console.log('LOAD SCRIPT');
 		config = {

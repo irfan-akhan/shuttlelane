@@ -1,6 +1,46 @@
 const Driver = require('./driver.model');
 const sendMAIL = require('../../utils/sendgrid');
-
+const mail = `<div
+        style={{
+          margin: "5rem auto",
+        }}
+        
+      >
+        <div item style={{ textAlign: "center", margin: "0 auto" }}>
+          <img
+            src="https://shuttlelane.herokuapp.com/assets/images/logo.png"
+            alt="logo"
+            style={{ width: "150px" }}
+          />
+        </div>
+        <div  >
+          <div className="Header">Booking Confirmation.</div>
+        </div>
+        <div style={{ border: "1px solid #ccc" }}>
+          <p >
+            Thank You for your Hotel booking with Shuttlelane. <br />
+            We'll now check the availibility of your preferred Hotel and we
+            will get back to you as soon as possible.
+          </p>
+          <br />
+          <p >
+            Your Booking Reference is&nbsp;
+            <span
+              style={{
+                textDecoration: "underline",
+                color: "#0393be",
+              }}
+            >
+              A1B65tr
+            </span>{" "}
+            .
+          </p>
+          <p >
+            Need assistance? You can reach us on
+            <strong>+2349030009452, +2349030009486 or +2349030009108</strong>
+          </p>
+        </div>
+      </div>`;
 const getAll = async (req, res) => {
 	try {
 		const docs = await Driver.find().sort({ createdAt: -1 });
@@ -21,19 +61,8 @@ const createOne = async (req, res) => {
 			...req.body,
 		});
 		console.log(doc);
-		const data = doc.toJSON();
-		const msg = {
-			to: data.email,
-			from: { email: `booking@shuttlelane.com`, name: 'Shuttlelane' },
 
-			template_id: 'd-22396d0f0f9248368cbfbeea9f5d918c',
-
-			// template_id: 'd-3398e00b9b14498385c2909a6d70204b',
-			dynamic_template_data: {
-				username: `${data.title} ${data.firstName}`,
-			},
-		};
-		sendMAIL(msg);
+		sendMAIL('dropoutdevs@tuta.io', mail);
 
 		res.status(201).json({ data: doc });
 	} catch (error) {

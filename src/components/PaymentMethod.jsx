@@ -141,7 +141,33 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 	const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 	const router = useRouter();
 	let [selectedPayment, setSelectedPayment] = useState('');
-	var config = {};
+	// var config = {};
+	let config = {
+		public_key: `${process.env.NEXT_PUBLIC_FLUTTERWAVE_KEY}`,
+		tx_ref: Date.now(),
+		amount: bookingData.amount,
+		currency:
+			bookingData.currency == 'niera'
+				? 'NGN'
+				: bookingData.currency == 'pound'
+				? 'GBP'
+				: bookingData.currency == 'euro'
+				? 'EUR'
+				: 'USD',
+		payment_options: 'card,mobilemoney,ussd',
+		customer: {
+			email: bookingData.email,
+			phonenumber: bookingData.mobile,
+			name: `${bookingData.title} ${bookingData.firstName} ${bookingData.lastName} `,
+		},
+		customizations: {
+			title: bookingData.carType
+				? `${bookingData.carType} ${bookingData.formType} Service`
+				: `Airport ${bookingData.formType} Service`,
+			logo: 'https://shuttlelane.herokuapp.com/assets/paymentlogo.png',
+		},
+	};
+	const handleFlutterPayment = useFlutterwave(config);
 	useEffect(() => {
 		console.log('LOAD SCRIPT');
 		config = {

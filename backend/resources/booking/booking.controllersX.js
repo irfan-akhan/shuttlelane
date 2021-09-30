@@ -29,7 +29,7 @@ const createOne = async (req, res) => {
 		const data = doc.toJSON();
 		console.log('JSON DATA', data);
 		let date;
-		let msg = {};
+		let mail = ``;
 		if (data.pickupDate) {
 			console.log('pickyp');
 			date = data.pickupDate.toString().slice(0, 10);
@@ -37,38 +37,19 @@ const createOne = async (req, res) => {
 Your Airport Transfer Dropoff service has been booked for ${date}, ${data.time}.
 Your booking reference: ${data.bookingReference}.
 Thank you for using ShuttleLane.`;
-			msg = {
-				to: data.email,
-				from: { email: `booking@shuttlelane.com`, name: 'Shuttlelane' },
-				template_id: 'd-60d573be189943088d2e3a4aefadf547',
 
-				// template_id: 'd-3398e00b9b14498385c2909a6d70204b',
-				dynamic_template_data: {
-					username: `${data.title} ${data.firstName}`,
-					bookingRef: data.bookingReference,
-					class: data.carType,
-					date: date,
-					time: data.time,
-					pickupAddress: data.pickupAddress,
-					dropoffAddress: data.dropoffAirport,
-					people: `${data.passengers} passengers in total`,
-					Billed: `${data.amount} ${data.currency}`,
-					contact: `${data.email} ${data.mobile}.`,
-				},
-			};
-
-			// 			mail = `Hello ${data.title} ${data.firstName},
-			// Thanks for booking your ${data.formType} service with ShuttleLane.
-			// Your booking reference is: ${data.bookingReference}.
-			// Pick-up: ${data.pickupAddress}.
-			// Drop-off: ${data.dropoffAirport}
-			// Date & Time: ${date} ${data.time}.
-			// Passenger: ${data.title} ${data.firstName} ${data.lastName}.
-			// ${data.passengers} passengers in total.
-			// Vehicle Class: ${data.carType}.
-			// Contact: ${data.email} ${data.mobile}.
-			// Billed: ${data.amount}.
-			// Need assistance? You can reach us on +2349030009452, +2349030009486 or +2349030009108.`;
+			mail = `Hello ${data.title} ${data.firstName},
+Thanks for booking your ${data.formType} service with ShuttleLane.
+Your booking reference is: ${data.bookingReference}.
+Pick-up: ${data.pickupAddress}.
+Drop-off: ${data.dropoffAirport}
+Date & Time: ${date} ${data.time}.
+Passenger: ${data.title} ${data.firstName} ${data.lastName}.
+${data.passengers} passengers in total.
+Vehicle Class: ${data.carType}.
+Contact: ${data.email} ${data.mobile}.
+Billed: ${data.amount}.
+Need assistance? You can reach us on +2349030009452, +2349030009486 or +2349030009108.`;
 		}
 		if (data.arrivalDate) {
 			console.log('dropoff');
@@ -77,51 +58,27 @@ Thank you for using ShuttleLane.`;
 Your Airport Transfer Pickup service has been booked for ${date}, ${data.time}.
 Your booking reference: ${data.bookingReference}.
 Thank you for using ShuttleLane.`;
-			//       mailTemplate = `<!doctype html>
-			// 			<html>
-			// 				<body>
-			// 				<a href="https://shuttlelane.net"
-			// 				<img src="https://shutlelane.net/assets/images/logo.png alt="shuttlelane logo" style="width:300,height:200"/>
-			// 				</a>
-			// 				<p> Hello ${data.title} ${data.firstName},
-			// Thanks for booking your ${data.formType} service with ShuttleLane.
-			// Your booking reference is: ${data.bookingReference}.
-			// Pick-up: ${data.pickupAirport}.
-			// Flight Number: ${data.flightNumber}.
-			// Drop-off: ${data.dropoffAddress}
-			// Date & Time: ${date} ${data.time}.
-			// Passenger: ${data.title} ${data.firstName} ${data.lastName}.
-			// ${data.passengers} passengers in total.
-			// Vehicle Class: ${data.carType}.
-			// Contact: ${data.email} ${data.mobile}.
-			// Billed: ${data.amount}.
-			// Need assistance? You can reach us on +2349030009452, +2349030009486 or +2349030009108.</p>
-			// </body>
-			// </html>`;
-			msg = {
-				to: data.email,
-				from: 'booking@shuttlelane.com',
-				template_id: 'd-263be754485847cea62a224d15c2a2bc',
-
-				// template_id: 'd-3398e00b9b14498385c2909a6d70204b',
-				dynamic_template_data: {
-					username: `${data.title} ${data.firstName}`,
-					bookingRef: data.bookingReference,
-					class: data.carType,
-					date: date,
-					time: data.time,
-					flightNumber: data.flightNumber,
-					pickupAddress: data.pickupAirport,
-					dropoffAddress: data.dropoffAddress,
-					people: `${data.passengers} passengers in total`,
-					Billed: `${data.amount} ${data.currency}`,
-					contact: `${data.email} ${data.mobile}.`,
-				},
-			};
+			mail = `Hello ${data.title} ${data.firstName},
+Thanks for booking your ${data.formType} service with ShuttleLane.
+Your booking reference is: ${data.bookingReference}.
+Pick-up: ${data.pickupAirport}.
+Flight Number: ${data.flightNumber}.
+Drop-off: ${data.dropoffAddress}
+Date & Time: ${date} ${data.time}.
+Passenger: ${data.title} ${data.firstName} ${data.lastName}.
+${data.passengers} passengers in total.
+Vehicle Class: ${data.carType}.
+Contact: ${data.email} ${data.mobile}.
+Billed: ${data.amount}.
+Need assistance? You can reach us on +2349030009452, +2349030009486 or +2349030009108.`;
 		}
 		sendSMS(`${data.countryCode}${data.mobile}`, sms);
+		sendBookingEmail(
+			'officialirfanafzal@gmail.com',
+			'You have recieved a new booking'
+		);
 
-		sendMAIL(msg);
+		// sendMAIL(data.email, `Airport Transfer Booking Confirmation`, mail);
 		res.status(201).json({
 			data: doc,
 			message: 'Booking confirmed, Thank you for choosing shuttlelane.!',

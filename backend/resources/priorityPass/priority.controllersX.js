@@ -50,33 +50,9 @@ Cabin Class: ${data.cabinClass}.
 Contact: ${data.email}, ${data.countryCode}${data.mobile}.
 Billed: ${data.amount}.
 Need assistance? You can reach us on +2349030009452, +2349030009486 or +2349030009108.`;
-
-		const msg = {
-			to: data.email,
-			from: { email: `booking@shuttlelane.com`, name: 'Shuttlelane' },
-
-			template_id: 'd-712dc95f33544f06a246bdc0e06b32c5',
-
-			// template_id: 'd-3398e00b9b14498385c2909a6d70204b',
-			dynamic_template_data: {
-				username: `${data.title} ${data.firstName}`,
-				bookingRef: data.bookingReference,
-				airport: data.airport,
-				class: data.carType,
-				date: date,
-				time: data.time,
-				service: data.transferType,
-				flightNumber: data.flightNumber,
-				cabin: data.cabinClass,
-				airline: 'temp',
-				people: `${data.passengers}`,
-				total: `${data.amount} ${data.currency}`,
-				contact: `${data.email} ${data.countryCode}${data.mobile}.`,
-			},
-		};
 		sendSMS(`${data.countryCode}${data.mobile}`, sms);
-		sendMAIL(msg);
 		sendBookingEmail(null, 'New booking recieved');
+		// sendMAIL(`${data.email}`, `Priority Pass Booking Confirmation`, mail);
 		return res.status(201).json({
 			data: doc,
 			message: 'Booking confirmed, Thank you for choosing shuttlelane.!',

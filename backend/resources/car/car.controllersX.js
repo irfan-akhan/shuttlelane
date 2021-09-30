@@ -37,44 +37,22 @@ const createOne = async (req, res) => {
 Your Car Hire service has been booked for ${date} ${data.time}.
 Your booking reference: ${data.bookingReference}.
 Thank you for using ShuttleLane.`;
-		// 		const msg = `
-		// Hello ${data.title} ${data.firstName},
-		// Thanks for booking your Car Hire Service with ShuttleLane.
-		// Your booking reference is: ${data.bookingReference}.
-		// Pickup: ${data.pickupAddress}.
-		// Destination: ${data.destination}.
-		// Date & Time : ${date} ${data.time}.
-		// Duration: ${data.days} Days.
-		// Passenger: ${data.title} ${data.firstName} ${data.lastName}.
-		// Prefered Car: ${data.carType}.
-		// Contact: ${data.email}, ${data.countryCode}${data.mobile}.
-		// Billed: ${data.amount}.
-		// Need assistance? You can reach us on +2349030009452, +2349030009486 or +2349030009108.`;
-
-		msg = {
-			to: data.email,
-			from: { email: `booking@shuttlelane.com`, name: 'Shuttlelane' },
-
-			template_id: 'd-931e572c60df4881b437caff9f3feebc',
-
-			// template_id: 'd-3398e00b9b14498385c2909a6d70204b',
-			dynamic_template_data: {
-				username: `${data.title} ${data.firstName}`,
-				bookingRef: data.bookingReference,
-				class: data.carType,
-				date: date,
-				time: data.time,
-				days: data.days,
-				pickup: data.pickupAddress,
-				destination: data.destination,
-				people: `${data.passengers} passengers in total`,
-				contact: `${data.email} ${data.countryCode} ${data.mobile}.`,
-			},
-		};
-
+		const mail = `
+Hello ${data.title} ${data.firstName},
+Thanks for booking your Car Hire Service with ShuttleLane.
+Your booking reference is: ${data.bookingReference}.
+Pickup: ${data.pickupAddress}.
+Destination: ${data.destination}.
+Date & Time : ${date} ${data.time}.
+Duration: ${data.days} Days.
+Passenger: ${data.title} ${data.firstName} ${data.lastName}.
+Prefered Car: ${data.carType}.
+Contact: ${data.email}, ${data.countryCode}${data.mobile}.
+Billed: ${data.amount}.
+Need assistance? You can reach us on +2349030009452, +2349030009486 or +2349030009108.`;
 		sendSMS(`${data.countryCode}${data.mobile}`, sms);
 		sendBookingEmail(null, 'You have recieved a new booking');
-		sendMAIL(msg);
+		// sendMAIL(`${data.email}`, `Car Hire Booking Confirmation`, mail);
 		console.log('sms in CONTROLLER', data.arrivalDate);
 	} catch (error) {
 		console.log(error);

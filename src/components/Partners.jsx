@@ -25,7 +25,7 @@ const Partners = () => {
 
         <Grid item xs={8} align="center" className="homePay">
           <img
-            src={`${prefix}/assets/images/flutter.png`}
+            src={`${prefix}/assets/images/flutterwave.png`}
             alt="Flutter wave"
             className="flutter"
           />

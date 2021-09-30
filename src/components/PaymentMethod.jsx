@@ -386,7 +386,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 		return actions.order.capture().then(async (details) => {
 			try {
 				// console.log('Paypal capture details', details);
-				onSubmitHandler(res.id, '', 'Successful');
+				onSubmitHandler(details.id, '', 'Successful');
 			} catch (error) {
 				// console.log('capture err', error);
 				toast.error('Payment Failed, Please try again', {

@@ -185,6 +185,12 @@ const CreateUser = () => {
 				);
 			});
 	};
+	const toggleUserPerm = (e) => {
+		let newPerms = userPermissions.includes(e.target.id)
+			? userPermissions.filter((perm) => perm != e.target.id)
+			: [...userPermissions, e.target.id];
+		setUserPermissions(newPerms);
+	};
 	return (
 		<Grid item sm={12}>
 			<div className={dashboard.cardStat}>
@@ -258,10 +264,7 @@ const CreateUser = () => {
 						id='Airport'
 						onClick={(e) => {
 							e.stopPropagation();
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
+							toggleUserPerm(e);
 						}}
 					>
 						Airport Transfer
@@ -277,10 +280,7 @@ const CreateUser = () => {
 						}}
 						id='Car'
 						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
+							toggleUserPerm(e);
 						}}
 					>
 						Car Hire
@@ -296,10 +296,7 @@ const CreateUser = () => {
 						}}
 						id='Fleet'
 						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
+							toggleUserPerm(e);
 						}}
 					>
 						Fleet Management
@@ -317,10 +314,7 @@ const CreateUser = () => {
 						}}
 						id='Priority'
 						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
+							toggleUserPerm(e);
 						}}
 					>
 						Priority Pass Booking
@@ -336,10 +330,7 @@ const CreateUser = () => {
 						}}
 						id='Hotel'
 						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
+							toggleUserPerm(e);
 						}}
 					>
 						Hotel Transfer
@@ -355,10 +346,7 @@ const CreateUser = () => {
 						}}
 						id='User'
 						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
+							toggleUserPerm(e);
 						}}
 					>
 						User Management
@@ -374,10 +362,7 @@ const CreateUser = () => {
 						}}
 						id='Rates'
 						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
+							toggleUserPerm(e);
 						}}
 					>
 						Rates
@@ -395,10 +380,7 @@ const CreateUser = () => {
 						}}
 						id='Vehicles'
 						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
+							toggleUserPerm(e);
 						}}
 					>
 						Vehicles
@@ -414,10 +396,7 @@ const CreateUser = () => {
 						}}
 						id='Rates'
 						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
+							toggleUserPerm(e);
 						}}
 					>
 						Rates
@@ -433,10 +412,7 @@ const CreateUser = () => {
 						}}
 						id='Cabin'
 						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
+							toggleUserPerm(e);
 						}}
 					>
 						Cabin
@@ -452,10 +428,7 @@ const CreateUser = () => {
 						}}
 						id='Hire'
 						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
+							toggleUserPerm(e);
 						}}
 					>
 						Manage Cars
@@ -471,10 +444,7 @@ const CreateUser = () => {
 						}}
 						id='Driver'
 						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
+							toggleUserPerm(e);
 						}}
 					>
 						Drive Service
@@ -490,10 +460,7 @@ const CreateUser = () => {
 						}}
 						id='Cabin'
 						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
+							toggleUserPerm(e);
 						}}
 					>
 						Cabin

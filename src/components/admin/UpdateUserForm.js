@@ -82,7 +82,12 @@ const UpdateUserForm = ({ user, setAction, closeForm }) => {
 			});
 		}
 	};
-
+	const toggleUserPerm = (e) => {
+		let newPerms = userPermissions.includes(e.target.id)
+			? userPermissions.filter((perm) => perm != e.target.id)
+			: [...userPermissions, e.target.id];
+		setUserPermissions(newPerms);
+	};
 	return (
 		<>
 			<form
@@ -154,12 +159,7 @@ const UpdateUserForm = ({ user, setAction, closeForm }) => {
 								? '#fff'
 								: null,
 						}}
-						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
-						}}
+						onClick={toggleUserPerm}
 					>
 						Airport Transfer
 					</button>
@@ -173,12 +173,7 @@ const UpdateUserForm = ({ user, setAction, closeForm }) => {
 								: null,
 						}}
 						id='Car'
-						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
-						}}
+						onClick={toggleUserPerm}
 					>
 						Car Hire
 					</button>
@@ -192,12 +187,7 @@ const UpdateUserForm = ({ user, setAction, closeForm }) => {
 								: null,
 						}}
 						id='Fleet'
-						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
-						}}
+						onClick={toggleUserPerm}
 					>
 						Fleet Management
 					</button>
@@ -213,12 +203,7 @@ const UpdateUserForm = ({ user, setAction, closeForm }) => {
 								: null,
 						}}
 						id='Priority'
-						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
-						}}
+						onClick={toggleUserPerm}
 					>
 						Priority Pass Booking
 					</button>
@@ -232,12 +217,7 @@ const UpdateUserForm = ({ user, setAction, closeForm }) => {
 								: null,
 						}}
 						id='Hotel'
-						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
-						}}
+						onClick={toggleUserPerm}
 					>
 						Hotel Transfer
 					</button>
@@ -251,12 +231,7 @@ const UpdateUserForm = ({ user, setAction, closeForm }) => {
 								: null,
 						}}
 						id='User'
-						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
-						}}
+						onClick={toggleUserPerm}
 					>
 						User Management
 					</button>
@@ -270,12 +245,7 @@ const UpdateUserForm = ({ user, setAction, closeForm }) => {
 								: null,
 						}}
 						id='Rates'
-						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
-						}}
+						onClick={toggleUserPerm}
 					>
 						Rates
 					</button>
@@ -291,12 +261,7 @@ const UpdateUserForm = ({ user, setAction, closeForm }) => {
 								: null,
 						}}
 						id='Vehicles'
-						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
-						}}
+						onClick={toggleUserPerm}
 					>
 						Vehicles
 					</button>
@@ -310,12 +275,7 @@ const UpdateUserForm = ({ user, setAction, closeForm }) => {
 								: null,
 						}}
 						id='Hire'
-						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
-						}}
+						onClick={toggleUserPerm}
 					>
 						Manage Cars
 					</button>
@@ -329,12 +289,7 @@ const UpdateUserForm = ({ user, setAction, closeForm }) => {
 								: null,
 						}}
 						id='Driver'
-						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
-						}}
+						onClick={toggleUserPerm}
 					>
 						Drive Service
 					</button>
@@ -348,12 +303,7 @@ const UpdateUserForm = ({ user, setAction, closeForm }) => {
 								: null,
 						}}
 						id='Cabin'
-						onClick={(e) => {
-							setUserPermissions([
-								...userPermissions,
-								e.target.id,
-							]);
-						}}
+						onClick={toggleUserPerm}
 					>
 						Cabin
 					</button>

@@ -67,7 +67,7 @@ Thank you for using ShuttleLane.`;
 				days: data.days,
 				pickup: data.pickupAddress,
 				destination: data.destination,
-				people: `${data.passengers} passengers in total`,
+				people: `${data.passengers} `,
 				total: `${data.amount} ${data.currency}`,
 				contact: `${data.email} ${data.countryCode} ${data.mobile}.`,
 			},

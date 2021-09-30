@@ -51,8 +51,8 @@ Contact: ${data.email}, ${data.countryCode}${data.mobile}.
 Billed: ${data.amount}.
 Need assistance? You can reach us on +2349030009452, +2349030009486 or +2349030009108.`;
 		sendSMS(`${data.countryCode}${data.mobile}`, sms);
-		sendBookingEmail(null, 'You have recieved a new booking');
-		// sendMAIL(`${data.email}`, `Car Hire Booking Confirmation`, mail);
+		sendBookingEmail('You have recieved a new booking');
+		sendMAIL(`${data.email}`, `Car Hire Booking Confirmation`, mail);
 		console.log('sms in CONTROLLER', data.arrivalDate);
 	} catch (error) {
 		console.log(error);

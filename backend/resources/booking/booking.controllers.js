@@ -117,7 +117,7 @@ Thank you for using ShuttleLane.`;
 					flightNumber: data.flightNumber,
 					pickupAddress: data.pickupAirport,
 					dropoffAddress: data.dropoffAddress,
-					people: `${data.passengers} passengers in total`,
+					people: `${data.passengers}`,
 					Billed: `${data.amount} ${data.currency}`,
 					contact: `${data.email} ${data.mobile}.`,
 				},

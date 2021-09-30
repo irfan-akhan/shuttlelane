@@ -284,14 +284,20 @@ const Booking = () => {
 						<Summary
 							title='Airport Transfer'
 							data={data}
-							priorityPassAmount={priorityPassAmount.toFixed(2)}
+							priorityPassAmount={
+								isPriorityPass
+									? priorityPassAmount.toFixed(2)
+									: 0.0
+							}
 							airportAmount={airportAmount.toFixed(2)}
 							amount={bookingObj.amount}
 							isPriorityPass={isPriorityPass}
 							setIsPriorityPass={() => {
 								setIsPriorityPass((prev) => !prev);
 							}}
-							setSelectedCabinClass={setSelectedCabinClass}
+							setSelectedCabinClass={(value) => {
+								setSelectedCabinClass(value);
+							}}
 							selectedCabinClass={selectedCabinClass}
 							selectedCurrency={{
 								...selectedCurrency,
@@ -323,7 +329,10 @@ const Booking = () => {
 							setIsPriorityPass={() => {
 								setIsPriorityPass((prev) => !prev);
 							}}
-							setSelectedCabinClass={setSelectedCabinClass}
+							// setSelectedCabinClass={setSelectedCabinClass}
+							setSelectedCabinClass={(value) => {
+								setSelectedCabinClass(value);
+							}}
 							selectedCabinClass={selectedCabinClass}
 							selectedCurrency={{
 								...selectedCurrency,

@@ -11,7 +11,7 @@ export default class RegisterCar extends Component {
                 </div>
                 <div className={modal.input}>
                     <input type="email" placeholder="Email "  required/>
-                    <input type="tel" placeholder="Mobile" required/>
+                    <input type="tel" maxLength='10' maxLength='10' placeholder="Mobile" required/>
                 </div>
                 <div className={modal.disabled}>
                     <label htmlFor='cost'>Price Total</label><input type="text" id='cost' placeholder="5243254" disabled />

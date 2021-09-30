@@ -1009,6 +1009,7 @@ const CarBookingForm = ({ closeForm }) => {
 							<input
 								required
 								type='tel'
+								maxLength='10'
 								placeholder='Mobile Number'
 								id='mobile'
 								name='mobile'

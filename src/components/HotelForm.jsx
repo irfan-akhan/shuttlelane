@@ -146,6 +146,7 @@ const HotelForm = () => {
 							type='tel'
 							name='number'
 							id='number'
+							maxLength='10'
 							placeholder='Contact'
 							required
 							value={inputValues.number}

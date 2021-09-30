@@ -441,7 +441,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 					id='Flutterwave'
 					onClick={paymentOptionHandler}
 					style={{
-						backgroundImage: `url('https://shuttlelane.net/assets/images/flutterwave.png')`,
+						backgroundImage: `url('/assets/images/flutterwave.png')`,
 						backgroundRepeat: 'no-repeat',
 						backgroundSize: 'contain',
 						backgroundPosition: 'center center',
@@ -456,7 +456,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 					id='Paypal'
 					onClick={paymentOptionHandler}
 					style={{
-						background: `url('https://shuttlelane.net/assets/images/paypal.png')`,
+						background: `url('/assets/images/paypal.png')`,
 						backgroundRepeat: 'no-repeat',
 						backgroundSize: 'contain',
 						backgroundPosition: 'center center',
@@ -472,7 +472,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 					id='Stripe'
 					onClick={paymentOptionHandler}
 					style={{
-						background: `url('https://shuttlelane.net/assets/images/stripe.png')`,
+						background: `url('/assets/images/stripe.png')`,
 						backgroundRepeat: 'no-repeat',
 						backgroundSize: 'contain',
 						backgroundPosition: 'center center',

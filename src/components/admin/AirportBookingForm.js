@@ -1060,6 +1060,7 @@ const AirportBookingForm = ({ closeForm }) => {
 						<div className={styles.inputGroup}>
 							<label htmlFor='mobile'>Mobile Number</label>
 							<input
+								maxLength='10'
 								type='tel'
 								placeholder='Mobile Number'
 								id='mobile'

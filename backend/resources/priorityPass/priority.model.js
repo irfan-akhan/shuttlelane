@@ -52,6 +52,9 @@ const prioritySchema = new mongoose.Schema(
 		amount: {
 			type: String,
 		},
+		airline: {
+			type: String,
+		},
 		paymentMethod: {
 			type: String,
 		},

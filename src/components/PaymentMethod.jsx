@@ -224,7 +224,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 				});
 		};
 		paypalLoadScript();
-	}, [bookingData.amount, bookingData.currency]);
+	}, [bookingData.amount, bookingData.currency, selectedPayment]);
 	const handleFlutterPayment = useFlutterwave(config);
 	const onSubmitHandler = async (
 		paymentReceiptLink,

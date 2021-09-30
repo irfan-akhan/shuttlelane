@@ -208,22 +208,25 @@ const Booking = () => {
 					) / parseFloat(exchangeRate)
 				).toFixed(2)
 		  );
-	const priorityPassAmount = isNaN(
-		parseFloat(
-			cabinClasses.filter((cabin) => cabin.name == selectedCabinClass)[0]
-				?.rate
-		) / parseFloat(exchangeRate)
-	)
-		? 0.0
-		: parseFloat(
-				(
-					parseFloat(
-						cabinClasses.filter(
-							(cabin) => cabin.name == selectedCabinClass
-						)[0]?.rate
-					) / parseFloat(exchangeRate)
-				).toFixed(2)
-		  );
+	const priorityPassAmount = isPriorityPass
+		? isNaN(
+				parseFloat(
+					cabinClasses.filter(
+						(cabin) => cabin.name == selectedCabinClass
+					)[0]?.rate
+				) / parseFloat(exchangeRate)
+		  )
+			? 0.0
+			: parseFloat(
+					(
+						parseFloat(
+							cabinClasses.filter(
+								(cabin) => cabin.name == selectedCabinClass
+							)[0]?.rate
+						) / parseFloat(exchangeRate)
+					).toFixed(2)
+			  )
+		: 0.0;
 	bookingObj = {
 		carType: selectedCar,
 		...passengerDetails,
@@ -287,7 +290,7 @@ const Booking = () => {
 							priorityPassAmount={
 								isPriorityPass
 									? priorityPassAmount.toFixed(2)
-									: 0.0
+									: 0
 							}
 							airportAmount={airportAmount.toFixed(2)}
 							amount={bookingObj.amount}
@@ -322,7 +325,11 @@ const Booking = () => {
 						<Summary
 							title='Airport Transfer'
 							data={data}
-							priorityPassAmount={priorityPassAmount.toFixed(2)}
+							priorityPassAmount={
+								isPriorityPass
+									? priorityPassAmount.toFixed(2)
+									: 0
+							}
 							airportAmount={airportAmount.toFixed(2)}
 							amount={bookingObj.amount}
 							isPriorityPass={isPriorityPass}

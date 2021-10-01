@@ -85,6 +85,9 @@ function createBooking(
 			body: JSON.stringify({
 				...data,
 				paymentMethod: paymentMethod,
+				paymentStatus,
+				paymentReceiptLink,
+				paymentTxnNumber,
 			}),
 		})
 			.then((res) => res.json())
@@ -528,10 +531,10 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 					onClick={() => {
 						handleFlutterPayment({
 							callback: (response) => {
-								// console.log('flutterwave response', response);
+								console.log('flutterwave response', response);
 								if (
 									response &&
-									response.flw_refstatus == 'successfull'
+									response.status == 'successfull'
 								) {
 									onSubmitHandler(
 										response.transaction_id,

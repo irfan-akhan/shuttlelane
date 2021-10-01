@@ -1,5 +1,6 @@
 const sendSMS = require('../../utils/twilio');
 const sendMAIL = require('../../utils/sendgrid');
+const sendBookingEmail = require('../../utils/sendGridSelf');
 const Hotel = require('./hotel.model');
 
 const getAll = async (req, res) => {
@@ -51,17 +52,16 @@ const createOne = async (req, res) => {
 
 		const msg = {
 			to: data.email,
-			from: { email: `booking@shuttlelane.com`, name: 'Shuttlelane' },
+			from: { email: `info@shuttlelane.com`, name: 'Shuttlelane' },
 
 			template_id: 'd-4f8f3ba9fb3c492cbf5bd43725ed5090',
-
-			// template_id: 'd-3398e00b9b14498385c2909a6d70204b',
 			dynamic_template_data: {
-				username: `${data.firstName} ${data.lastName}`,
+				username: ` ${data.firstName} ${data.lastName}`,
 			},
 		};
 
-		// sendMAIL(msg);
+		sendMAIL(msg);
+		sendBookingEmail('You have recieved a new Hotel service request. ');
 
 		res.status(201).json({ data: doc });
 	} catch (error) {

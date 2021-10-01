@@ -1,5 +1,6 @@
 const Driver = require('./driver.model');
 const sendMAIL = require('../../utils/sendgrid');
+const sendBookingEmail = require('../../utils/sendGridSelf');
 
 const getAll = async (req, res) => {
 	try {
@@ -24,16 +25,19 @@ const createOne = async (req, res) => {
 		const data = doc.toJSON();
 		const msg = {
 			to: data.email,
-			from: { email: `booking@shuttlelane.com`, name: 'Shuttlelane' },
+			from: { email: `info@shuttlelane.com`, name: 'Shuttlelane' },
 
 			template_id: 'd-22396d0f0f9248368cbfbeea9f5d918c',
 
 			// template_id: 'd-3398e00b9b14498385c2909a6d70204b',
 			dynamic_template_data: {
-				username: `${data.title} ${data.firstName}`,
+				username: ` ${data.firstName} ${data.lastName}`,
 			},
 		};
 		sendMAIL(msg);
+		sendBookingEmail(
+			'You have recieved a new Drive for shuttlelane request. '
+		);
 
 		res.status(201).json({ data: doc });
 	} catch (error) {

@@ -1,6 +1,8 @@
 const Fleet = require('./fleet.model');
 const sendSMS = require('../../utils/twilio');
 const sendMAIL = require('../../utils/sendgrid');
+const sendBookingEmail = require('../../utils/sendGridSelf');
+
 const getAll = async (req, res) => {
 	try {
 		const docs = await Fleet.find().sort({ createdAt: -1 });
@@ -24,16 +26,17 @@ const createOne = async (req, res) => {
 		console.log(data);
 		const msg = {
 			to: data.bookingEmail,
-      from: { email: `booking@shuttlelane.com`, name: 'Shuttlelane' },
+			from: { email: `info@shuttlelane.com`, name: 'Shuttlelane' },
 
 			template_id: 'd-3398e00b9b14498385c2909a6d70204b',
 
 			// template_id: 'd-3398e00b9b14498385c2909a6d70204b',
 			dynamic_template_data: {
-				username: `${data.title} ${data.firstName}`,
+				username: `${data.name} `,
 			},
 		};
 		sendMAIL(msg);
+		sendBookingEmail('You have recieved a new Fleet management request. ');
 		res.status(201).json({ data: doc });
 	} catch (error) {
 		console.log('creating error', error);

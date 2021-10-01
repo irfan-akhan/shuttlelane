@@ -120,7 +120,11 @@ Thank you for using ShuttleLane.`;
 					pickupAddress: data.pickupAirport,
 					dropoffAddress: data.dropoffAddress,
 					people: `${data.passengers} person(s) in total`,
-					total: `${data.amount} ${data.currency}(s)`,
+					total: data.amount
+						? data.amount
+						: '' + ' ' + data.currency
+						? data.currency + '(s)'
+						: ' ',
 					contact: `${data.email} ${data.mobile}.`,
 					passengerCount: data.carCapacity,
 					luggageCount: data.carLuggage,

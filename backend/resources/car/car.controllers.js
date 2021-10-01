@@ -68,7 +68,11 @@ Thank you for using ShuttleLane.`;
 				pickup: data.pickupAddress,
 				destination: data.destination,
 				people: `${data.passengers} `,
-				total: `${data.amount} ${data.currency}`,
+				total: data.amount
+					? data.amount
+					: '' + ' ' + data.currency
+					? data.currency + '(s)'
+					: ' ',
 				contact: `${data.email} ${data.countryCode} ${data.mobile}.`,
 			},
 		};

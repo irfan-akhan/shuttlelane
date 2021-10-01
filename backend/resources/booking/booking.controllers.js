@@ -41,7 +41,7 @@ Thank you for using ShuttleLane.`;
 			msg = {
 				to: data.email,
 				from: { email: `booking@shuttlelane.com`, name: 'Shuttlelane' },
-				template_id: 'd-60d573be189943088d2e3a4aefadf547',
+				template_id: 'd-263be754485847cea62a224d15c2a2bc',
 
 				// template_id: 'd-3398e00b9b14498385c2909a6d70204b',
 				dynamic_template_data: {
@@ -53,8 +53,10 @@ Thank you for using ShuttleLane.`;
 					pickupAddress: data.pickupAddress,
 					dropoffAddress: data.dropoffAirport,
 					people: `${data.passengers} passengers in total`,
-					Billed: `${data.amount} ${data.currency}`,
+					total: `${data.amount} ${data.currency}`,
 					contact: `${data.email} ${data.mobile}.`,
+					passengerCount: data.carCapacity,
+					luggageCount: data.carLuggage,
 				},
 			};
 			selfmail =
@@ -105,7 +107,7 @@ Thank you for using ShuttleLane.`;
 			msg = {
 				to: data.email,
 				from: 'booking@shuttlelane.com',
-				template_id: 'd-263be754485847cea62a224d15c2a2bc',
+				template_id: 'd-60d573be189943088d2e3a4aefadf547',
 
 				// template_id: 'd-3398e00b9b14498385c2909a6d70204b',
 				dynamic_template_data: {
@@ -118,8 +120,10 @@ Thank you for using ShuttleLane.`;
 					pickupAddress: data.pickupAirport,
 					dropoffAddress: data.dropoffAddress,
 					people: `${data.passengers}`,
-					Billed: `${data.amount} ${data.currency}`,
+					total: `${data.amount} ${data.currency}(s)`,
 					contact: `${data.email} ${data.mobile}.`,
+					passengerCount: data.carCapacity,
+					luggageCount: data.carLuggage,
 				},
 			};
 		}

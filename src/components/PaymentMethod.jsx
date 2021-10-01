@@ -1,4 +1,8 @@
-import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
+import {
+	FlutterWaveButton,
+	useFlutterwave,
+	closePaymentModal,
+} from 'flutterwave-react-v3';
 import { Grid } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -176,25 +180,25 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 		config = {
 			public_key: `${process.env.NEXT_PUBLIC_FLUTTERWAVE_KEY}`,
 			tx_ref: Date.now(),
-			amount: bookingData.amount,
+			amount: bookingData?.amount,
 			currency:
-				bookingData.currency == 'niera'
+				bookingData?.currency == 'niera'
 					? 'NGN'
-					: bookingData.currency == 'pound'
+					: bookingData?.currency == 'pound'
 					? 'GBP'
-					: bookingData.currency == 'euro'
+					: bookingData?.currency == 'euro'
 					? 'EUR'
 					: 'USD',
 			payment_options: 'card,mobilemoney,ussd',
 			customer: {
-				email: bookingData.email,
-				phonenumber: bookingData.mobile,
-				name: `${bookingData.title} ${bookingData.firstName} ${bookingData.lastName} `,
+				email: bookingData?.email,
+				phonenumber: bookingData?.mobile,
+				name: `${bookingData?.title} ${bookingData?.firstName} ${bookingData?.lastName} `,
 			},
 			customizations: {
 				title: bookingData.carType
-					? `${bookingData.carType} ${bookingData.formType} Service`
-					: `Airport ${bookingData.formType} Service`,
+					? `${bookingData?.carType} ${bookingData?.formType} Service`
+					: `Airport ${bookingData?.formType} Service`,
 				logo: 'https://shuttlelane.com/assets/paymentlogo.png',
 			},
 		};
@@ -228,7 +232,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 		};
 		paypalLoadScript();
 	}, [bookingData.amount, bookingData.currency, selectedPayment]);
-	const handleFlutterPayment = useFlutterwave(config);
+	// const handleFlutterPayment = useFlutterwave(config);
 	const onSubmitHandler = async (
 		paymentReceiptLink,
 		paymentId,
@@ -361,8 +365,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 			.create({
 				payer: {
 					name: {
-						given_name:
-							bookingData.title + ' ' + bookingData.firstName,
+						given_name: bookingData.firstName,
 						surname: bookingData.lastName,
 					},
 					email_address: bookingData.email,
@@ -418,6 +421,38 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 			progress: 0,
 		});
 	}
+	const fwConfig = {
+		...config,
+		text: 'Pay with Flutterwave!',
+		callback: (response) => {
+			console.log('flutterwave response', response);
+			if (response && response.status == 'successfull') {
+				onSubmitHandler(response.transaction_id, '', 'Successful');
+			} else {
+				toast.errror(`Please try agian,Something went wrong`, {
+					position: 'top-center',
+					autoClose: 2000,
+					hideProgressBar: true,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: 0,
+				});
+			}
+			closePaymentModal(); // this will close the modal programmatically
+		},
+		onClose: () => {
+			toast.error('Payment Cancelled', {
+				position: 'top-center',
+				autoClose: 3000,
+				hideProgressBar: true,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: 0,
+			});
+		},
+	};
 	return (
 		<div className={styles.card} style={{ marginTop: '3rem' }}>
 			<div
@@ -526,53 +561,54 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 					onError={onError}
 				/>
 			) : selectedPayment == 'Flutterwave' ? (
-				<button
-					className='btnGrad'
-					onClick={() => {
-						handleFlutterPayment({
-							callback: (response) => {
-								console.log('flutterwave response', response);
-								if (
-									response &&
-									response.status == 'successfull'
-								) {
-									onSubmitHandler(
-										response.transaction_id,
-										'',
-										'Successful'
-									);
-								} else {
-									toast.errror(
-										`Please try agian,Something went wrong`,
-										{
-											position: 'top-center',
-											autoClose: 2000,
-											hideProgressBar: true,
-											closeOnClick: true,
-											pauseOnHover: true,
-											draggable: true,
-											progress: 0,
-										}
-									);
-								}
-								closePaymentModal(); // this will close the modal programmatically
-							},
-							onClose: () => {
-								toast.error('Payment Cancelled', {
-									position: 'top-center',
-									autoClose: 3000,
-									hideProgressBar: true,
-									closeOnClick: true,
-									pauseOnHover: true,
-									draggable: true,
-									progress: 0,
-								});
-							},
-						});
-					}}
-				>
-					Pay with FlutterWave
-				</button>
+				// <button
+				// 	className='btnGrad'
+				// 	onClick={() => {
+				// 		handleFlutterPayment({
+				// 			callback: (response) => {
+				// 				console.log('flutterwave response', response);
+				// 				if (
+				// 					response &&
+				// 					response.status == 'successfull'
+				// 				) {
+				// 					onSubmitHandler(
+				// 						response.transaction_id,
+				// 						'',
+				// 						'Successful'
+				// 					);
+				// 				} else {
+				// 					toast.errror(
+				// 						`Please try agian,Something went wrong`,
+				// 						{
+				// 							position: 'top-center',
+				// 							autoClose: 2000,
+				// 							hideProgressBar: true,
+				// 							closeOnClick: true,
+				// 							pauseOnHover: true,
+				// 							draggable: true,
+				// 							progress: 0,
+				// 						}
+				// 					);
+				// 				}
+				// 				closePaymentModal(); // this will close the modal programmatically
+				// 			},
+				// 			onClose: () => {
+				// 				toast.error('Payment Cancelled', {
+				// 					position: 'top-center',
+				// 					autoClose: 3000,
+				// 					hideProgressBar: true,
+				// 					closeOnClick: true,
+				// 					pauseOnHover: true,
+				// 					draggable: true,
+				// 					progress: 0,
+				// 				});
+				// 			},
+				// 		});
+				// 	}}
+				// >
+				// 	Pay with FlutterWave
+				// </button>
+				<FlutterWaveButton {...fwConfig} />
 			) : null}
 
 			<ToastContainer />

@@ -71,7 +71,7 @@ Need assistance? You can reach us on +2349030009452, +2349030009486 or +23490300
 				airline: data.airline,
 				people: `${data.passengers}`,
 				total: `${data.amount} ${data.currency}`,
-				contact: `${data.email} ${data.countryCode}${data.mobile}.`,
+				contact: `${data.email} ${data.countryCode} ${data.mobile}.`,
 			},
 		};
 		sendSMS(`${data.countryCode}${data.mobile}`, sms);

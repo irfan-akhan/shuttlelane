@@ -33,11 +33,12 @@ const Summary = ({
 					<span>{title}</span>
 					<span>
 						{currencySymbol}&nbsp;
-						{airportAmount.toString().length > 6
+						{/* {airportAmount.toString().length > 6
 							? airportAmount.slice(0, 1) +
 							  ',' +
 							  airportAmount.slice(1)
-							: airportAmount}
+							: airportAmount} */}
+						{parseInt(airportAmount).toLocaleString()}
 					</span>
 				</p>
 				{data?.formType?.includes('Airport') ? (
@@ -102,11 +103,12 @@ const Summary = ({
 					<span>Total</span>
 					<span>
 						{currencySymbol}&nbsp;
-						{amount.toString().length > 6
+						{/* {amount.toString().length > 6
 							? amount.toString().slice(0, 2) +
 							  ',' +
 							  amount.toString().slice(2)
-							: amount}
+							: amount} */}
+						{parseInt(amount).toLocaleString()}
 					</span>
 				</p>
 				<select

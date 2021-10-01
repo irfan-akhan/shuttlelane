@@ -26,7 +26,7 @@ const HotelForm = () => {
 			progress: 0,
 		});
 		try {
-			fetch('https://shuttlelane.herokuapp.com/api/booking/hotel', {
+			fetch('https://shuttlelane.com/api/booking/hotel', {
 				method: 'POST',
 				body: JSON.stringify(inputValues),
 				headers: {

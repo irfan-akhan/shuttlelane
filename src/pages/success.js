@@ -6,9 +6,7 @@ const success = () => {
 	const [booking, setBooking] = useState({});
 	const params = router.asPath?.split('?')[1]?.split('=');
 	useEffect(() => {
-		fetch(
-			`https://shuttlelane.herokuapp.com/api/booking/${params[0]}/${params[1]}`
-		)
+		fetch(`https://shuttlelane.com/api/booking/${params[0]}/${params[1]}`)
 			.then((res) => res.json())
 			.then((result) => {
 				console.log('result', result);

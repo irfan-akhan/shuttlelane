@@ -73,20 +73,17 @@ const Signin = () => {
 		const password = passwordRef.current.value;
 
 		try {
-			const response = await fetch(
-				'https://shuttlelane.herokuapp.com/api/signin',
-				{
-					method: 'POST',
-					headers: {
-						Accept: 'application/json',
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-						email: email,
-						password: password,
-					}),
-				}
-			);
+			const response = await fetch('https://shuttlelane.com/api/signin', {
+				method: 'POST',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					email: email,
+					password: password,
+				}),
+			});
 			const user = await response.json();
 			console.log(user);
 			if (user.error) {

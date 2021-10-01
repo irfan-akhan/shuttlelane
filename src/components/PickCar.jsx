@@ -7,7 +7,7 @@ const prefix = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const PickCar = ({ car, handler, selectedCurrency, currencySymbol }) => {
 	const [vehicles, setVehicles] = useState([]);
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/vehicles', {
+		fetch('https://shuttlelane.com/api/vehicles', {
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',

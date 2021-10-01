@@ -20,7 +20,7 @@ export async function getServerSideProps(context) {
 	const id = context.query.heading;
 	let post = {};
 	try {
-		post = await fetch(`https://shuttlelane.herokuapp.com/api/posts/${id}`)
+		post = await fetch(`https://shuttlelane.com/api/posts/${id}`)
 			.then((res) => res.json())
 			.then((res) => res.data);
 	} catch (err) {

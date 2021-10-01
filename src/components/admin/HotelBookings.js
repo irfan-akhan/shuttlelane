@@ -7,7 +7,7 @@ import styles from '../../styles/Dashboard.module.css';
 const HotelBooking = () => {
 	const [bookings, setBookings] = useState([]);
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/booking/hotel')
+		fetch('https://shuttlelane.com/api/booking/hotel')
 			.then((res) => res.json())
 			.then((data) => {
 				setBookings(data.data);

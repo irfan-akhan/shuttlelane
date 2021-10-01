@@ -7,7 +7,7 @@ import styles from '../../styles/Dashboard.module.css';
 const DriverManagement = () => {
 	const [drivers, setDrivers] = useState([]);
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/driver')
+		fetch('https://shuttlelane.com/api/driver')
 			.then((response) => response.json())
 			.then((result) => {
 				setDrivers(result.data);

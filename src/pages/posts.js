@@ -15,9 +15,7 @@ const posts = ({ data }) => {
 
 export async function getServerSideProps() {
 	try {
-		const response = await fetch(
-			'https://shuttlelane.herokuapp.com/api/posts'
-		);
+		const response = await fetch('https://shuttlelane.com/api/posts');
 		const { data } = await response.json();
 		// console.log('from server ', data);
 		return {

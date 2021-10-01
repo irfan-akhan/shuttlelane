@@ -10,7 +10,7 @@ const ManageCabinClasses = () => {
 
 	useEffect(() => {
 		try {
-			fetch('https://shuttlelane.herokuapp.com/api/priority')
+			fetch('https://shuttlelane.com/api/priority')
 				.then((res) => res.json())
 				.then((result) => {
 					setClasses(result.data);
@@ -32,7 +32,7 @@ const ManageCabinClasses = () => {
 			return;
 		}
 		try {
-			fetch(`https://shuttlelane.herokuapp.com/api/priority/${id}`, {
+			fetch(`https://shuttlelane.com/api/priority/${id}`, {
 				method: 'PUT',
 				headers: {
 					Accept: 'application/json ',

@@ -35,7 +35,7 @@ const AirportTransferBooking = () => {
 	const updateModalRef = useRef(null);
 	const [editMode, setEditMode] = useState(false);
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/booking/airport')
+		fetch('https://shuttlelane.com/api/booking/airport')
 			.then((res) => res.json())
 			.then((data) => {
 				setBookings(data.data);
@@ -91,7 +91,7 @@ const AirportTransferBooking = () => {
 		};
 		let id = selectedItem._id;
 
-		fetch(`https://shuttlelane.herokuapp.com/api/booking/airport/${id}`, {
+		fetch(`https://shuttlelane.com/api/booking/airport/${id}`, {
 			method: 'PUT',
 			headers: {
 				// wan ya illl call you back
@@ -140,7 +140,7 @@ const AirportTransferBooking = () => {
 		});
 		let status = e.target.innerText.trim();
 		const data = { serviceStatus: status };
-		fetch(`https://shuttlelane.herokuapp.com/api/booking/airport/${id}`, {
+		fetch(`https://shuttlelane.com/api/booking/airport/${id}`, {
 			method: 'PUT',
 			headers: {
 				Accept: 'application/json',

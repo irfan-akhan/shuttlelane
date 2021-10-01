@@ -47,7 +47,7 @@ const BlogList = ({ posts }) => {
 export default BlogList;
 
 export async function getServerSideProps(context) {
-	const posts = await fetch(`https://shuttlelane.herokuapp.com/api/posts/`)
+	const posts = await fetch(`https://shuttlelane.com/api/posts/`)
 		.then((res) => res.json())
 		.catch((err) => {
 			return {

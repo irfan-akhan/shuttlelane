@@ -86,7 +86,7 @@ Thank you for using ShuttleLane.`;
 			//       mailTemplate = `<!doctype html>
 			// 			<html>
 			// 				<body>
-			// 				<a href="https://shuttlelane.net"
+			// 				<a href="https://shuttlelane.et"
 			// 				<img src="https://shutlelane.net/assets/images/logo.png alt="shuttlelane logo" style="width:300,height:200"/>
 			// 				</a>
 			// 				<p> Hello ${data.title} ${data.firstName},

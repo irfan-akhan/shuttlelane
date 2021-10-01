@@ -49,8 +49,8 @@ const BlogForm = ({ post, action, reload }) => {
 
 		const url =
 			action == 'update'
-				? `https://shuttlelane.herokuapp.com/api/posts/${post._id}`
-				: `https://shuttlelane.herokuapp.com/api/posts`;
+				? `https://shuttlelane.com/api/posts/${post._id}`
+				: `https://shuttlelane.com/api/posts`;
 		try {
 			fetch(url, {
 				method: action == 'update' ? 'PUT' : 'POST',

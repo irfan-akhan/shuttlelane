@@ -61,7 +61,7 @@ const Booking = () => {
 	const [isPriorityPass, setIsPriorityPass] = useState(false);
 	const [selectedCabinClass, setSelectedCabinClass] = useState(null);
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/priority')
+		fetch('https://shuttlelane.com/api/priority')
 			.then((res) => res.json())
 			.then((response) => {
 				// console.log('CABIN CLASS FROM', response);
@@ -70,7 +70,7 @@ const Booking = () => {
 			.catch((err) => {
 				// console.log('Request failed', err);
 			});
-		fetch('https://shuttlelane.herokuapp.com/api/vehicles', {
+		fetch('https://shuttlelane.com/api/vehicles', {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',
@@ -85,7 +85,7 @@ const Booking = () => {
 			.catch((err) => {
 				// console.log('vehicles request failed inner catch', err);
 			});
-		fetch('https://shuttlelane.herokuapp.com/api/rates', {
+		fetch('https://shuttlelane.com/api/rates', {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',

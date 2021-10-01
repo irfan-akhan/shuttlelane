@@ -27,7 +27,7 @@ const PriorityPassBookings = () => {
 	const [reload, setReload] = useState(false);
 	const updateModalRef = useRef(null);
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/booking/priority')
+		fetch('https://shuttlelane.com/api/booking/priority')
 			.then((res) => res.json())
 			.then((data) => {
 				setBookings(data.data);
@@ -63,7 +63,7 @@ const PriorityPassBookings = () => {
 		};
 		let id = selectedItem._id;
 
-		fetch(`https://shuttlelane.herokuapp.com/api/booking/priority/${id}`, {
+		fetch(`https://shuttlelane.com/api/booking/priority/${id}`, {
 			method: 'PUT',
 			headers: {
 				// wan ya illl call you back

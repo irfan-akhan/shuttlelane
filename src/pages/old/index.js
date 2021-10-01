@@ -17,9 +17,7 @@ const Index = ({ posts }) => {
 export async function getServerSideProps() {
 	try {
 		console.log('Fetching');
-		const response = await fetch(
-			'https://shuttlelane.herokuapp.com/api/posts'
-		);
+		const response = await fetch('https://shuttlelane.com/api/posts');
 		console.log('converting');
 		const { data } = await response.json();
 		if (!data) {

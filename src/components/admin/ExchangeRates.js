@@ -36,7 +36,7 @@ const ExchangeRates = () => {
 	};
 
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/rates')
+		fetch('https://shuttlelane.com/api/rates')
 			.then((res) => res.json())
 			.then((data) => {
 				setRates({

@@ -19,7 +19,7 @@ const ManageCars = () => {
 	};
 	useEffect(() => {
 		try {
-			fetch('https://shuttlelane.herokuapp.com/api/cars')
+			fetch('https://shuttlelane.com/api/cars')
 				.then((res) => res.json())
 				.then((result) => {
 					setVehicles(result.data);
@@ -41,7 +41,7 @@ const ManageCars = () => {
 			return;
 		}
 		try {
-			fetch(`https://shuttlelane.herokuapp.com/api/cars/${id}`, {
+			fetch(`https://shuttlelane.com/api/cars/${id}`, {
 				method: 'PUT',
 				headers: {
 					Accept: 'application/json ',
@@ -71,7 +71,7 @@ const ManageCars = () => {
 	}
 	function deleteHandler(e, id) {
 		try {
-			fetch(`https://shuttlelane.herokuapp.com/api/cars/${id}`, {
+			fetch(`https://shuttlelane.com/api/cars/${id}`, {
 				method: 'DELETE',
 				headers: {
 					Accept: 'application/json ',

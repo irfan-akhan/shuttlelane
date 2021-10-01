@@ -22,7 +22,7 @@ export default function App() {
 	const [vehicles, setVehicles] = useState([]);
 	useEffect(() => {
 		try {
-			fetch('https://shuttlelane.herokuapp.com/api/vehicles')
+			fetch('https://shuttlelane.com/api/vehicles')
 				.then((res) => res.json())
 				.then((result) => {
 					setVehicles(result.data);

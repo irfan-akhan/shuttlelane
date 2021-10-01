@@ -21,7 +21,7 @@ const UpdateCarFleetForm = ({ vehicle, closeForm }) => {
 			progress: undefined,
 		});
 		try {
-			fetch(`https://shuttlelane.herokuapp.com/api/vehicles/${id}`, {
+			fetch(`https://shuttlelane.com/api/vehicles/${id}`, {
 				method: 'PUT',
 				headers: {
 					Accept: 'application/json',

@@ -89,7 +89,7 @@ const dashboard = () => {
 		// }
 		// setLoggedUser(user);
 
-		fetch('https://shuttlelane.herokuapp.com/api/booking/airport')
+		fetch('https://shuttlelane.com/api/booking/airport')
 			.then((res) => res.json())
 			.then((data) => {
 				{
@@ -100,7 +100,7 @@ const dashboard = () => {
 			.catch((err) => console.log(err));
 
 		// Car Bookings
-		fetch('https://shuttlelane.herokuapp.com/api/booking/car')
+		fetch('https://shuttlelane.com/api/booking/car')
 			.then((res) => res.json())
 			.then((data) => {
 				{
@@ -111,7 +111,7 @@ const dashboard = () => {
 			.catch((err) => console.log(err));
 
 		// Hotel Bookings
-		fetch('https://shuttlelane.herokuapp.com/api/booking/hotel')
+		fetch('https://shuttlelane.com/api/booking/hotel')
 			.then((res) => res.json())
 			.then((data) => {
 				{
@@ -122,7 +122,7 @@ const dashboard = () => {
 			.catch((err) => console.log(err));
 
 		// Priority Pass Bookings
-		fetch('https://shuttlelane.herokuapp.com/api/booking/priority')
+		fetch('https://shuttlelane.com/api/booking/priority')
 			.then((res) => res.json())
 			.then((data) => {
 				{

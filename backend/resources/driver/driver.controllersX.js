@@ -8,7 +8,7 @@ const mail = `<div
       >
         <div item style={{ textAlign: "center", margin: "0 auto" }}>
           <img
-            src="https://shuttlelane.herokuapp.com/assets/images/logo.png"
+            src="https://shuttlelane.com/assets/images/logo.png"
             alt="logo"
             style={{ width: "150px" }}
           />

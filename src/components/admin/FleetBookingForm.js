@@ -49,7 +49,7 @@ const FleetBookingForm = ({ closeForm }) => {
 			progress: 0,
 		});
 		try {
-			fetch('https://shuttlelane.herokuapp.com/api/booking/fleet', {
+			fetch('https://shuttlelane.com/api/booking/fleet', {
 				method: 'POST',
 				body: JSON.stringify(inputValues),
 				headers: {

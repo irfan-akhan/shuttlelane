@@ -32,7 +32,7 @@ const CarBooking = () => {
 	const [reload, setReload] = useState(false);
 	const updateModalRef = useRef(null);
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/booking/car')
+		fetch('https://shuttlelane.com/api/booking/car')
 			.then((res) => res.json())
 			.then((data) => {
 				setBookings(data.data);
@@ -90,7 +90,7 @@ const CarBooking = () => {
 		};
 		let id = selectedItem._id;
 
-		fetch(`https://shuttlelane.herokuapp.com/api/booking/car/${id}`, {
+		fetch(`https://shuttlelane.com/api/booking/car/${id}`, {
 			method: 'PUT',
 			headers: {
 				// wan ya illl call you back

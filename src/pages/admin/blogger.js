@@ -65,7 +65,7 @@ const Blogger = ({ error }) => {
 			}
 			setLoggedUser(user);
 
-			fetch('https://shuttlelane.herokuapp.com/api/posts')
+			fetch('https://shuttlelane.com/api/posts')
 				.then((response) => response.json())
 				.then((res) => {
 					if (res.data) {
@@ -83,7 +83,7 @@ const Blogger = ({ error }) => {
 	}
 	function deletePostHandler(post) {
 		try {
-			fetch(`https://shuttlelane.herokuapp.com/api/posts/${post._id}`, {
+			fetch(`https://shuttlelane.com/api/posts/${post._id}`, {
 				method: 'DELETE',
 				headers: {
 					'Content-Type': 'application/json',

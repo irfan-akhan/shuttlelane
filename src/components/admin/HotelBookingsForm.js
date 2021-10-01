@@ -5,7 +5,7 @@ import styles from '../../styles/BookingForm.module.css';
 
 // HELPER FUNCTIONS
 function createBooking(data, closeForm) {
-	fetch('https://shuttlelane.herokuapp.com/api/booking/hotel', {
+	fetch('https://shuttlelane.com/api/booking/hotel', {
 		method: 'POST',
 		headers: {
 			Accept: 'application/json',

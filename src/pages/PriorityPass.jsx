@@ -62,7 +62,7 @@ const PriorityPass = () => {
 	const [classes, setClasses] = useState([]);
 	useEffect(() => {
 		try {
-			fetch('https://shuttlelane.herokuapp.com/api/priority')
+			fetch('https://shuttlelane.com/api/priority')
 				.then((res) => res.json())
 				.then((response) => {
 					// console.log('CANIB CLASS FROM', response);
@@ -71,7 +71,7 @@ const PriorityPass = () => {
 				.catch((err) => {
 					// console.log('Request failed', err);
 				});
-			fetch('https://shuttlelane.herokuapp.com/api/rates', {
+			fetch('https://shuttlelane.com/api/rates', {
 				method: 'GET',
 				headers: {
 					Accept: 'application/json',

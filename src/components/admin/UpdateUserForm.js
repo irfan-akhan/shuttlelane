@@ -39,7 +39,7 @@ const UpdateUserForm = ({ user, setAction, closeForm }) => {
 			progress: undefined,
 		});
 		try {
-			fetch(`https://shuttlelane.herokuapp.com/api/users/${user._id}`, {
+			fetch(`https://shuttlelane.com/api/users/${user._id}`, {
 				method: 'PUT',
 				headers: {
 					Accept: 'application/json',

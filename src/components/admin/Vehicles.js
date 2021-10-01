@@ -12,7 +12,7 @@ const Vehicles = () => {
 	};
 	useEffect(() => {
 		try {
-			fetch('https://shuttlelane.herokuapp.com/api/vehicles')
+			fetch('https://shuttlelane.com/api/vehicles')
 				.then((res) => res.json())
 				.then((result) => {
 					setVehicles(result.data);

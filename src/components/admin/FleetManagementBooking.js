@@ -9,7 +9,7 @@ const FleetManagementBooking = () => {
 	const [editMode, setEditMode] = useState(false);
 	const [fleets, setFleets] = useState([]);
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/booking/fleet')
+		fetch('https://shuttlelane.com/api/booking/fleet')
 			.then((response) => response.json())
 			.then((result) => {
 				setFleets(result.data);

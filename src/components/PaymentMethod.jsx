@@ -31,7 +31,7 @@ function createBooking(
 
 	if (data.formType == 'Priority-Pass') {
 		// console.log('IN PRIO');
-		fetch('https://shuttlelane.herokuapp.com/api/booking/priority', {
+		fetch('https://shuttlelane.com/api/booking/priority', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -76,7 +76,7 @@ function createBooking(
 				});
 			});
 	} else {
-		fetch('https://shuttlelane.herokuapp.com/api/booking/airport', {
+		fetch('https://shuttlelane.com/api/booking/airport', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -167,7 +167,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 			title: bookingData.carType
 				? `${bookingData.carType} ${bookingData.formType} Service`
 				: `Airport ${bookingData.formType} Service`,
-			logo: 'https://shuttlelane.herokuapp.com/assets/paymentlogo.png',
+			logo: 'https://shuttlelane.com/assets/paymentlogo.png',
 		},
 	};
 	// const handleFlutterPayment = useFlutterwave(config);
@@ -195,11 +195,11 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 				title: bookingData.carType
 					? `${bookingData.carType} ${bookingData.formType} Service`
 					: `Airport ${bookingData.formType} Service`,
-				logo: 'https://shuttlelane.herokuapp.com/assets/paymentlogo.png',
+				logo: 'https://shuttlelane.com/assets/paymentlogo.png',
 			},
 		};
 		const paypalLoadScript = async () => {
-			fetch('https://shuttlelane.herokuapp.com/api/payment/paypal')
+			fetch('https://shuttlelane.com/api/payment/paypal')
 				.then((res) => res.json())
 				.then((res) => {
 					// console.log('JSON', res);
@@ -279,7 +279,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 			'Content-Type': 'application/json',
 		};
 		// call api
-		fetch('https://shuttlelane.herokuapp.com/api/payment/stripe', {
+		fetch('https://shuttlelane.com/api/payment/stripe', {
 			method: 'POST',
 			headers: headers,
 			body: JSON.stringify(body),

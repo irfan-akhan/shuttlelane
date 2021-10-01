@@ -53,7 +53,7 @@ const Search = (props) => {
 			bookingId: ref,
 		};
 		// console.log('string useEffect', string);
-		fetch('https://shuttlelaneee.herokuapp.com/api/booking/search', {
+		fetch('https://shuttlelane..herokuapp.com/api/booking/search', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',

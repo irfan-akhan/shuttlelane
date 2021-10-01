@@ -53,7 +53,7 @@ const CreateUser = () => {
 			router.push('/admin');
 			return;
 		}
-		fetch('https://shuttlelane.herokuapp.com/api/users')
+		fetch('https://shuttlelane.com/api/users')
 			.then((response) => response.json())
 			.then((result) => {
 				setUsers(result.data);
@@ -63,7 +63,7 @@ const CreateUser = () => {
 
 	const deleteUserHandler = (id) => {
 		try {
-			fetch(`https://shuttlelane.herokuapp.com/api/users/${id}`, {
+			fetch(`https://shuttlelane.com/api/users/${id}`, {
 				method: 'DELETE',
 				headers: {
 					Accept: 'application/json',
@@ -131,7 +131,7 @@ const CreateUser = () => {
 			router.push('/admin');
 			return;
 		}
-		fetch('https://shuttlelane.herokuapp.com/api/users', {
+		fetch('https://shuttlelane.com/api/users', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',

@@ -16,7 +16,7 @@ function updateRates(data, closeForm) {
 		draggable: true,
 		progress: 0,
 	});
-	fetch(`https://shuttlelane.herokuapp.com/api/rates/${data.id}`, {
+	fetch(`https://shuttlelane.com/api/rates/${data.id}`, {
 		method: 'PUT',
 		headers: {
 			Accept: 'application/json',
@@ -55,7 +55,7 @@ function validateData(data) {
 const ExchangeForm = ({ closeForm }) => {
 	const [rates, setRates] = useState({});
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/rates')
+		fetch('https://shuttlelane.com/api/rates')
 			.then((res) => res.json())
 			.then((data) => {
 				setRates({

@@ -16,7 +16,7 @@ function createBooking(data, closeForm) {
 		draggable: true,
 		progress: 0,
 	});
-	fetch('https://shuttlelane.herokuapp.com/api/booking/priority', {
+	fetch('https://shuttlelane.com/api/booking/priority', {
 		method: 'POST',
 		headers: {
 			Accept: 'application/json',
@@ -70,7 +70,7 @@ const PriorityBookingForm = ({ closeForm }) => {
 	const [classes, setClasses] = useState([]);
 
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/priority', {
+		fetch('https://shuttlelane.com/api/priority', {
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',

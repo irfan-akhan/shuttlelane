@@ -15,7 +15,7 @@ function createBooking(data, setEditMode) {
 		draggable: true,
 		progress: 0,
 	});
-	fetch('https://shuttlelane.herokuapp.com/api/cars', {
+	fetch('https://shuttlelane.com/api/cars', {
 		method: 'POST',
 		headers: {
 			Accept: 'application/json',

@@ -55,7 +55,7 @@ const passengerFields = {
 
 // create Booking
 function createBooking(data, router, currency) {
-	fetch('https://shuttlelane.herokuapp.com/api/booking/car', {
+	fetch('https://shuttlelane.com/api/booking/car', {
 		method: 'POST',
 		headers: {
 			Accept: 'application/json',
@@ -114,14 +114,14 @@ const CarBooking = () => {
 	const [vehicles, setVehicles] = useState([]);
 	const router = useRouter();
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/cars')
+		fetch('https://shuttlelane.com/api/cars')
 			.then((res) => res.json())
 			.then((result) => {
 				setVehicles(result.data);
 				// console.log(result);
 			})
 			.catch((error) => {});
-		fetch('https://shuttlelane.herokuapp.com/api/rates', {
+		fetch('https://shuttlelane.com/api/rates', {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',

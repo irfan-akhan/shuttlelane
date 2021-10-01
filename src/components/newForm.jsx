@@ -69,7 +69,7 @@ const newForm = () => {
 
 		// console.log(driverInput);
 		try {
-			fetch('https://shuttlelane.herokuapp.com/api/driver', {
+			fetch('https://shuttlelane.com/api/driver', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

@@ -26,7 +26,7 @@ const Carhire = () => {
 	}
 	const [cars, setCars] = useState([]);
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/cars')
+		fetch('https://shuttlelane.com/api/cars')
 			.then((res) => res.json())
 			.then((response) => {
 				// console.log('Cars', response);

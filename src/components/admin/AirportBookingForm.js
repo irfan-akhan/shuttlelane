@@ -18,7 +18,7 @@ function createBooking(data, closeForm) {
 		progress: 0,
 	});
 
-	fetch('https://shuttlelane.herokuapp.com/api/booking/airport', {
+	fetch('https://shuttlelane.com/api/booking/airport', {
 		method: 'POST',
 		headers: {
 			Accept: 'application/json',
@@ -79,7 +79,7 @@ const AirportBookingForm = ({ closeForm }) => {
 		slectedCurrency: '',
 	});
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/vehicles', {
+		fetch('https://shuttlelane.com/api/vehicles', {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',

@@ -38,7 +38,7 @@ const Summary = ({
 							  ',' +
 							  airportAmount.slice(1)
 							: airportAmount} */}
-						{parseInt(airportAmount).toLocaleString()}
+						{parseFloat(airportAmount).toLocaleString()}
 					</span>
 				</p>
 				{data?.formType?.includes('Airport') ? (
@@ -63,13 +63,16 @@ const Summary = ({
 							{isPriorityPass && (
 								<span style={{ opacity: '0.8' }}>
 									{currencySymbol}&nbsp;
-									{priorityPassAmount.toString().lenght > 6
+									{/* {priorityPassAmount.toString().lenght > 6
 										? priorityPassAmount
 												.toString()
 												.slice(0, 1) +
 										  ',' +
 										  priorityPassAmount.toString().slice(1)
-										: priorityPassAmount}
+										: priorityPassAmount} */}
+									{parseFloat(
+										priorityPassAmount
+									).toLocaleString()}
 								</span>
 							)}
 						</div>
@@ -108,7 +111,7 @@ const Summary = ({
 							  ',' +
 							  amount.toString().slice(2)
 							: amount} */}
-						{parseInt(amount).toLocaleString()}
+						{parseFloat(amount).toLocaleString()}
 					</span>
 				</p>
 				<select

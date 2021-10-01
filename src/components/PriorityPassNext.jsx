@@ -191,7 +191,6 @@ export default class PriorityPassNext extends Component {
 								Placeholder='Airline'
 								name='airline'
 								id='airline'
-								time
 								value={this.props.data.airline}
 								onChange={this.onChangeHandler}
 							/>

@@ -44,6 +44,7 @@ let fields = {
 	date: '',
 	time: '',
 	mobile: '',
+	airline: '',
 };
 
 const passengerFields = {

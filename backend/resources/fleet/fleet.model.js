@@ -35,7 +35,6 @@ const fleetSchema = new Schema(
 		},
 		bookingNumber: {
 			required: true,
-			type: Number,
 		},
 		address: {
 			type: String,

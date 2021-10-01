@@ -103,9 +103,9 @@ const Summary = ({
 					<span>
 						{currencySymbol}&nbsp;
 						{amount.toString().length > 6
-							? amount.toString().slice(0, 1) +
+							? amount.toString().slice(0, 2) +
 							  ',' +
-							  amount.toString().slice(1)
+							  amount.toString().slice(2)
 							: amount}
 					</span>
 				</p>

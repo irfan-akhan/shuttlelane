@@ -48,7 +48,7 @@ const Search = (props) => {
 	const [selectedDate, handleDateChange] = useState(new Date());
 	// let data = console.log("data", data);
 	useEffect(() => {
-		// console.log('ref useEffect', ref);
+		console.log('ref useEffect', ref);
 		const string = {
 			bookingId: ref,
 		};
@@ -63,7 +63,7 @@ const Search = (props) => {
 		})
 			.then((res) => res.json())
 			.then((result) => {
-				// console.log("result,", result);
+				console.log('result,', result);
 				if (!result.data) {
 					setBooking(null);
 

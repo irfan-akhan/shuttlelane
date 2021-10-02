@@ -10,7 +10,6 @@ import 'aos/dist/aos.css';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import MailOutline from '@material-ui/icons/MailOutline';
 import PhoneIcon from '@material-ui/icons/Phone';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 import ClickAway from '../components/navbar';
 
@@ -98,8 +97,6 @@ function MyApp({ Component, pageProps }) {
 			marginTop: theme.spacing(2),
 		},
 	}));
-	const classes = useStyles();
-
 	const [state, setState] = React.useState({
 		age: '',
 		name: 'hai',
@@ -117,7 +114,7 @@ function MyApp({ Component, pageProps }) {
 
 		navToggleHandler();
 
-		// console.log(booking);
+		console.log(booking);
 	};
 	const handleChange = (event) => {
 		const name = event.target.name;
@@ -130,7 +127,6 @@ function MyApp({ Component, pageProps }) {
 		<ThemeProvider theme={theme}>
 			<Head>
 				<link rel='icon' href='./assets/images/favicon.ico' />
-				{/* <script src="https://www.paypalobjects.com/api/checkout.js" /> */}
 			</Head>
 			{/* Topbar */}
 			<div onClick={navToggleHandler} className={styles.navToggle}>

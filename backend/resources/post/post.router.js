@@ -27,7 +27,7 @@ function sign(req, res, next) {
 postRouter
 	.route('/')
 	.get(postControllers.getAll)
-	.post(upload.single('image'), postControllers.createOne);
+	.post(postControllers.createOne);
 postRouter
 	.route('/:id')
 	.put(sign, postControllers.updateOne)

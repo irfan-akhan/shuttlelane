@@ -2,12 +2,12 @@ const Post = require('./post.model');
 
 // define mutler storage & destination
 
-async function uploadFile(data) {
-	console.log(data);
-	const response = await upload.single(data.image);
-	console.log(response);
-	return;
-}
+// async function uploadFile(data) {
+// 	console.log(data);
+// 	const response = await upload.single(data.image);
+// 	console.log(response);
+// 	return;
+// }
 
 const createOne = async (req, res) => {
 	console.log('creatingPOsdr', req);
@@ -15,7 +15,6 @@ const createOne = async (req, res) => {
 	try {
 		const doc = await Post.create({
 			...req.body,
-			imageUrl: req.file.filename,
 		});
 		console.log(doc);
 		res.status(201).json({ data: doc });
@@ -74,7 +73,7 @@ const updateOne = async (req, res) => {
 		if (doc) {
 			return res.status(200).json({ data: doc });
 		}
-		return res.status(404).json({ data: 'NOT FPUND' });
+		return res.status(404).json({ data: 'Not Found' });
 	} catch (error) {
 		return res.status(401).json({ errors: "couldn't update" });
 	}

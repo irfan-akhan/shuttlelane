@@ -95,13 +95,13 @@ const AirportBookingForm = ({ closeForm }) => {
 	// const [titleValue, setTitleValue] =  useState(' ');
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		// console.log('values are: ', inputValues);
+		console.log('values are: ', inputValues);
 		const verified = validataDate(inputValues);
 		if (!verified) {
 			const response = createBooking(inputValues, closeForm);
-			// console.log('VACK', response);
+			console.log('VACK', response);
 		} else {
-			// console.log('validation Error');
+			console.log('validation Error');
 		}
 	};
 	const onChangeHandler = (e) => {

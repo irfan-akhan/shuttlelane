@@ -76,7 +76,6 @@ const AirportBookingForm = ({ closeForm }) => {
 		countryCode: '',
 		mobile: '',
 		amount: 0,
-		slectedCurrency: '',
 	});
 	useEffect(() => {
 		fetch('https://shuttlelane.com/api/vehicles', {

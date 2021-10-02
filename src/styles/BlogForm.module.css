@@ -8,16 +8,21 @@
 	border-radius: 10px;
 	background-color: #ffffffd2;
 	width: 90%;
+	margin: auto;
 }
 .formGroup {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	padding: 0 0.3rem;
+	width: 100%;
 }
 .blog {
 	display: flex;
 	flex-direction: column;
+}
+.blog * {
+	width: 100%;
 }
 /* }
 .form input,

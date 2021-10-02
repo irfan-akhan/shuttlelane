@@ -52,9 +52,9 @@ Thank you for using ShuttleLane.`;
 					time: data.time,
 					pickupAddress: data.pickupAddress,
 					dropoffAddress: data.dropoffAirport,
-					people: `${data.passengers} person(s) in total`,
+					people: `${data.passengers}`,
 					total: `${data.amount} ${data.currency}`,
-					contact: `${data.email} ${data.mobile}.`,
+					contact: `${data.email} ${data.countryCode}${data.mobile}.`,
 					passengerCount: data.carCapacity,
 					luggageCount: data.carLuggage,
 				},
@@ -119,13 +119,14 @@ Thank you for using ShuttleLane.`;
 					flightNumber: data.flightNumber,
 					pickupAddress: data.pickupAirport,
 					dropoffAddress: data.dropoffAddress,
-					people: `${data.passengers} person(s) in total`,
+					people: `${data.passengers}`,
 					total: data.amount
 						? data.amount
 						: '' + ' ' + data.currency
 						? data.currency + '(s)'
 						: ' ',
-					contact: `${data.email} ${data.mobile}.`,
+					contact: `${data.email} ${data.countryCode}${data.mobile}.`,
+
 					passengerCount: data.carCapacity,
 					luggageCount: data.carLuggage,
 				},

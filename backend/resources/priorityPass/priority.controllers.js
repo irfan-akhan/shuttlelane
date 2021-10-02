@@ -75,7 +75,7 @@ Need assistance? You can reach us on +2349030009452, +2349030009486 or +23490300
 					: '' + ' ' + data.currency
 					? data.currency + '(s)'
 					: ' ',
-				contact: `${data.email} ${data.countryCode} ${data.mobile}.`,
+				contact: `${data.email} ${data.countryCode}${data.mobile}.`,
 			},
 		};
 		sendSMS(`${data.countryCode}${data.mobile}`, sms);

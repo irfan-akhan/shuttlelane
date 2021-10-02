@@ -15,9 +15,8 @@ const initialValues = {
 
 const BlogForm = ({ post, action, reload }) => {
 	// const token = localStorage('')
-	const token = localStorage.getItem('token');
 
-	const [selectedImage, setSelectedImage] = useState(null);
+	// const [selectedImage, setSelectedImage] = useState(null);
 	const [inputValues, setInputValues] = useState(
 		post
 			? {
@@ -30,14 +29,19 @@ const BlogForm = ({ post, action, reload }) => {
 			  }
 			: initialValues
 	);
-	if (token) {
-		const user = jwt.decode(token);
-		console.log(user);
-		setInputValues({
-			...inputValues,
-			author: user.name,
-		});
-	}
+	useEffect(() => {
+		const token = localStorage.getItem('token');
+
+		if (token) {
+			const user = jwt.decode(token);
+			console.log(user);
+			setInputValues({
+				...inputValues,
+				author: user.name,
+			});
+		}
+	}, []);
+
 	const onChangeHandler = (e) => {
 		e.persist();
 		setInputValues({

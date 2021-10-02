@@ -163,6 +163,7 @@
 	}
 	.blogger .aside > img {
 		width: 100%;
+		display: none;
 	}
 	.blogger .aside {
 		height: 50vh;

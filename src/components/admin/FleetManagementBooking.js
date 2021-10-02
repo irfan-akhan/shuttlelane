@@ -175,12 +175,6 @@ const FleetManagementBooking = () => {
 								);
 							})}
 						</tbody>
-						<tfoot>
-							<tr>
-								<td>Sum</td>
-								<td>$180</td>
-							</tr>
-						</tfoot>
 					</table>
 				</main>
 			</Grid>

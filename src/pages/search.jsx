@@ -91,15 +91,15 @@ const Search = (props) => {
 	};
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		console.log('IN SUBMIT');
-		console.log(updateFields);
+		// console.log('IN SUBMIT');
+		// console.log(updateFields);
 		let values = {};
 		for (const [key, value] of Object.entries(updateFields)) {
 			if (value) {
-				console.log('in');
+				// console.log('in');
 				values[key] = value;
 			}
-			console.log(`${key}: ${value}`);
+			// console.log(`${key}: ${value}`);
 		}
 		fetch('http://localhost:3001/api/booking/search', {
 			method: 'PUT',
@@ -111,7 +111,7 @@ const Search = (props) => {
 		})
 			.then((res) => res.json())
 			.then((result) => {
-				console.log('UPDATE result,', result);
+				// console.log('UPDATE result,', result);
 				onCloseHandler();
 				if (!result.data) {
 					// setBooking(null);
@@ -143,7 +143,7 @@ const Search = (props) => {
 				return;
 			})
 			.catch((err) => {
-				console.log('err', err);
+				// console.log('booking/search catch err', err);
 				toast.error('Something went wrong, Please try again later', {
 					position: 'top-center',
 					autoClose: 3000,

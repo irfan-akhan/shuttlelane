@@ -331,10 +331,7 @@ const AirportBookingForm = ({ closeForm }) => {
 								value={inputValues.time}
 							/>
 						</div>
-						<div className={styles.inputGroup}>
-							<label htmlFor='firstName'>Amount</label>
-							<span>{inputValues.amount}</span>
-						</div>
+
 						<div className={styles.inputGroup}>
 							<label htmlFor='title'>Title</label>
 							<select

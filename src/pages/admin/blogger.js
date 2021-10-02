@@ -196,14 +196,15 @@ const Blogger = ({ error }) => {
 					/>
 					<button
 						onClick={logoutHandler}
-						style={{
-							background: 'red',
-							border: 'none',
-							padding: '1rem',
-							marginTop: '15px',
-							color: '#fff',
-							fontWeight: 'bold',
-						}}
+						// style={{
+						// 	background: 'red',
+						// 	border: 'none',
+						// 	padding: '1rem',
+						// 	marginTop: '15px',
+						// 	color: '#fff',
+						// 	fontWeight: 'bold',
+						// }}
+						className={styles.actionCard}
 					>
 						Logout
 					</button>

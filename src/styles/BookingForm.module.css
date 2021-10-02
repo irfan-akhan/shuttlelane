@@ -1,8 +1,10 @@
 .formContainer {
 	padding: 1rem 2rem;
 	background-color: #f8f8f8;
+	width: 80%;
 }
 .form {
+	width: 90%;
 	color: darkred;
 	padding: 0.5rem;
 	display: flex;
@@ -13,7 +15,7 @@
 .formContainer .form .inputGroup {
 	margin-bottom: 1rem;
 	color: #292929;
-	width: 55%;
+	width: 50%;
 	display: flex;
 	justify-content: flex-end;
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from '../../styles/BlogForm.module.css';
+// import
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,6 +14,9 @@ const initialValues = {
 };
 
 const BlogForm = ({ post, action, reload }) => {
+	// const token = localStorage('')
+	const token = localStorage.getItem('token');
+
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [inputValues, setInputValues] = useState(
 		post
@@ -26,6 +30,14 @@ const BlogForm = ({ post, action, reload }) => {
 			  }
 			: initialValues
 	);
+	if (token) {
+		const user = jwt.decode(token);
+		console.log(user);
+		setInputValues({
+			...inputValues,
+			author: user.name,
+		});
+	}
 	const onChangeHandler = (e) => {
 		e.persist();
 		setInputValues({
@@ -36,16 +48,16 @@ const BlogForm = ({ post, action, reload }) => {
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
 		let response;
-		let fd = new FormData();
+		// let fd = new FormData();
 
-		fd.append('image', setSelectedImage);
-		fd.append('heading', inputValues.heading);
-		fd.append('author', 'Khan');
-		fd.append('postDescription', [
-			inputValues.para1,
-			inputValues.para2,
-			inputValues.para3,
-		]);
+		// fd.append('image', setSelectedImage);
+		// fd.append('heading', inputValues.heading);
+		// fd.append('author', 'Khan');
+		// fd.append('postDescription', [
+		// 	inputValues.para1,
+		// 	inputValues.para2,
+		// 	inputValues.para3,
+		// ]);
 
 		const url =
 			action == 'update'
@@ -58,17 +70,17 @@ const BlogForm = ({ post, action, reload }) => {
 					Accept: 'application/json',
 					// 'Content-Type': 'multipart/form-data',
 				},
-				// body: JSON.stringify({
-				// 	heading: inputValues.heading,
-				// 	image: inputValues.image,
-				// 	author: 'khan',
-				// 	postDescription: [
-				// 		inputValues.para1,
-				// 		inputValues.para2,
-				// 		inputValues.para3,
-				// 	],
-				// }),
-				body: fd,
+				body: JSON.stringify({
+					heading: inputValues.heading,
+					image: inputValues.image,
+					author: inputValues.author,
+					postDescription: [
+						inputValues.para1,
+						inputValues.para2,
+						inputValues.para3,
+					],
+				}),
+				// body: fd,
 			})
 				.then((res) => res.json())
 				.then((res) => {
@@ -82,8 +94,8 @@ const BlogForm = ({ post, action, reload }) => {
 		}
 	};
 	const fileHandler = (e) => {
-		console.log(e.target.files[0]);
-		setSelectedImage(e.target.files[0]);
+		// console.log(e.target.files[0]);
+		// setSelectedImage(e.target.files[0]);
 	};
 
 	return (
@@ -116,7 +128,7 @@ const BlogForm = ({ post, action, reload }) => {
 							type='file'
 							name='image'
 							id='image'
-							onChange={fileHandler}
+							// onChange={fileHandler}
 							// required
 						/>
 					</div>

@@ -333,7 +333,7 @@ const AirportBookingForm = ({ closeForm }) => {
 						</div>
 						<div className={styles.inputGroup}>
 							<label htmlFor='firstName'>Amount</label>
-							<span>{amount}</span>
+							<span>{inputValues.amount}</span>
 						</div>
 						<div className={styles.inputGroup}>
 							<label htmlFor='title'>Title</label>

@@ -60,7 +60,6 @@ export default function TransitionsModal(props) {
 							</div>
 							<input
 								type='tel'
-								maxLength='10'
 								name=''
 								id=''
 								placeholder='Enter Your Phone'

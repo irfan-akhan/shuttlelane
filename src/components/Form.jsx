@@ -120,7 +120,6 @@ export default function Form() {
 									/>
 									<input
 										type='tel'
-										maxLength='10'
 										required
 										name=''
 										id=''
@@ -128,7 +127,6 @@ export default function Form() {
 									/>
 									<input
 										type='tel'
-										maxLength='10'
 										required
 										name=''
 										id=''

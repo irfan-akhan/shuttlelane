@@ -287,7 +287,6 @@ const CarBooking = () => {
 								style={inputStyles}
 								type='tel'
 								placeholder='Driver Phone Number'
-								maxLength='10'
 								id='mobile'
 								name='mobile'
 								onChange={onChangeHandler}

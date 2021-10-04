@@ -193,7 +193,6 @@ const newForm = () => {
 									value={driverInput.mobile}
 									onChange={onChangeHandler}
 									type='tel'
-									maxLength='10'
 									required
 									name='mobile'
 									placeholder='Phone'
@@ -209,7 +208,6 @@ const newForm = () => {
 									value={driverInput.altMobile}
 									onChange={onChangeHandler}
 									type='tel'
-									maxLength='10'
 									required
 									name='altMobile'
 									placeholder='Alternate Number'
@@ -431,7 +429,6 @@ const newForm = () => {
 											value={driverInput.eMobile}
 											onChange={onChangeHandler}
 											type='tel'
-											maxLength='10'
 											name='eMobile'
 											placeholder='Phone Number'
 										/>

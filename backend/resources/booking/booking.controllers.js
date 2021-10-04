@@ -2,6 +2,13 @@ const sendSMS = require('../../utils/twilio');
 const sendMAIL = require('../../utils/sendgrid');
 const sendBookingEmail = require('../../utils/sendGridSelf');
 
+const currencySymbols = {
+	dollar: '$',
+	euro: '€',
+	pound: '£',
+	niera: '₦',
+};
+
 const Booking = require('./booking.model');
 
 const getAll = async (req, res) => {
@@ -53,10 +60,11 @@ Thank you for using ShuttleLane.`;
 					pickupAddress: data.pickupAddress,
 					dropoffAddress: data.dropoffAirport,
 					people: `${data.passengers}`,
-					total: `${data.amount} ${data.currency}`,
-					contact: `${data.email} ${data.countryCode}${data.mobile}.`,
+					email: `${data.email}`,
+					phone: `${data.countryCode}${data.mobile}.`,
 					passengerCount: data.carCapacity,
 					luggageCount: data.carLuggage,
+					total: currencySymbols[data.currency]` ${data.amount}.`,
 				},
 			};
 			selfmail =
@@ -125,7 +133,8 @@ Thank you for using ShuttleLane.`;
 						: '' + ' ' + data.currency
 						? data.currency + '(s)'
 						: ' ',
-					contact: `${data.email} ${data.countryCode}${data.mobile}.`,
+					email: `${data.email}`,
+					phone: `${data.countryCode}${data.mobile}.`,
 
 					passengerCount: data.carCapacity,
 					luggageCount: data.carLuggage,

@@ -17,7 +17,6 @@ export default class RegisterPriorityPass extends Component {
 					</div>
 					<input
 						type='tel'
-						maxLength='10'
 						name=''
 						id=''
 						placeholder='Enter Your Phone'

@@ -3,6 +3,13 @@ const sendBookingEmail = require('../../utils/sendGridSelf');
 const sendMAIL = require('../../utils/sendgrid');
 const Car = require('./car.model');
 
+const currencySymbols = {
+	dollar: '$',
+	euro: '€',
+	pound: '£',
+	niera: '₦',
+};
+
 // controllers
 
 const getAll = async (req, res) => {
@@ -68,12 +75,10 @@ Thank you for using ShuttleLane.`;
 				pickup: data.pickupAddress,
 				destination: data.destination,
 				people: `${data.passengers} `,
-				total: data.amount
-					? data.amount
-					: '' + ' ' + data.currency
-					? data.currency + '(s)'
-					: ' ',
-				contact: `${data.email} ${data.countryCode} ${data.mobile}.`,
+				total: currencySymbols[data.currency]` ${data.amount}`,
+
+				email: `${data.email}`,
+				phone: `${data.countryCode}${data.mobile}.`,
 			},
 		};
 

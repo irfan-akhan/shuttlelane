@@ -73,22 +73,30 @@ const AirportTransferBooking = () => {
 			progress: undefined,
 		});
 
-		let data = {
-			serviceStatus: updateFields.status,
-			assignedDriver: [
-				{
-					name: updateFields.name,
-					mobile: updateFields.mobile,
-				},
-			],
-			assignedCar: [
-				{
-					plateNumber: updateFields.plateNumber,
-					color: updateFields.color,
-					type: updateFields.type,
-				},
-			],
-		};
+		let data = {};
+
+		updateFields.status && updateFields.status.trim()
+			? (data.serviceStatus = updateFields.status)
+			: null;
+		data.assignedDriver = updateFields.name
+			? [
+					{
+						name: updateFields.name,
+						mobile: updateFields.mobile,
+					},
+			  ]
+			: null;
+		data.assignedCar =
+			updateFields.plateNumber || updateFields.color
+				? [
+						{
+							plateNumber: updateFields.plateNumber,
+							color: updateFields.color,
+							type: updateFields.type,
+						},
+				  ]
+				: null;
+
 		let id = selectedItem._id;
 
 		fetch(`https://shuttlelane.com/api/booking/airport/${id}`, {
@@ -342,7 +350,6 @@ const AirportTransferBooking = () => {
 								style={inputStyles}
 								type='tel'
 								placeholder='Driver Phone Number'
-								maxLength='10'
 								id='mobile'
 								name='mobile'
 								onChange={onChangeHandler}

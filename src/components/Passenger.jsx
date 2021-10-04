@@ -791,7 +791,6 @@ const Passenger = ({ values, handler }) => {
 							<input
 								type='tel'
 								required
-								maxLength='10'
 								name='mobile'
 								id='mobile'
 								onChange={onChangeHandler}

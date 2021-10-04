@@ -985,7 +985,6 @@ const PriorityBookingForm = ({ closeForm }) => {
 							<label htmlFor='mobile'>Mobile Number</label>
 							<input
 								type='tel'
-								maxLength='10'
 								placeholder='Mobile Number'
 								id='mobile'
 								name='mobile'

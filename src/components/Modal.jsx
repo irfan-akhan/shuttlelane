@@ -67,7 +67,6 @@ export default function TransitionsModal(props) {
 								/>
 								<input
 									type='tel'
-									maxLength='10'
 									placeholder='Mobile'
 									required
 								/>

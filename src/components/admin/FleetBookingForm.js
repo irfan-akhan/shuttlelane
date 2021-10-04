@@ -227,7 +227,6 @@ const FleetBookingForm = ({ closeForm }) => {
 									id=''
 									placeholder='Telephone'
 									required
-									maxLength='10'
 									value={inputValues.mobile}
 									onChange={onChangeHandler}
 								/>

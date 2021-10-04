@@ -66,6 +66,7 @@ function validataDate(data) {
 
 const AirportBookingForm = ({ closeForm }) => {
 	const [vehicels, setVehicels] = useState([]);
+	const [rates, setRates] = useState([]);
 	const [inputValues, setInputValues] = useState({
 		formType: '',
 		carType: '',
@@ -76,6 +77,7 @@ const AirportBookingForm = ({ closeForm }) => {
 		countryCode: '',
 		mobile: '',
 		amount: 0,
+		currency: 'niera',
 	});
 	useEffect(() => {
 		fetch('https://shuttlelane.com/api/vehicles', {
@@ -87,8 +89,35 @@ const AirportBookingForm = ({ closeForm }) => {
 		})
 			.then((res) => res.json())
 			.then((res) => setVehicels(res.data))
-			.catch((err) => {});
+			.catch((err) => {
+				console.log('vehicle fetch err', err);
+			});
+		fetch('https://shuttlelane.com/api/rates', {
+			method: 'GET',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+		})
+			.then((res) => res.json())
+			.then((res) => setRates(res.data))
+			.catch((err) => {
+				console.log('vehicle fetch err', err);
+			});
 	}, []);
+	useEffect(() => {
+		setInputValues({
+			...inputValues,
+			amount:
+				(vehicels.filter((item) => item.name == carType).length > 0
+					? vehicels.filter((item) => item.name == carType)[0].rate
+					: 0) /
+					currency ==
+				'niera'
+					? 1
+					: rates[currency],
+		});
+	}, [currency, carType]);
 	// const [transferTypeValue, setTransferTypeValue] =  useState(' ');
 	// const [CarTypeValue, setCarTypeValue] =  useState(' ');
 	// const [titleValue, setTitleValue] =  useState(' ');
@@ -277,13 +306,6 @@ const AirportBookingForm = ({ closeForm }) => {
 							<label htmlFor='carType'>Car Type</label>
 							<select
 								onChange={(e) => {
-									setInputValues({
-										...inputValues,
-										amount: vehicels.filter(
-											(item) =>
-												item.name == e.target.value
-										)[0].rate,
-									});
 									onChangeHandler(e);
 								}}
 								name='carType'
@@ -304,6 +326,23 @@ const AirportBookingForm = ({ closeForm }) => {
 											item.name
 										</option>
 									))} */}
+							</select>
+						</div>
+						<div className={styles.inputGroup}>
+							<label htmlFor='title'>Currency</label>
+							<select
+								name='currency'
+								id='currency'
+								value={inputValues.currency}
+								onChange={onChangeHandler}
+							>
+								<option value='niera'>NGN &#8358; </option>
+
+								<option value='euro'>EUR &euro;</option>
+
+								<option value='pound'>GBP &#163;</option>
+
+								<option value='dollar'>USD $</option>
 							</select>
 						</div>
 						<div className={styles.inputGroup}>

@@ -128,11 +128,8 @@ Thank you for using ShuttleLane.`;
 					pickupAddress: data.pickupAirport,
 					dropoffAddress: data.dropoffAddress,
 					people: `${data.passengers}`,
-					total: data.amount
-						? data.amount
-						: '' + ' ' + data.currency
-						? data.currency + '(s)'
-						: ' ',
+					total: currencySymbols[data.currency]` ${data.amount}.`,
+
 					email: `${data.email}`,
 					phone: `${data.countryCode}${data.mobile}.`,
 

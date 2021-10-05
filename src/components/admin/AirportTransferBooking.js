@@ -104,7 +104,7 @@ const AirportTransferBooking = () => {
 		// console.log('after car', data);
 
 		if (updateFields.status.trim()) {
-			data.status = updateFields.status;
+			data.serviceStatus = updateFields.status;
 		}
 		if (updateFields.name.trim()) {
 			data.assignedDriver = [

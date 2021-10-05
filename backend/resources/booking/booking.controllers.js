@@ -159,7 +159,7 @@ const updateOne = async (req, res) => {
 	try {
 		const doc = await Booking.findOneAndUpdate(
 			{ _id: req.params.id },
-			{ serviceStatus, assignedDriver, assignedCar },
+			{ ...req.body },
 			{ new: true }
 		);
 		if (doc) {

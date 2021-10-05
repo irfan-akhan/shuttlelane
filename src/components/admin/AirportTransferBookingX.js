@@ -28,7 +28,6 @@ const AirportTransferBooking = () => {
 		plateNumber: '',
 		color: '',
 		type: '',
-		status: '',
 	});
 	const [bookings, setBookings] = useState([]);
 	const [selectedItem, setSelectedItem] = useState();
@@ -50,7 +49,6 @@ const AirportTransferBooking = () => {
 			plateNumber: '',
 			color: '',
 			type: '',
-			status: '',
 		});
 		if (updateModalRef.current.style.display != 'none') {
 			updateModalRef.current.style.display = 'none';
@@ -77,52 +75,27 @@ const AirportTransferBooking = () => {
 
 		let data = {};
 
-		// updateFields.status && updateFields.status.trim()
-		// 	? (data.serviceStatus = updateFields.status)
-		// 	: null;
-		// console.log('after status', data);
-		// data.assignedDriver = updateFields.name
-		// 	? [
-		// 			{
-		// 				name: updateFields.name,
-		// 				mobile: updateFields.mobile,
-		// 			},
-		// 	  ]
-		// 	: null;
-		// console.log('after driver', data);
-
-		// data.assignedCar =
-		// 	updateFields.plateNumber || updateFields.color
-		// 		? [
-		// 				{
-		// 					plateNumber: updateFields.plateNumber,
-		// 					color: updateFields.color,
-		// 					type: updateFields.type,
-		// 				},
-		// 		  ]
-		// 		: null;
-		// console.log('after car', data);
-
-		if (updateFields.status.trim()) {
-			data.status = updateFields.status;
-		}
-		if (updateFields.name.trim()) {
-			data.assignedDriver = [
-				{
-					name: updateFields.name,
-					mobile: updateFields.mobile,
-				},
-			];
-		}
-		if (updateFields.plateNumber.trim() && updateFields.type.trim()) {
-			data.assignedCar = [
-				{
-					plateNumber: updateFields.plateNumber,
-					color: updateFields.color,
-					type: updateFields.type,
-				},
-			];
-		}
+		updateFields.status && updateFields.status.trim()
+			? (data.serviceStatus = updateFields.status)
+			: null;
+		data.assignedDriver = updateFields.name
+			? [
+					{
+						name: updateFields.name,
+						mobile: updateFields.mobile,
+					},
+			  ]
+			: null;
+		data.assignedCar =
+			updateFields.plateNumber || updateFields.color
+				? [
+						{
+							plateNumber: updateFields.plateNumber,
+							color: updateFields.color,
+							type: updateFields.type,
+						},
+				  ]
+				: null;
 
 		let id = selectedItem._id;
 

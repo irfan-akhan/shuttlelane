@@ -18,7 +18,7 @@ function createBooking(data, closeForm) {
 		progress: 0,
 	});
 
-	fetch('https://shuttlelane.herokuapp.com/api/booking/airport', {
+	fetch('https://shuttlelane.com/api/booking/airport', {
 		method: 'POST',
 		headers: {
 			Accept: 'application/json',
@@ -65,7 +65,7 @@ function validataDate(data) {
 }
 
 const AirportBookingForm = ({ closeForm }) => {
-	const [vehicles, setVehicles] = useState([]);
+	const [vehicels, setVehicels] = useState([]);
 	const [rates, setRates] = useState([]);
 	const [inputValues, setInputValues] = useState({
 		formType: '',
@@ -80,7 +80,7 @@ const AirportBookingForm = ({ closeForm }) => {
 		currency: 'niera',
 	});
 	useEffect(() => {
-		fetch('https://shuttlelane.herokuapp.com/api/vehicles', {
+		fetch('https://shuttlelane.com/api/vehicles', {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',
@@ -88,11 +88,11 @@ const AirportBookingForm = ({ closeForm }) => {
 			},
 		})
 			.then((res) => res.json())
-			.then((res) => setVehicles(res.data))
+			.then((res) => setVehicels(res.data))
 			.catch((err) => {
 				console.log('vehicle fetch err', err);
 			});
-		fetch('https://shuttlelane.herokuapp.com/api/rates', {
+		fetch('https://shuttlelane.com/api/rates', {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',
@@ -100,44 +100,27 @@ const AirportBookingForm = ({ closeForm }) => {
 			},
 		})
 			.then((res) => res.json())
-			.then((res) => setRates(res.data[0]))
+			.then((res) => setRates(res.data))
 			.catch((err) => {
 				console.log('vehicle fetch err', err);
 			});
 	}, []);
 	useEffect(() => {
-		console.log('vehicles', vehicles);
-		console.log('rates', rates);
-		console.log('inputValues.currency', inputValues.currency);
-		console.log('inputValues.carType', inputValues.carType);
-
-		const selectedVehicle = vehicles.filter(
-			(item) => item.name == inputValues.carType
-		);
-		console.log('selectedVehicle', selectedVehicle);
-		if (selectedVehicle && selectedVehicle.length > 0) {
-			console.log(
-				'selectedVehicle amount',
-				(selectedVehicle[0].rate / rates[inputValues.currency]
-					? parseInt(rates[inputValues.currency])
-					: 1
-				).toFixed(2)
-			);
-			const calAmount =
-				inputValues.currency == 'niera'
-					? selectedVehicle[0].rate
-					: selectedVehicle[0].rate / rates[inputValues.currency];
-			console.log('cal', calAmount);
-
-			setInputValues({
-				...inputValues,
-				carCapacity: selectedVehicle[0].capacity,
-				carLuggage: selectedVehicle[0].luggage,
-				amount: parseFloat(calAmount).toFixed(2),
-			});
-		}
-		console.log('inputValues updated', inputValues);
-	}, [inputValues.currency, inputValues.carType]);
+		setInputValues({
+			...inputValues,
+			amount:
+				(vehicels.filter((item) => item.name == carType).length > 0
+					? vehicels.filter((item) => item.name == carType)[0].rate
+					: 0) /
+					currency ==
+				'niera'
+					? 1
+					: rates[currency],
+		});
+	}, [currency, carType]);
+	// const [transferTypeValue, setTransferTypeValue] =  useState(' ');
+	// const [CarTypeValue, setCarTypeValue] =  useState(' ');
+	// const [titleValue, setTitleValue] =  useState(' ');
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
 		console.log('values are: ', inputValues);
@@ -146,15 +129,6 @@ const AirportBookingForm = ({ closeForm }) => {
 			const response = createBooking(inputValues, closeForm);
 			console.log('VACK', response);
 		} else {
-			toast.error('Please fill all fields', {
-				position: 'top-center',
-				autoClose: 2000,
-				hideProgressBar: true,
-				closeOnClick: true,
-				pauseOnHover: false,
-				draggable: false,
-				progress: undefined,
-			});
 			console.log('validation Error');
 		}
 	};
@@ -346,8 +320,8 @@ const AirportBookingForm = ({ closeForm }) => {
 								<option value='Luxury'>Luxury</option>
 								<option value='Shuttle'>Shuttle</option>
 								{/* {vehicles &&
-									vehicles.length > 0 &&
-									vehicles.map((item, idx) => (
+									vehicels.length > 0 &&
+									vehicels.map((item, idx) => (
 										<option key={idx} value={item.name}>
 											item.name
 										</option>
@@ -382,24 +356,6 @@ const AirportBookingForm = ({ closeForm }) => {
 								max='10'
 								onChange={onChangeHandler}
 								value={inputValues.passengers}
-							/>
-						</div>
-						<div className={styles.inputGroup}>
-							<label htmlFor='passengers'>Amount</label>
-							<input
-								required
-								placeholder='Amount'
-								type='number'
-								name='amount'
-								id='amount'
-								required
-								onChange={() => {}}
-								value={
-									// classes?.filter(
-									//   (item) => item.name == inputValues?.cabinClass
-									// )[0]?.rate * parseInt(inputValues.passengers) || 0
-									inputValues.amount
-								}
 							/>
 						</div>
 						<div className={styles.inputGroup}>

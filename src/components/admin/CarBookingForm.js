@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 
 import styles from '../../styles/BookingForm.module.css';
@@ -66,7 +66,7 @@ const CarBookingForm = ({ closeForm }) => {
 		pickupAddress: '',
 		destination: '',
 		time: '',
-		days: '',
+		days: 1,
 		carType: '',
 		date: '',
 		title: '',
@@ -75,11 +75,67 @@ const CarBookingForm = ({ closeForm }) => {
 		email: '',
 		countryCode: '',
 		mobile: '',
-		amount: '',
+		amount: 0,
+		currency: 'niera',
 	});
 	// const [transferTypeValue, setTransferTypeValue] =  useState(' ');
 	// const [CarTypeValue, setCarTypeValue] =  useState(' ');
-	// const [titleValue, setTitleValue] =  useState(' ');
+	const [exchangeRates, setExchangeRates] = useState({});
+	const [vehicles, setVehicles] = useState([]);
+
+	useEffect(() => {
+		fetch('https://shuttlelane.com/api/cars')
+			.then((res) => res.json())
+			.then((result) => {
+				setVehicles(result.data);
+				console.log(result);
+			})
+			.catch((error) => {});
+		fetch('https://shuttlelane.com/api/rates', {
+			method: 'GET',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+		})
+			.then((res) => res.json())
+			.then((response) => {
+				console.log('rates', response);
+				setExchangeRates(response.data[0]);
+			})
+			.catch((err) => {
+				// console.log('Request failed for rates', err);
+			});
+	}, []);
+	useEffect(() => {
+		const selectedVehicle = vehicles.filter(
+			(item) => item.name == inputValues.carType
+		);
+		console.log('selectedVehicle', selectedVehicle);
+		if (selectedVehicle && selectedVehicle.length > 0) {
+			console.log(
+				'selectedVehicle amount',
+				(selectedVehicle[0].rate / exchangeRates[inputValues.currency]
+					? parseInt(exchangeRates[inputValues.currency])
+					: 1
+				).toFixed(2)
+			);
+			const calAmount =
+				inputValues.currency == 'niera'
+					? selectedVehicle[0].rate
+					: selectedVehicle[0].rate /
+					  exchangeRates[inputValues.currency];
+			console.log('cal', calAmount);
+
+			setInputValues({
+				...inputValues,
+
+				amount: parseFloat(calAmount * inputValues.days).toFixed(2),
+			});
+		}
+		console.log('inputValues updated', inputValues);
+	}, [inputValues.carType, inputValues.days, inputValues.currency]);
+
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
 		const verified = validataDate(inputValues);
@@ -126,88 +182,16 @@ const CarBookingForm = ({ closeForm }) => {
 								<option value='' disabled selected>
 									Select Car
 								</option>
-								<option value='Ford Focus'>Ford Focus </option>
-								<option value='Ford Figo'>Ford Figo </option>
-								<option value='Ford Fusion'>
-									Ford Fusion{' '}
-								</option>
-								<option value='Ford Eco Sport'>
-									Ford Eco Sport
-								</option>
-								<option value='Toyota Camry'>
-									Toyota Camry
-								</option>
-								<option value='Volkswagon Passat'>
-									Volkswagon Passat
-								</option>
-								<option value='Toyota Corolla'>
-									Toyota Corolla
-								</option>
-								<option value='Hyundai Elentra'>
-									Hyundai Elentra
-								</option>
-								<option value='Ford Escape'>Ford Escape</option>
-								<option value='Hyundai IX35'>
-									Hyundai IX35
-								</option>
-								<option value='Hyundai Santa Fe'>
-									Hyundai Santa Fe
-								</option>
-								<option value='Toyota Rav 4'>
-									Toyota Rav 4
-								</option>
-								<option value='Honda CRV'>Honda CRV</option>
-								<option value='Toyota Sienna'>
-									Toyota Sienna
-								</option>
-								<option value='Mercedes Benz E200'>
-									Mercedes Benz E200
-								</option>
-								<option value='BMW Grancoupe 428i'>
-									BMW Grancoupe 428i
-								</option>
-								<option value='Toyota Camry 2018'>
-									Toyota Camry 2018
-								</option>
-								<option value='Toyota Prado 2014'>
-									Toyota Prado 2014
-								</option>
-								<option value='Toyota Prado 2017'>
-									Toyota Prado 2017
-								</option>
-								<option value='Toyota Prado 2018'>
-									Toyota Prado 2018
-								</option>
-								<option value='Toyota Prado 2020'>
-									Toyota Prado 2020
-								</option>
-								<option value='Toyota Landcruiser 2018'>
-									Toyota Landcruiser 2018
-								</option>
-								<option value='Ford Edge'>Ford Edge</option>
-								<option value='Ford Explorer'>
-									Ford Explorer
-								</option>
-								<option value='Toyota Hiace'>
-									Toyota Hiace
-								</option>
-								<option value='Toyota Coaster'>
-									Toyota Coaster
-								</option>
+								{vehicles.map((item) => {
+									return (
+										<option value={item.name}>
+											{item.name}
+										</option>
+									);
+								})}
 							</select>
 						</div>
-						<div className={styles.inputGroup}>
-							<label htmlFor='amount'>Amount</label>
-							<input
-								required
-								type='number'
-								placeholder='Amount'
-								id='amount'
-								name='amount'
-								onChange={onChangeHandler}
-								value={inputValues.amount}
-							/>
-						</div>
+
 						<div className={styles.inputGroup}>
 							<label htmlFor='date'>Date</label>
 							<input
@@ -248,6 +232,23 @@ const CarBookingForm = ({ closeForm }) => {
 							/>
 						</div>
 						<div className={styles.inputGroup}>
+							<label htmlFor='title'>Currency</label>
+							<select
+								name='currency'
+								id='currency'
+								value={inputValues.currency}
+								onChange={onChangeHandler}
+							>
+								<option value='niera'> &#8358; NGN</option>
+
+								<option value='euro'> &euro; EUR</option>
+
+								<option value='pound'> &#163; GBP</option>
+
+								<option value='dollar'> $ USD</option>
+							</select>
+						</div>
+						<div className={styles.inputGroup}>
 							<label htmlFor='days'>Days</label>
 							<input
 								required
@@ -257,6 +258,18 @@ const CarBookingForm = ({ closeForm }) => {
 								name='days'
 								onChange={onChangeHandler}
 								value={inputValues.days}
+							/>
+						</div>
+						<div className={styles.inputGroup}>
+							<label htmlFor='amount'>Amount</label>
+							<input
+								required
+								type='number'
+								placeholder='Amount'
+								id='amount'
+								name='amount'
+								onChange={() => {}}
+								value={inputValues.amount}
 							/>
 						</div>
 						<div className={styles.inputGroup}>

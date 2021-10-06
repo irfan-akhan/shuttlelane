@@ -94,12 +94,11 @@ Thank you for using ShuttleLane.`;
 
 const updateOne = async (req, res) => {
 	console.log('UPDATE CAR BOOKING', req.body);
-	const { serviceStatus, assignedDriver, assignedCar } = req.body;
 
 	try {
 		const doc = await Car.findOneAndUpdate(
 			{ _id: req.params.id },
-			{ serviceStatus, assignedDriver, assignedCar },
+			req.body,
 			{ new: true }
 		);
 

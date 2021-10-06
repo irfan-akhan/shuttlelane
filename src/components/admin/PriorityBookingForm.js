@@ -66,8 +66,10 @@ const PriorityBookingForm = ({ closeForm }) => {
 		amount: 0,
 		passengers: '',
 		cabinClass: '',
+		currency: 'niera',
 	});
 	const [classes, setClasses] = useState([]);
+	const [exchangeRates, setExchangeRates] = useState({});
 
 	useEffect(() => {
 		fetch('https://shuttlelane.com/api/priority', {
@@ -81,7 +83,56 @@ const PriorityBookingForm = ({ closeForm }) => {
 				setClasses(result.data);
 			})
 			.catch(() => {});
+		fetch('https://shuttlelane.com/api/rates', {
+			method: 'GET',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+		})
+			.then((res) => res.json())
+			.then((response) => {
+				console.log('rates', response);
+				setExchangeRates(response.data[0]);
+			})
+			.catch((err) => {
+				// console.log('Request failed for rates', err);
+			});
 	}, []);
+
+	// const amount =
+	// classes?.filter(
+	// 	(item) =>
+	// 		item.name == e.target.value
+	// )[0]?.rate *
+	// parseInt(inputValues?.passengers);
+
+	useEffect(() => {
+		console.log('passengers', inputValues.cabinClass);
+		const selectedClass = classes?.filter(
+			(item) => item.name == inputValues.cabinClass
+		)[0];
+		console.log('selectedClass', selectedClass);
+		console.log('passengers', inputValues.passengers);
+		console.log('currency', inputValues.currency);
+		if (selectedClass) {
+			const calAmount =
+				inputValues.currency == 'niera'
+					? selectedClass.rate
+					: selectedClass.rate / exchangeRates[inputValues.currency];
+			console.log('cal', calAmount);
+
+			setInputValues({
+				...inputValues,
+
+				amount: parseFloat(calAmount * inputValues.passengers).toFixed(
+					2
+				),
+			});
+		}
+		console.log('inputValues updated', inputValues);
+	}, [inputValues.cabinClass, inputValues.passengers, inputValues.currency]);
+
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
 		const verified = validataDate(inputValues);
@@ -90,15 +141,8 @@ const PriorityBookingForm = ({ closeForm }) => {
 		} else {
 		}
 	};
-	const onChangeHandler = (e, calcAmount) => {
-		if (calcAmount) {
-			setInputValues({
-				...inputValues,
-				[e.target.name]: e.target.value,
-				amount: calcAmount,
-			});
-		} else
-			setInputValues({ ...inputValues, [e.target.name]: e.target.value });
+	const onChangeHandler = (e) => {
+		setInputValues({ ...inputValues, [e.target.name]: e.target.value });
 	};
 	return (
 		<>
@@ -161,17 +205,9 @@ const PriorityBookingForm = ({ closeForm }) => {
 						<div className={styles.inputGroup}>
 							<label htmlFor='cabinClass'>Cabin Class</label>
 							<select
-								onChange={(e) => {
-									const amount =
-										classes?.filter(
-											(item) =>
-												item.name == e.target.value
-										)[0]?.rate *
-										parseInt(inputValues?.passengers);
-									onChangeHandler(e, amount);
-								}}
 								name='cabinClass'
 								id='cabinClass'
+								onChange={onChangeHandler}
 							>
 								<option value='' selected disabled>
 									Select Cabin Class
@@ -220,6 +256,23 @@ const PriorityBookingForm = ({ closeForm }) => {
 								}}
 								value={inputValues.passengers}
 							/>
+						</div>
+						<div className={styles.inputGroup}>
+							<label htmlFor='title'>Currency</label>
+							<select
+								name='currency'
+								id='currency'
+								value={inputValues.currency}
+								onChange={onChangeHandler}
+							>
+								<option value='niera'> &#8358; NGN</option>
+
+								<option value='euro'> &euro; EUR</option>
+
+								<option value='pound'> &#163; GBP</option>
+
+								<option value='dollar'> $ USD</option>
+							</select>
 						</div>
 						<div className={styles.inputGroup}>
 							<label htmlFor='passengers'>Amount</label>

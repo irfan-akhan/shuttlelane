@@ -102,7 +102,6 @@ const CarBooking = () => {
 		fetch(`https://shuttlelane.com/api/booking/car/${id}`, {
 			method: 'PUT',
 			headers: {
-				// wan ya illl call you back
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
 			},

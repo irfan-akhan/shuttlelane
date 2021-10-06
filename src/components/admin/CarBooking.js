@@ -27,6 +27,7 @@ const CarBooking = () => {
 		plateNumber: '',
 		color: '',
 		type: '',
+		status: '',
 	});
 	const [selectedItem, setSelectedItem] = useState();
 	const [reload, setReload] = useState(false);
@@ -54,6 +55,7 @@ const CarBooking = () => {
 			plateNumber: '',
 			color: '',
 			type: '',
+			status: '',
 		});
 		if (updateModalRef.current.style.display != 'none') {
 			updateModalRef.current.style.display = 'none';
@@ -72,22 +74,29 @@ const CarBooking = () => {
 			progress: undefined,
 		});
 
-		let data = {
-			serviceStatus: updateFields.status,
-			assignedDriver: [
+		let data = {};
+
+		if (updateFields.status.trim()) {
+			data.serviceStatus = updateFields.status;
+		}
+		if (updateFields.name.trim()) {
+			data.assignedDriver = [
 				{
 					name: updateFields.name,
 					mobile: updateFields.mobile,
 				},
-			],
-			assignedCar: [
+			];
+		}
+		if (updateFields.plateNumber.trim() && updateFields.type.trim()) {
+			data.assignedCar = [
 				{
 					plateNumber: updateFields.plateNumber,
 					color: updateFields.color,
 					type: updateFields.type,
 				},
-			],
-		};
+			];
+		}
+
 		let id = selectedItem._id;
 
 		fetch(`https://shuttlelane.com/api/booking/car/${id}`, {

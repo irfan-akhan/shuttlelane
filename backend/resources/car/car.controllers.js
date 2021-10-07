@@ -40,9 +40,9 @@ const createOne = async (req, res) => {
     });
     const data = doc.toJSON();
     const amount = data.currency.includes("niera")
-      ? `₦ ${data.amount}.`
+      ? `₦ ${data.amount}`
       : data.currency.includes("dollar")
-      ? `$ ${data.amount}.`
+      ? `$ ${data.amount}`
       : data.currency.includes("euro")
       ? `€ ${data.amount}`
       : `£ ${data.amount}`;
@@ -73,7 +73,7 @@ Thank you for using ShuttleLane.`;
 
       // template_id: 'd-3398e00b9b14498385c2909a6d70204b',
       dynamic_template_data: {
-        username: `${data.title} ${data.firstName}`,
+        username: `${data.title} ${data.firstName} ${data.lastName}`,
         bookingRef: data.bookingReference,
         class: data.carType,
         date: date,
@@ -85,7 +85,7 @@ Thank you for using ShuttleLane.`;
         total: amount,
 
         email: `${data.email}`,
-        phone: `${data.countryCode}${data.mobile}.`,
+        phone: `${data.countryCode}${data.mobile}`,
       },
     };
 

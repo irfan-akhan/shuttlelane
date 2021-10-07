@@ -38,9 +38,9 @@ const createOne = async (req, res) => {
     }
     const data = doc.toJSON();
     const amount = data.currency.includes("niera")
-      ? `₦ ${data.amount}.`
+      ? `₦ ${data.amount}`
       : data.currency.includes("dollar")
-      ? `$ ${data.amount}.`
+      ? `$ ${data.amount}`
       : data.currency.includes("euro")
       ? `€ ${data.amount}`
       : `£ ${data.amount}`;
@@ -74,7 +74,7 @@ Need assistance? You can reach us on +2349030009452, +2349030009486 or +23490300
 
       // template_id: 'd-3398e00b9b14498385c2909a6d70204b',
       dynamic_template_data: {
-        username: `${data.title} ${data.firstName}`,
+        username: `${data.title} ${data.firstName} ${data.lastName}`,
         bookingRef: data.bookingReference,
         airport: data.airport,
         class: data.carType,
@@ -87,7 +87,7 @@ Need assistance? You can reach us on +2349030009452, +2349030009486 or +23490300
         people: `${data.passengers}`,
         total: amount,
         email: `${data.email}`,
-        phone: `${data.countryCode}${data.mobile}.`,
+        phone: `${data.countryCode}${data.mobile}`,
       },
     };
     sendSMS(`${data.countryCode}${data.mobile}`, sms);

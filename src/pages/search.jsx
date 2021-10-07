@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import {
   FlightLand,
+  Flight,
   Today,
   AccessTime,
   LocalAirport,
@@ -439,7 +440,7 @@ const Search = (props) => {
                       : ""}
                   </Typography>
                   <br />
-
+                  {console.log(booking)}
                   {booking?.arrivalDate ? (
                     <Typography variant="paragraph" className={success.para}>
                       Flight Number:
@@ -597,7 +598,7 @@ const Search = (props) => {
             )}
           </div>
         </Grid>
-        {booking?.bookingType != "priority" && (
+        {booking?.bookingType != "priority" ? (
           <Grid
             item
             container
@@ -675,6 +676,57 @@ const Search = (props) => {
               </div>
             </div>
           </Grid>
+        ) : (
+          <>
+            <Grid
+              item
+              container
+              style={{
+                border: "1px solid #ccc",
+                borderBottom: "none",
+              }}
+            >
+              <div
+                className={success.detailContainer}
+                style={{ width: "100%" }}
+              >
+                <div className={success.itemDetails}>
+                  <div className={success.icon}>
+                    <Flight />
+                  </div>
+                  <div
+                    className={success.detail}
+                    style={{ marginLeft: "1.5rem" }}
+                  >
+                    <Typography variant="paragraph">
+                      <strong>Airline</strong>
+                    </Typography>
+                    <br />
+                    <Typography variant="paragraph" className={success.para}>
+                      {booking?.airline}
+                    </Typography>
+                  </div>
+                </div>
+                <div className={success.itemDetails}>
+                  <div className={success.icon}>
+                    <Flight />
+                  </div>
+                  <div
+                    className={success.detail}
+                    style={{ marginLeft: "1.5rem" }}
+                  >
+                    <Typography variant="paragraph">
+                      <strong>Flight Number</strong>
+                    </Typography>
+                    <br />
+                    <Typography variant="paragraph" className={success.para}>
+                      {booking?.flightNumber}
+                    </Typography>
+                  </div>
+                </div>
+              </div>
+            </Grid>
+          </>
         )}
         <Grid
           item

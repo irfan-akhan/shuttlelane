@@ -129,7 +129,7 @@ Thank you for using ShuttleLane.`;
 
         // template_id: 'd-3398e00b9b14498385c2909a6d70204b',
         dynamic_template_data: {
-          username: `${data.title} ${data.firstName}`,
+          username: `${data.title} ${data.firstName} ${data.lastName}`,
           bookingRef: data.bookingReference,
           class: data.carType,
           date: date,

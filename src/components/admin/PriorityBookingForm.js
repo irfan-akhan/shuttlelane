@@ -188,6 +188,7 @@ const PriorityBookingForm = ({ closeForm }) => {
             <div className={styles.inputGroup}>
               <label htmlFor="cabinClass">Cabin Class</label>
               <select
+required
                 name="cabinClass"
                 id="cabinClass"
                 onChange={onChangeHandler}
@@ -205,6 +206,7 @@ const PriorityBookingForm = ({ closeForm }) => {
             <div className={styles.inputGroup}>
               <label htmlFor="flightNumber">Flight number</label>
               <input
+required
                 type="text"
                 placeholder="Flight number"
                 id="flightNumber"
@@ -220,6 +222,8 @@ const PriorityBookingForm = ({ closeForm }) => {
                 placeholder="Airline"
                 id="airline"
                 name="airline"
+value={{inputValues.airline}}
+required
                 onChange={onChangeHandler}
               />
             </div>
@@ -249,6 +253,7 @@ const PriorityBookingForm = ({ closeForm }) => {
               <select
                 name="currency"
                 id="currency"
+required
                 value={inputValues.currency}
                 onChange={onChangeHandler}
               >
@@ -282,6 +287,7 @@ const PriorityBookingForm = ({ closeForm }) => {
             <div className={styles.inputGroup}>
               <label htmlFor="arrivalDate">Select Date</label>
               <input
+required
                 type="date"
                 min={date}
                 placeholder="Date"
@@ -298,13 +304,14 @@ const PriorityBookingForm = ({ closeForm }) => {
                 placeholder="Select Time"
                 id="time"
                 name="time"
+required
                 onChange={onChangeHandler}
                 value={inputValues.time}
               />
             </div>
             <div className={styles.inputGroup}>
               <label htmlFor="title">Title</label>
-              <select onChange={onChangeHandler} name="title" id="title">
+              <select onChange={onChangeHandler} required name="title" id="title">
                 <option value=" " selected>
                   Select title
                 </option>
@@ -321,6 +328,7 @@ const PriorityBookingForm = ({ closeForm }) => {
                 placeholder="First Name"
                 id="firstName"
                 name="firstName"
+required
                 onChange={onChangeHandler}
                 value={inputValues.firstName}
               />
@@ -328,6 +336,7 @@ const PriorityBookingForm = ({ closeForm }) => {
             <div className={styles.inputGroup}>
               <label htmlFor="lastName">Last Name</label>
               <input
+required
                 type="text"
                 placeholder="Last Name"
                 id="lastName"
@@ -339,6 +348,7 @@ const PriorityBookingForm = ({ closeForm }) => {
             <div className={styles.inputGroup}>
               <label htmlFor="email">Email</label>
               <input
+required
                 type="email"
                 placeholder="Email Address"
                 id="email"
@@ -353,6 +363,7 @@ const PriorityBookingForm = ({ closeForm }) => {
                 onChange={onChangeHandler}
                 name="countryCode"
                 id="countryCode"
+required
               >
                 <option value="" selected>
                   Select Country Code
@@ -1013,6 +1024,7 @@ const PriorityBookingForm = ({ closeForm }) => {
             <div className={styles.inputGroup}>
               <label htmlFor="mobile">Mobile Number</label>
               <input
+required
                 type="tel"
                 placeholder="Mobile Number"
                 id="mobile"

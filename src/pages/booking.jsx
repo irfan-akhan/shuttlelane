@@ -298,13 +298,16 @@ const Booking = () => {
 									: 0
 							}
 							priorityPassCount={priorityPassCount}
-							setPriorityPassCount={setPriorityPassCount}
+							priorityPassCounthandler={(value) => {
+								setPriorityPassCount(value);
+							}}
 							airportAmount={airportAmount.toFixed(2)}
 							amount={bookingObj.amount}
 							isPriorityPass={isPriorityPass}
 							setIsPriorityPass={() => {
 								setIsPriorityPass((prev) => !prev);
 								setSelectedCabinClass('');
+								setPriorityPassCount(1);
 							}}
 							setSelectedCabinClass={(value) => {
 								setSelectedCabinClass(value);

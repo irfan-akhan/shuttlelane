@@ -101,11 +101,7 @@ const Summary = ({
 								</select>
 								<select
 									style={{ width: '80%', margin: '0' }}
-									onChange={(e) => {
-										priorityPassCountHandler(
-											e.target.value
-										);
-									}}
+									onChange={priorityPassCountHandler}
 									// value={priorityPassCount}
 								>
 									{[1, 2, 3, 4, 5, 6].map((item, idx) => {

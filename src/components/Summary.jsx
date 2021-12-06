@@ -98,22 +98,23 @@ const Summary = ({
 										);
 									})}
 								</select>
-
-								<div className='inputControl'>
-									{/* <div className={next.inputControl}> */}
-									<span>
-										<Person fontSize='small' />
-									</span>
-									<input
-										type='number'
-										value={priorityPassCount}
-										onChange={(e) => {
-											setPriorityPassCount(
-												parseInt(e.target.value)
-											);
-										}}
-									/>
-								</div>
+								<select
+									style={{ width: '80%', margin: '0' }}
+									onChange={(e) => {
+										setPriorityPassCount(
+											parseInt(e.target.value)
+										);
+									}}
+									value={priorityPassCount}
+								>
+									{[1, 2, 3, 4, 5, 6].map((item, idx) => {
+										return (
+											<option key={idx} value={item}>
+												{item}
+											</option>
+										);
+									})}
+								</select>
 							</>
 						) : (
 							''

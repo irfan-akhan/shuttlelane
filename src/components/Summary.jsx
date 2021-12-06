@@ -28,6 +28,7 @@ const Summary = ({
 			name: e.target.value,
 		});
 	};
+	console.log('Top summary PriorityPassCount', priorityPassCount);
 	return (
 		<div className={styles.card}>
 			<h4>Booking Summary</h4>
@@ -102,7 +103,7 @@ const Summary = ({
 									style={{ width: '80%', margin: '0' }}
 									onChange={(e) => {
 										console.log(
-											'summary setPriorityPassCount',
+											'onchange summary setPriorityPassCount',
 											e.target.value
 										);
 										setPriorityPassCount(

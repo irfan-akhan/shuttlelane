@@ -102,10 +102,7 @@ const Summary = ({
 								<select
 									style={{ width: '80%', margin: '0' }}
 									onChange={(e) => {
-										console.log(
-											'onchange tag',
-											e.target.value
-										);
+										console.log('onchange tag', e.target);
 										priorityPassCountHandler(
 											e.target.value
 										);

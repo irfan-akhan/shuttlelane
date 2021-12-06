@@ -493,9 +493,16 @@ const AirportTransferBooking = () => {
 												<p style={{ color: 'green' }}>
 													<strong>
 														Cabin Class:
-													</strong>{' '}
+													</strong>
 													&nbsp;
-													{item.cabinClass}
+													{item.cabinClass} <br />
+													<strong>
+														Number of passes:
+													</strong>
+													&nbsp;
+													{item.priorityPassCount
+														? item.priorityPassCount
+														: 'Not available'}
 												</p>
 											) : undefined}
 

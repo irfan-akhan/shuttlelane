@@ -59,7 +59,7 @@ const Booking = () => {
 	const [exchangeRates, setExchangeRates] = useState({});
 	const [cabinClasses, setCabinClasses] = useState([]);
 	const [isPriorityPass, setIsPriorityPass] = useState(false);
-	const [priorityPassCount, setPriorityPassCount] = useState('1');
+	const [passCount, setPassCount] = useState(1);
 	const [selectedCabinClass, setSelectedCabinClass] = useState(null);
 	useEffect(() => {
 		fetch('https://shuttlelane.com/api/priority')
@@ -297,9 +297,9 @@ const Booking = () => {
 									? priorityPassAmount.toFixed(2)
 									: 0
 							}
-							priorityPassCount={priorityPassCount}
+							priorityPassCount={passCount}
 							setPriorityPassCount={(value) => {
-								setPriorityPassCount(value);
+								setPassCount(value);
 							}}
 							airportAmount={airportAmount.toFixed(2)}
 							amount={bookingObj.amount}
@@ -341,6 +341,10 @@ const Booking = () => {
 									? priorityPassAmount.toFixed(2)
 									: 0
 							}
+							priorityPassCount={passCount}
+							setPriorityPassCount={(value) => {
+								setPassCount(value);
+							}}
 							airportAmount={airportAmount.toFixed(2)}
 							amount={bookingObj.amount}
 							isPriorityPass={isPriorityPass}

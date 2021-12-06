@@ -1,6 +1,7 @@
 // import { Grid } from '@material-ui/core';
 import styles from '../styles/Summary.module.css';
 import { useState, useEffect } from 'react';
+import { Person } from '@material-ui/icons';
 
 const Summary = ({
 	amount,
@@ -18,6 +19,8 @@ const Summary = ({
 	selectedCabinClass,
 	priorityPassAmount,
 	airportAmount,
+	priorityPassCount,
+	setPriorityPassCount,
 }) => {
 	// console.log(priorityPassAmount, '+', airportAmount, '=', amount);
 	const onChangeHandler = (e) => {
@@ -77,23 +80,41 @@ const Summary = ({
 							)}
 						</div>
 						{isPriorityPass === true ? (
-							<select
-								style={{ width: '80%', margin: '0' }}
-								onChange={(e) =>
-									setSelectedCabinClass(e.target.value)
-								}
-							>
-								<option selected disabled>
-									Select Cabin Class
-								</option>
-								{cabinClasses.map((item, idx) => {
-									return (
-										<option key={idx} value={item.name}>
-											{item.name}
-										</option>
-									);
-								})}
-							</select>
+							<>
+								<select
+									style={{ width: '80%', margin: '0' }}
+									onChange={(e) =>
+										setSelectedCabinClass(e.target.value)
+									}
+								>
+									<option selected disabled>
+										Select Cabin Class
+									</option>
+									{cabinClasses.map((item, idx) => {
+										return (
+											<option key={idx} value={item.name}>
+												{item.name}
+											</option>
+										);
+									})}
+								</select>
+
+								<div className='inputControl'>
+									{/* <div className={next.inputControl}> */}
+									<span>
+										<Person fontSize='small' />
+									</span>
+									<input
+										type='number'
+										value={priorityPassCount}
+										onChange={(e) => {
+											setPriorityPassCount(
+												parseInt(e.target.value)
+											);
+										}}
+									/>
+								</div>
+							</>
 						) : (
 							''
 						)}

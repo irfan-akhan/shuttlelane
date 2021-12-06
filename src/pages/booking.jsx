@@ -59,6 +59,7 @@ const Booking = () => {
 	const [exchangeRates, setExchangeRates] = useState({});
 	const [cabinClasses, setCabinClasses] = useState([]);
 	const [isPriorityPass, setIsPriorityPass] = useState(false);
+	const [priorityPassCount, setPriorityPassCount] = useState(1);
 	const [selectedCabinClass, setSelectedCabinClass] = useState(null);
 	useEffect(() => {
 		fetch('https://shuttlelane.com/api/priority')
@@ -210,20 +211,24 @@ const Booking = () => {
 		  );
 	const priorityPassAmount = isPriorityPass
 		? isNaN(
-				parseFloat(
+				(parseFloat(
 					cabinClasses.filter(
 						(cabin) => cabin.name == selectedCabinClass
 					)[0]?.rate
-				) / parseFloat(exchangeRate)
+				) /
+					parseFloat(exchangeRate)) *
+					priorityPassCount
 		  )
 			? 0.0
 			: parseFloat(
 					(
-						parseFloat(
+						(parseFloat(
 							cabinClasses.filter(
 								(cabin) => cabin.name == selectedCabinClass
 							)[0]?.rate
-						) / parseFloat(exchangeRate)
+						) /
+							parseFloat(exchangeRate)) *
+						priorityPassCount
 					).toFixed(2)
 			  )
 		: 0.0;
@@ -232,6 +237,7 @@ const Booking = () => {
 		...passengerDetails,
 		...data,
 		isPriorityPass: isPriorityPass,
+		priorityPassCount: priorityPassCount,
 		amount: parseFloat(airportAmount + priorityPassAmount).toFixed(2),
 		carCapacity: carRates?.filter((car) => car.name == selectedCar)[0]
 			?.capacity,
@@ -292,6 +298,8 @@ const Booking = () => {
 									? priorityPassAmount.toFixed(2)
 									: 0
 							}
+							priorityPassCount={priorityPassCount}
+							setPriorityPassCount={setPriorityPassCount}
 							airportAmount={airportAmount.toFixed(2)}
 							amount={bookingObj.amount}
 							isPriorityPass={isPriorityPass}

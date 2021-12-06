@@ -228,15 +228,15 @@ const Booking = () => {
 					).toFixed(2)
 			  )
 		: 0.0;
-	priorityPassAmount = priorityPassAmount * parseInt(priorityPassCount);
+	priorityPassAmount = priorityPassAmount * parseInt(passCount);
 	console.log('priorityPassAmount i bookin', priorityPassAmount);
-	console.log('priorityPassCount i bookin', priorityPassCount);
+	console.log('priorityPassCount i bookin', passCount);
 	bookingObj = {
 		carType: selectedCar,
 		...passengerDetails,
 		...data,
 		isPriorityPass: isPriorityPass,
-		priorityPassCount: priorityPassCount,
+		priorityPassCount: passCount,
 		amount: parseFloat(airportAmount + priorityPassAmount).toFixed(2),
 		carCapacity: carRates?.filter((car) => car.name == selectedCar)[0]
 			?.capacity,
@@ -307,7 +307,7 @@ const Booking = () => {
 							setIsPriorityPass={() => {
 								setIsPriorityPass((prev) => !prev);
 								setSelectedCabinClass('');
-								setPriorityPassCount(1);
+								setPassCount(1);
 							}}
 							setSelectedCabinClass={(value) => {
 								setSelectedCabinClass(value);

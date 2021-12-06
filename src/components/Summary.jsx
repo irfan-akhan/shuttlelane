@@ -20,7 +20,7 @@ const Summary = ({
 	priorityPassAmount,
 	airportAmount,
 	priorityPassCount,
-	priorityPassCountHandler,
+	setPriorityPassCount,
 }) => {
 	// console.log(priorityPassAmount, '+', airportAmount, '=', amount);
 	const onChangeHandler = (e) => {
@@ -28,6 +28,7 @@ const Summary = ({
 			name: e.target.value,
 		});
 	};
+
 	console.log('Top summary PriorityPassCount', priorityPassCount);
 	return (
 		<div className={styles.card}>
@@ -102,12 +103,12 @@ const Summary = ({
 								<select
 									style={{ width: '80%', margin: '0' }}
 									onChange={(e) => {
-										console.log('onchange tag', e.target);
-										priorityPassCountHandler(
+										console.log(
+											'onchange tag',
 											e.target.value
 										);
+										setPriorityPassCount(e.target.value);
 									}}
-									// value={priorityPassCount}
 								>
 									{[1, 2, 3, 4, 5, 6].map((item, idx) => {
 										return (

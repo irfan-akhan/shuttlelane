@@ -209,29 +209,27 @@ const Booking = () => {
 					) / parseFloat(exchangeRate)
 				).toFixed(2)
 		  );
-	const priorityPassAmount = isPriorityPass
+	let priorityPassAmount = isPriorityPass
 		? isNaN(
-				(parseFloat(
+				parseFloat(
 					cabinClasses.filter(
 						(cabin) => cabin.name == selectedCabinClass
 					)[0]?.rate
-				) /
-					parseFloat(exchangeRate)) *
-					priorityPassCount
+				) / parseFloat(exchangeRate)
 		  )
 			? 0.0
 			: parseFloat(
 					(
-						(parseFloat(
+						parseFloat(
 							cabinClasses.filter(
 								(cabin) => cabin.name == selectedCabinClass
 							)[0]?.rate
-						) /
-							parseFloat(exchangeRate)) *
-						priorityPassCount
+						) / parseFloat(exchangeRate)
 					).toFixed(2)
 			  )
 		: 0.0;
+	priorityPassAmount = priorityPassAmount * priorityPassCount;
+	console.log('priorityPassAmount i bookin', priorityPassAmount);
 	bookingObj = {
 		carType: selectedCar,
 		...passengerDetails,

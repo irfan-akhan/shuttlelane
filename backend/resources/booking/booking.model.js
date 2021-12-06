@@ -22,6 +22,9 @@ const bookingSchema = new mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
+		priorityPassCount: {
+			type: String,
+		},
 		cabinClass: String,
 		serviceStatus: {
 			type: String,

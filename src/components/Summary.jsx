@@ -101,6 +101,10 @@ const Summary = ({
 								<select
 									style={{ width: '80%', margin: '0' }}
 									onChange={(e) => {
+										console.log(
+											'summary setPriorityPassCount',
+											e.target.value
+										);
 										setPriorityPassCount(
 											parseInt(e.target.value)
 										);

@@ -230,6 +230,7 @@ const Booking = () => {
 		: 0.0;
 	priorityPassAmount = priorityPassAmount * priorityPassCount;
 	console.log('priorityPassAmount i bookin', priorityPassAmount);
+	console.log('priorityPassCount i bookin', priorityPassCount);
 	bookingObj = {
 		carType: selectedCar,
 		...passengerDetails,

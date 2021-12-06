@@ -20,7 +20,7 @@ const Summary = ({
 	priorityPassAmount,
 	airportAmount,
 	priorityPassCount,
-	priorityPassCounthandler,
+	priorityPassCountHandler,
 }) => {
 	// console.log(priorityPassAmount, '+', airportAmount, '=', amount);
 	const onChangeHandler = (e) => {
@@ -102,15 +102,11 @@ const Summary = ({
 								<select
 									style={{ width: '80%', margin: '0' }}
 									onChange={(e) => {
-										console.log(
-											'onchange summary setPriorityPassCount',
+										priorityPassCountHandler(
 											e.target.value
 										);
-										priorityPassCounthandler(
-											parseInt(e.target.value)
-										);
 									}}
-									value={priorityPassCount}
+									// value={priorityPassCount}
 								>
 									{[1, 2, 3, 4, 5, 6].map((item, idx) => {
 										return (

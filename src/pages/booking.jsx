@@ -228,7 +228,7 @@ const Booking = () => {
 					).toFixed(2)
 			  )
 		: 0.0;
-	priorityPassAmount = priorityPassAmount * priorityPassCount;
+	priorityPassAmount = priorityPassAmount * parseInt(priorityPassCount);
 	console.log('priorityPassAmount i bookin', priorityPassAmount);
 	console.log('priorityPassCount i bookin', priorityPassCount);
 	bookingObj = {
@@ -298,7 +298,7 @@ const Booking = () => {
 									: 0
 							}
 							priorityPassCount={priorityPassCount}
-							priorityPassCounthandler={(value) => {
+							priorityPassCountHandler={(value) => {
 								setPriorityPassCount(value);
 							}}
 							airportAmount={airportAmount.toFixed(2)}

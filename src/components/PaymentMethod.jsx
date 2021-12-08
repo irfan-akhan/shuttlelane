@@ -144,6 +144,7 @@ const onClosed = (res) => {
 // COMPONENT
 
 const PaymentMethod = ({ bookingData, cabinClasses }) => {
+	useState();
 	// console.log('IN PAYMENT METHOD', bookingData);
 	const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 	const router = useRouter();
@@ -231,7 +232,11 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 				});
 		};
 		paypalLoadScript();
-	}, [bookingData.amount, bookingData.currency, selectedPayment]);
+	}, [bookingData, selectedPayment]);
+	useEffect(() => {
+		console.log('in payyyyyyy');
+		setSelectedPayment('');
+	}, [bookingData]);
 	// const handleFlutterPayment = useFlutterwave(config);
 	const onSubmitHandler = async (
 		paymentReceiptLink,
@@ -425,9 +430,14 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 		...config,
 		text: 'Pay with Flutterwave!',
 		callback: (response) => {
+			console.log('flutterwave config', config);
 			console.log('flutterwave response', response);
 			if (response && response.status == 'successfull') {
+				console.log('payment success call create booking');
+
 				onSubmitHandler(response.transaction_id, '', 'Successful');
+				console.log('after booking call');
+				closePaymentModal(); // this will close the modal programmatically
 			} else {
 				toast.errror(`Please try agian,Something went wrong`, {
 					position: 'top-center',
@@ -438,10 +448,11 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 					draggable: true,
 					progress: 0,
 				});
+				closePaymentModal(); // this will close the modal programmatically
 			}
-			closePaymentModal(); // this will close the modal programmatically
 		},
 		onClose: () => {
+			console.log('flutterwave config', config);
 			toast.error('Payment Cancelled', {
 				position: 'top-center',
 				autoClose: 3000,
@@ -451,6 +462,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 				draggable: true,
 				progress: 0,
 			});
+			setSelectedPayment('');
 		},
 	};
 	return (
@@ -608,7 +620,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 				// >
 				// 	Pay with FlutterWave
 				// </button>
-				<FlutterWaveButton {...fwConfig} />
+				<FlutterWaveButton className='btnGrad' {...fwConfig} />
 			) : null}
 
 			<ToastContainer />

@@ -16,20 +16,16 @@ const Summary = ({
 	isPriorityPass,
 	setIsPriorityPass,
 	setSelectedCabinClass,
-	selectedCabinClass,
 	priorityPassAmount,
 	airportAmount,
 	priorityPassCount,
 	setPriorityPassCount,
 }) => {
-	// console.log(priorityPassAmount, '+', airportAmount, '=', amount);
 	const onChangeHandler = (e) => {
 		changeCurrency({
 			name: e.target.value,
 		});
 	};
-
-	console.log('Top summary PriorityPassCount', priorityPassCount);
 	return (
 		<div className={styles.card}>
 			<h4>Booking Summary</h4>
@@ -38,11 +34,6 @@ const Summary = ({
 					<span>{title}</span>
 					<span>
 						{currencySymbol}&nbsp;
-						{/* {airportAmount.toString().length > 6
-							? airportAmount.slice(0, 1) +
-							  ',' +
-							  airportAmount.slice(1)
-							: airportAmount} */}
 						{parseFloat(airportAmount).toLocaleString()}
 					</span>
 				</p>
@@ -68,13 +59,6 @@ const Summary = ({
 							{isPriorityPass && (
 								<span style={{ opacity: '0.8' }}>
 									{currencySymbol}&nbsp;
-									{/* {priorityPassAmount.toString().lenght > 6
-										? priorityPassAmount
-												.toString()
-												.slice(0, 1) +
-										  ',' +
-										  priorityPassAmount.toString().slice(1)
-										: priorityPassAmount} */}
 									{parseFloat(
 										priorityPassAmount
 									).toLocaleString()}
@@ -101,12 +85,9 @@ const Summary = ({
 									})}
 								</select>
 								<select
-									style={{ width: '80%', margin: '0' }}
+									style={{ width: '80%', margin: '5px 0' }}
+									value={priorityPassCount}
 									onChange={(e) => {
-										console.log(
-											'onchange tag',
-											e.target.value
-										);
 										setPriorityPassCount(e.target.value);
 									}}
 								>
@@ -126,16 +107,10 @@ const Summary = ({
 				) : (
 					''
 				)}
-
 				<p className={styles.total}>
 					<span>Total</span>
 					<span>
 						{currencySymbol}&nbsp;
-						{/* {amount.toString().length > 6
-							? amount.toString().slice(0, 2) +
-							  ',' +
-							  amount.toString().slice(2)
-							: amount} */}
 						{parseFloat(amount).toLocaleString()}
 					</span>
 				</p>

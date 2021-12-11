@@ -51,7 +51,7 @@ const createOne = async (req, res) => {
 		// );
 
 		const msg = {
-			to: data.email,
+			to: [data.email, , 'info@shuttlelane.com'],
 			from: { email: `info@shuttlelane.com`, name: 'Shuttlelane' },
 
 			template_id: 'd-4f8f3ba9fb3c492cbf5bd43725ed5090',

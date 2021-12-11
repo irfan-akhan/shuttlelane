@@ -432,7 +432,7 @@ const PaymentMethod = ({ bookingData, cabinClasses }) => {
 		callback: (response) => {
 			console.log('flutterwave config', config);
 			console.log('flutterwave response', response);
-			if (response && response.status == 'successfull') {
+			if (response && response.status == 'successful') {
 				console.log('payment success call create booking');
 
 				onSubmitHandler(response.transaction_id, '', 'Successful');

@@ -1,6 +1,5 @@
 const sendSMS = require('../../utils/twilio');
 const sendMAIL = require('../../utils/sendgrid');
-const sendBookingEmail = require('../../utils/sendGridSelf');
 
 const currencySymbols = {
 	dollar: '$',
@@ -67,7 +66,7 @@ Billed: ${data.amount}.
 Need assistance? You can reach us on +2349030009452, +2349030009486 or +2349030009108.`;
 
 		const msg = {
-			to: [data.email, 'info@shuttlelane.com'],
+			to: data.email,
 			from: { email: `booking@shuttlelane.com`, name: 'Shuttlelane' },
 
 			template_id: 'd-712dc95f33544f06a246bdc0e06b32c5',
@@ -92,11 +91,13 @@ Need assistance? You can reach us on +2349030009452, +2349030009486 or +23490300
 		};
 		sendSMS(`${data.countryCode}${data.mobile}`, sms);
 		sendMAIL(msg);
-		sendBookingEmail('New Airport Priority Pass service booking recieved.');
-		return res.status(201).json({
+		// sendBookingEmail('New Airport Priority Pass service booking recieved.');
+		res.status(201).json({
 			data: doc,
 			message: 'Booking confirmed, Thank you for choosing shuttlelane.!',
 		});
+		sendMAIL({ ...msg, to: 'info@shuttlelane.com' });
+		return;
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json({ error });

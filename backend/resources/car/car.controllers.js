@@ -1,5 +1,4 @@
 const sendSMS = require('../../utils/twilio');
-const sendBookingEmail = require('../../utils/sendGridSelf');
 const sendMAIL = require('../../utils/sendgrid');
 const Car = require('./car.model');
 
@@ -13,7 +12,6 @@ const currencySymbols = {
 // controllers
 
 const getAll = async (req, res) => {
-	console.log('Get all Car Hiring ');
 	try {
 		const doc = await Car.find({}).sort({ createdAt: -1 });
 		if (!doc) {
@@ -27,8 +25,6 @@ const getAll = async (req, res) => {
 
 // POST
 const createOne = async (req, res) => {
-	console.log('Create One car hire', req.body);
-
 	try {
 		const doc = await Car.create(req.body);
 		if (!doc) {
@@ -90,9 +86,8 @@ Thank you for using ShuttleLane.`;
 		};
 
 		sendSMS(`${data.countryCode}${data.mobile}`, sms);
-		sendBookingEmail('You have recieved a new Car Hire service booking. ');
 		sendMAIL(msg);
-		console.log('sms in CONTROLLER', data.arrivalDate);
+		sendMAIL({ ...msg, to: 'info@shuttlelane.com' });
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json({ error });
@@ -100,8 +95,6 @@ Thank you for using ShuttleLane.`;
 };
 
 const updateOne = async (req, res) => {
-	console.log('UPDATE CAR BOOKING', req.body);
-
 	try {
 		const doc = await Car.findOneAndUpdate(
 			{ _id: req.params.id },

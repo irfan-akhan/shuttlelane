@@ -5,7 +5,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 async function sendMAIL(msg) {
 	try {
 		sgMail
-			.sendMultiple(msg)
+			.send(msg)
 			.then((res) => {
 				console.log(' res', res);
 			})

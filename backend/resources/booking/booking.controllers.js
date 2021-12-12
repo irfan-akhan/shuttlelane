@@ -1,6 +1,5 @@
 const sendSMS = require('../../utils/twilio');
 const sendMAIL = require('../../utils/sendgrid');
-const sendBookingEmail = require('../../utils/sendGridSelf');
 
 const currencySymbols = {
 	dollar: '$',
@@ -12,7 +11,6 @@ const currencySymbols = {
 const Booking = require('./booking.model');
 
 const getAll = async (req, res) => {
-	console.log('Get all Bookings ');
 	try {
 		const doc = await Booking.find().sort({ createdAt: -1 });
 		if (!doc) {
@@ -26,8 +24,6 @@ const getAll = async (req, res) => {
 
 // POST
 const createOne = async (req, res) => {
-	console.log('Create One Booking hell', req.body);
-
 	try {
 		const doc = await Booking.create(req.body);
 		if (!doc) {
@@ -35,7 +31,6 @@ const createOne = async (req, res) => {
 		}
 
 		const data = doc.toJSON();
-		console.log('JSON DATA', data);
 		const amount = data.currency.includes('niera')
 			? `₦ ${data.amount}`
 			: data.currency.includes('dollar')
@@ -44,7 +39,6 @@ const createOne = async (req, res) => {
 			? `€ ${data.amount}`
 			: `£ ${data.amount}`;
 		let date;
-		let selfmail = '';
 		let msg = {};
 		if (data.pickupDate) {
 			console.log('pickyp');
@@ -75,51 +69,16 @@ Thank you for using ShuttleLane.`;
 					total: amount,
 				},
 			};
-			// 			mail = `Hello ${data.title} ${data.firstName},
-			// Thanks for booking your ${data.formType} service with ShuttleLane.
-			// Your booking reference is: ${data.bookingReference}.
-			// Pick-up: ${data.pickupAddress}.
-			// Drop-off: ${data.dropoffAirport}
-			// Date & Time: ${date} ${data.time}.
-			// Passenger: ${data.title} ${data.firstName} ${data.lastName}.
-			// ${data.passengers} passengers in total.
-			// Vehicle Class: ${data.carType}.
-			// Contact: ${data.email} ${data.mobile}.
-			// Billed: ${data.amount}.
-			// Need assistance? You can reach us on +2349030009452, +2349030009486 or +2349030009108.`;
 		}
 
 		if (data.arrivalDate) {
-			console.log('dropoff');
 			date = data.arrivalDate.toString().slice(0, 10);
 
 			sms = `Hello ${data.title} ${data.firstName},
 Your Airport Transfer Pickup service has been booked for ${date}, ${data.time}.
 Your booking reference: ${data.bookingReference}.
 Thank you for using ShuttleLane.`;
-			selfmail =
-				'you have received a new Airport Transfer Pickup service booking.';
-			//       mailTemplate = `<!doctype html>
-			// 			<html>
-			// 				<body>
-			// 				<a href="https://shuttlelane.et"
-			// 				<img src="https://shutlelane.net/assets/images/logo.png alt="shuttlelane logo" style="width:300,height:200"/>
-			// 				</a>
-			// 				<p> Hello ${data.title} ${data.firstName},
-			// Thanks for booking your ${data.formType} service with ShuttleLane.
-			// Your booking reference is: ${data.bookingReference}.
-			// Pick-up: ${data.pickupAirport}.
-			// Flight Number: ${data.flightNumber}.
-			// Drop-off: ${data.dropoffAddress}
-			// Date & Time: ${date} ${data.time}.
-			// Passenger: ${data.title} ${data.firstName} ${data.lastName}.
-			// ${data.passengers} passengers in total.
-			// Vehicle Class: ${data.carType}.
-			// Contact: ${data.email} ${data.mobile}.
-			// Billed: ${data.amount}.
-			// Need assistance? You can reach us on +2349030009452, +2349030009486 or +2349030009108.</p>
-			// </body>
-			// </html>`;
+
 			msg = {
 				to: [data.email, 'info@shuttlelane.com'],
 				from: 'booking@shuttlelane.com',
@@ -149,12 +108,11 @@ Thank you for using ShuttleLane.`;
 		sendSMS(`${data.countryCode}${data.mobile}`, sms);
 
 		sendMAIL(msg);
-		// sendBookingEmail(selfmail);
 		res.status(201).json({
 			data: doc,
 			message: 'Booking confirmed, Thank you for choosing shuttlelane.!',
 		});
-		console.log('sms in CONTROLLER', data.arrivalDate);
+		sendMAIL({ ...msg, to: 'info@shuttlelane.com' });
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json({ error });

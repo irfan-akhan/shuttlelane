@@ -1,6 +1,5 @@
 const sendSMS = require('../../utils/twilio');
 const sendMAIL = require('../../utils/sendgrid');
-const sendBookingEmail = require('../../utils/sendGridSelf');
 const Hotel = require('./hotel.model');
 
 const getAll = async (req, res) => {
@@ -29,29 +28,9 @@ const createOne = async (req, res) => {
 		console.log(doc);
 
 		const data = doc.toJSON();
-		// 		console.log('JSON DATA', data);
-
-		// 		console.log('sms in CONTROLLER', data.date);
-		// const message = `
-		// Hello ${data.firstName} ${data.lastName},
-		// Thanks for booking your Priority Pass with ShuttleLane.
-		// Your booking reference is: ${data.bookingReference}.
-		// Need assistance? You can reach us on +2349030009452, +2349030009486 or +2349030009108.
-		// Destination Airport: ${data.airport}.Flight Number: ${data.flightNumber}.
-		// Service Type: Hotel booking.
-		// Hotel Name: ${data.hotelName}.
-		// Passenger: ${data.title} ${data.firstName} ${data.lastName}.
-		// ${data.passengers} passengers in total.
-		// Cabin Class: ${data.cabinClass}.
-		// Contact: ${data.email}, ${data.countryCode}${data.mobile}.`;
-		// sendSMS(
-		//   `${data.countryCode}${data.mobile}`,
-		//   // `Hello, ${data.title} ${data.firstName} ${data.lastName} your Airport booking for ${date} at ${data.time} reference ID: ${data.bookingReference} has been confirmed, Thank you for choosing Shuttlelane`
-		//   message
-		// );
 
 		const msg = {
-			to: [data.email, , 'info@shuttlelane.com'],
+			to: data.email,
 			from: { email: `info@shuttlelane.com`, name: 'Shuttlelane' },
 
 			template_id: 'd-4f8f3ba9fb3c492cbf5bd43725ed5090',
@@ -61,9 +40,8 @@ const createOne = async (req, res) => {
 		};
 
 		sendMAIL(msg);
-		sendBookingEmail('You have recieved a new Hotel service request. ');
-
 		res.status(201).json({ data: doc });
+		sendMAIL({ ...msg, to: 'info@shuttlelane.com' });
 	} catch (error) {
 		console.log('creating error', error);
 

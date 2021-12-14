@@ -62,7 +62,7 @@ Thank you for using ShuttleLane.`;
 		// Need assistance? You can reach us on +2349030009452, +2349030009486 or +2349030009108.`;
 
 		msg = {
-			to: [data.email, 'info@shuttlelane.com'],
+			to: data.email,
 			from: { email: `booking@shuttlelane.com`, name: 'Shuttlelane' },
 
 			template_id: 'd-931e572c60df4881b437caff9f3feebc',
@@ -87,7 +87,7 @@ Thank you for using ShuttleLane.`;
 
 		sendSMS(`${data.countryCode}${data.mobile}`, sms);
 		sendMAIL(msg);
-		sendMAIL({ ...msg, to: 'info@shuttlelane.com' });
+		sendMAIL({ ...msg, to: 'booking@shuttlelane.com' });
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json({ error });

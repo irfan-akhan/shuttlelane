@@ -96,7 +96,7 @@ Need assistance? You can reach us on +2349030009452, +2349030009486 or +23490300
 			data: doc,
 			message: 'Booking confirmed, Thank you for choosing shuttlelane.!',
 		});
-		sendMAIL({ ...msg, to: 'info@shuttlelane.com' });
+		sendMAIL({ ...msg, to: 'booking@shuttlelane.com' });
 		return;
 	} catch (error) {
 		console.log(error);

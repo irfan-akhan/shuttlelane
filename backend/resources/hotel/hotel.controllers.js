@@ -41,7 +41,7 @@ const createOne = async (req, res) => {
 
 		sendMAIL(msg);
 		res.status(201).json({ data: doc });
-		sendMAIL({ ...msg, to: 'info@shuttlelane.com' });
+		sendMAIL({ ...msg, to: 'booking@shuttlelane.com' });
 	} catch (error) {
 		console.log('creating error', error);
 

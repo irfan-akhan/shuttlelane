@@ -48,7 +48,7 @@ Your Airport Transfer Dropoff service has been booked for ${date}, ${data.time}.
 Your booking reference: ${data.bookingReference}.
 Thank you for using ShuttleLane.`;
 			msg = {
-				to: [data.email, 'info@shuttlelane.com'],
+				to:  data.email ,
 				from: { email: `booking@shuttlelane.com`, name: 'Shuttlelane' },
 				template_id: 'd-263be754485847cea62a224d15c2a2bc',
 
@@ -80,11 +80,9 @@ Your booking reference: ${data.bookingReference}.
 Thank you for using ShuttleLane.`;
 
 			msg = {
-				to: [data.email, 'info@shuttlelane.com'],
+				to: data.email,
 				from: 'booking@shuttlelane.com',
-				template_id: 'd-60d573be189943088d2e3a4aefadf547',
-
-				// template_id: 'd-3398e00b9b14498385c2909a6d70204b',
+				template_id: 'd-60d573be189943088d2e3a4aefadf547', 
 				dynamic_template_data: {
 					username: `${data.title} ${data.firstName} ${data.lastName}`,
 					bookingRef: data.bookingReference,
@@ -96,10 +94,8 @@ Thank you for using ShuttleLane.`;
 					dropoffAddress: data.dropoffAddress,
 					people: `${data.passengers}`,
 					total: amount,
-
 					email: `${data.email}`,
 					phone: `${data.countryCode}${data.mobile}.`,
-
 					passengerCount: data.carCapacity,
 					luggageCount: data.carLuggage,
 				},
@@ -112,7 +108,7 @@ Thank you for using ShuttleLane.`;
 			data: doc,
 			message: 'Booking confirmed, Thank you for choosing shuttlelane.!',
 		});
-		sendMAIL({ ...msg, to: 'info@shuttlelane.com' });
+		sendMAIL({ ...msg, to: 'booking@shuttlelane.com' });
 	} catch (error) {
 		console.log(error);
 		return res.status(500).json({ error });
